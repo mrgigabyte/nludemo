@@ -162,21 +162,50 @@ var graph = d3.csv(csvpath, function(data) {
         .attr("class", "remove")
         .style("position", "absolute")
         .style("z-index", "19")
-        .style("width", "1px")
-        .style("height", parseInt(0.35* docWidth)+"px")
-        .style("top", "10px")
-        .style("bottom", "30px")
+        .style("width", "2px")
+        .style("height", parseInt(0.45* docWidth)+"px")
+        .style("top", "-10px")
         .style("left", "0px")
         .style("background", "#fff");
 
+  function getMod(a) {
+	  if (a>0)
+		  return a;
+	  else
+		  return -1*a;
+  }
+		
+  var divs = d3.selectAll('.x-axis .tick')[0];
+  var xPos = divs.map(function(a) { return a.getBoundingClientRect().left; } )
+  var numHeadings = divs.length;
+  var selectedIndex = numHeadings / 2;
+  updateHeadings(docWidth/2);
+  
+  function updateHeadings(mousex) {
+	 var disX = xPos.map(function(a) {return getMod(a - mousex)});
+	 var newX = disX.indexOf(Math.min.apply(Math, disX));
+
+	 if (newX !== selectedIndex) {
+		 $(".x-axis text").eq(selectedIndex).removeClass("selectedTime");
+		 selectedIndex = newX;
+		 $(".x-axis text").eq(selectedIndex).addClass("selectedTime");
+	 }
+  }
+	
   d3.select(".chart")
-      .on("mousemove", function(){  
+      .on("mousemove", function(){
+	  	console.log('mouseover');
          mousex = d3.mouse(this);
          mousex = mousex[0] + 5;
-         vertical.style("left", mousex + "px" )})
-      .on("mouseover", function(){  
+         vertical.style("left", mousex + "px" );
+	  	 updateHeadings(mousex);
+  	  })
+      .on("mouseover", function(){
+//	     console.log('mouseover');
          mousex = d3.mouse(this);
          mousex = mousex[0] + 5;
-         vertical.style("left", mousex + "px")});
-});
+         vertical.style("left", mousex + "px");
+		 updateHeadings(mousex);
+	   });
+	});
 }

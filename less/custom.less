@@ -6,6 +6,10 @@
 	min-height: 120px;
 }
 
+body {
+	font-family: Theinhardt;
+}
+
 .logo {
 	background: url('/images/logo.png');
 	width: 91px;
@@ -29,7 +33,7 @@
 	font-size: 34px;
 	color: rgba(81, 87, 95, 0.2);
 	margin-top: 43px;
-	margin-left: 25px;
+	margin-left: 15px;
 }
 
 /* STEAMOGRAPH */
@@ -62,17 +66,22 @@ button {
 }
 
 .x-axis {
+	.selectedTime {
+		font-size: 36px;
+		fill: @red-wine;
+		opacity: 0.9;
+	}
 	path {
 		stroke-width: 0px;
 		fill: none;
 	}
 	text {		
 		opacity: 0.4;
-		font-family: Theinhardt;
 		font-size: 24px;
 		font-weight: 500;
 		line-height: 0.92;
-		color: var(--charcoal-grey);
+		z-index: 100;
+		color: @charcoal-grey;
 	}
 	line {
 		stroke-width: 0px;		
