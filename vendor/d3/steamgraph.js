@@ -99,9 +99,10 @@ var graph = d3.csv(csvpath, function(data) {
         .attr("class", "remove")
         .style("position", "absolute")
         .style("z-index", "0")
-        .style("width", "2px")
-        .style("height", parseInt(0.37* docWidth)+"px")
-        .style("top", "150px")
+  		.style("opacity", "0.2")
+        .style("width", "1px")
+        .style("height", parseInt(0.36* docWidth)+"px")
+        .style("top", "280px")
         .style("left", "0px")
         .style("background", "#383f49");
 
@@ -158,6 +159,8 @@ var graph = d3.csv(csvpath, function(data) {
       .attr("stroke", strokecolor)
       .attr("stroke-width", "0.5px"), 
       tooltip.html( "<p>" + d.key + "<br>" + pro + "</p>" ).style("visibility", "visible");
+	  
+	  $('#productName').text(d.key);
       
     })
     .on("mouseout", function(d, i) {
@@ -165,6 +168,9 @@ var graph = d3.csv(csvpath, function(data) {
       .transition()
       .duration(250)
       .attr("opacity", "1");
+	  
+	  $('#productName').text("All Products");
+	  
       d3.select(this)
       .classed("hover", false)
       .attr("stroke-width", "0px"), tooltip.html( "<p>" + d.key + "<br>" + pro + "</p>" ).style("visibility", "hidden");
