@@ -4,6 +4,15 @@ function generateMapView() {
 	var center = [28.733837000000003, 77.256175];
 	map = new L.Map('map', {zoomControl:false, center: new L.LatLng(center[0], center[1]), zoom: 12});
 	
+	map.dragging.disable();
+	map.touchZoom.disable();
+	map.doubleClickZoom.disable();
+	map.scrollWheelZoom.disable();
+	map.boxZoom.disable();
+	map.keyboard.disable();
+	if (map.tap) map.tap.disable();
+	document.getElementById('map').style.cursor='default';
+
 	var polyPoints = [];
 	
 	$.getJSON("/assets/delhi.geojson", function(json) {
@@ -68,7 +77,7 @@ function generateMapView() {
 
 	var generateData = function(){
 		var data = [];
-		for(i=0; i<1000; i++){
+		for(i=0; i<20000; i++){
 			var point = [longFn(),  latFn()];
 			if( isMarkerInsidePolygon(point) ) {
 				data.push(point);
