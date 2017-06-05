@@ -1,27 +1,22 @@
-chart("../data/steam-data.csv", "orange");
+chart("../data/steam-data.csv");
 
 var datearray = [];
 var colorrange = [];
 
-function chart(csvpath, color) {
+function chart(csvpath) {
+//  colorrange = ["#f4760a", "#dd8819", "#d36e1f", "#c50052", "#f4760a", "#d36e1f"];
+  colorrange = [["242deg", "#f4760a", "#f4760a"], ["251deg", "#dd8819", "#ff9200"], ["250deg", "#d36e1f", "#b01a33"], ["244deg", "#c50052", "#920029"], ["238deg", "#f4760a", "#ffc900"], ["247deg", "#d36e1f", "#b01a33"], ["238deg", "#f4760a", "#ffc900"]];
+//  colorrange = ["linear-gradient(242deg, #f4760a, #f4760a)", "linear-gradient(251deg, #dd8819, #ff9200)", "#linear-gradient(250deg, #d36e1f, #b01a33)", "linear-gradient(244deg, #c50052, #920029", "linear-gradient(238deg, #f4760a, #ffc900)", "linear-gradient(247deg, #d36e1f, #b01a33)"];
 
-if (color == "blue") {
-  colorrange = ["#045A8D", "#2B8CBE", "#74A9CF", "#A6BDDB", "#D0D1E6", "#F1EEF6"];
-}
-else if (color == "pink") {
-  colorrange = ["#980043", "#DD1C77", "#DF65B0", "#C994C7", "#D4B9DA", "#F1EEF6"];
-}
-else if (color == "orange") {
-  colorrange = ["#f4760a", "#dd8819", "#d36e1f", "#c50052", "#f4760a", "#d36e1f"];
-//  colorrange = ["linear-gradient(242deg, #f4760a, #ffc900)", "linear-gradient(251deg, #dd8819, #ff9200)", "#linear-gradient(250deg, #d36e1f, #b01a33)", "linear-gradient(244deg, #c50052, #920029", "linear-gradient(238deg, #f4760a, #ffc900)", "linear-gradient(247deg, #d36e1f, #b01a33)"];
-}
 strokecolor = colorrange[0];
 
 var format = d3.time.format("%m/%d/%y");
+var docWidth = document.body.clientWidth;
 
-var margin = {top: 40, right: 90, bottom: 30, left: 100};
+var margin = {top: 40, right: 0, bottom: 30, left: 0};
+console.log(document.body.clientWidth);
 var width = document.body.clientWidth - margin.left - margin.right;
-var height = 400 - margin.top - margin.bottom;
+var height = 500 - margin.top - margin.bottom;
 	
 var tooltip = d3.select("body")
     .append("div")
@@ -67,22 +62,25 @@ var area = d3.svg.area()
     .y0(function(d) { return y(d.y0); })
     .y1(function(d) { return y(d.y0 + d.y); });
 
-var svg = d3.select(".chart").append("svg")
-    .attr("width", width + margin.left + margin.right)
-    .attr("height", height + margin.top + margin.bottom)
-  .append("g")
-    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
+var svg = d3.select(".chart").append("svg");
 var svgDefs = svg.append('defs');
-var mainGradient = svgDefs.append('linearGradient').attr('id', 'mainGradient');
-// Create the stops of the main gradient. Each stop will be assigned a class to style the stop using CSS.
-mainGradient.append('stop')
-	.attr('class', 'stop-left')
-	.attr('offset', '0');
-mainGradient.append('stop')
-	.attr('class', 'stop-right')
-	.attr('offset', '1');
 	
+svg.attr("width", width + margin.left + margin.right)
+    	.attr("height", height + margin.top + margin.bottom)
+  		.append("g")
+    	.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+for (var i=0; i<colorrange.length; i++) {
+	var mainGradient = svgDefs.append('linearGradient').attr('id', 'mainGradient'+(i+1));
+	// Create the stops of the main gradient. Each stop will be assigned a class to style the stop using CSS.
+	mainGradient.append('stop')
+		.attr('stop-color', colorrange[i][1])
+		.attr('offset', '5%');
+	mainGradient.append('stop')
+		.attr('stop-color', colorrange[i][2])
+		.attr('offset', '95%');
+}
+
 var graph = d3.csv(csvpath, function(data) {
   data.forEach(function(d) {
     d.date = format.parse(d.date);
@@ -96,27 +94,28 @@ var graph = d3.csv(csvpath, function(data) {
 
   svg.selectAll(".layer")
       .data(layers)
-    .enter().append("path")
+      .enter().append("path")
       .attr("class", "layer")
       .attr("d", function(d) { return area(d.values); })
-  	  .classed("filled", true);
+  	  .style("fill", function(d, i) { return "url(#mainGradient"+(i+1)+")"; });
+//  	  .classed(function(d, i) { return "url(#mainGradient"+i+")"; }, true);
 //      .style("fill", "url(#mainGradient)");
 //      .style("fill", function(d, i) { return z(i); });
 
 
   svg.append("g")
-      .attr("class", "x axis")
-      .attr("transform", "translate(0," + height + ")")
+      .attr("class", "x-axis")
+      .attr("transform", "translate(0," + 0 + ")")
       .call(xAxis);
 
   svg.append("g")
-      .attr("class", "y axis")
-      .attr("transform", "translate(" + width + ", 0)")
-      .call(yAxis.orient("right"));
-
-  svg.append("g")
-      .attr("class", "y axis")
+      .attr("class", "y-axis")
+      .attr("transform", "translate(" + docWidth * 0.06 + ", 0)")
       .call(yAxis.orient("left"));
+
+//  svg.append("g")
+//      .attr("class", "y axis")
+//      .call(yAxis.orient("left"));
 
   svg.selectAll(".layer")
     .attr("opacity", 1)
@@ -163,21 +162,50 @@ var graph = d3.csv(csvpath, function(data) {
         .attr("class", "remove")
         .style("position", "absolute")
         .style("z-index", "19")
-        .style("width", "1px")
-        .style("height", "380px")
-        .style("top", "10px")
-        .style("bottom", "30px")
+        .style("width", "2px")
+        .style("height", parseInt(0.45* docWidth)+"px")
+        .style("top", "-10px")
         .style("left", "0px")
         .style("background", "#fff");
 
+  function getMod(a) {
+	  if (a>0)
+		  return a;
+	  else
+		  return -1*a;
+  }
+		
+  var divs = d3.selectAll('.x-axis .tick')[0];
+  var xPos = divs.map(function(a) { return a.getBoundingClientRect().left; } )
+  var numHeadings = divs.length;
+  var selectedIndex = numHeadings / 2;
+  updateHeadings(docWidth/2);
+  
+  function updateHeadings(mousex) {
+	 var disX = xPos.map(function(a) {return getMod(a - mousex)});
+	 var newX = disX.indexOf(Math.min.apply(Math, disX));
+
+	 if (newX !== selectedIndex) {
+		 $(".x-axis text").eq(selectedIndex).removeClass("selectedTime");
+		 selectedIndex = newX;
+		 $(".x-axis text").eq(selectedIndex).addClass("selectedTime");
+	 }
+  }
+	
   d3.select(".chart")
-      .on("mousemove", function(){  
+      .on("mousemove", function(){
+	  	console.log('mouseover');
          mousex = d3.mouse(this);
          mousex = mousex[0] + 5;
-         vertical.style("left", mousex + "px" )})
-      .on("mouseover", function(){  
+         vertical.style("left", mousex + "px" );
+	  	 updateHeadings(mousex);
+  	  })
+      .on("mouseover", function(){
+//	     console.log('mouseover');
          mousex = d3.mouse(this);
          mousex = mousex[0] + 5;
-         vertical.style("left", mousex + "px")});
-});
+         vertical.style("left", mousex + "px");
+		 updateHeadings(mousex);
+	   });
+	});
 }

@@ -113,24 +113,6 @@
 
     <!-- Custom Theme JavaScript -->
     <script src="../dist/js/sb-admin-2.js"></script>
-	<script>
-		var svg = d3.select(".chart").append("svg");
-		var svgDefs = svg.append('defs');
-		var mainGradient = svgDefs.append('linearGradient').attr('id', 'mainGradient');
-		// Create the stops of the main gradient. Each stop will be assigned a class to style the stop using CSS.
-		mainGradient.append('stop')
-			.attr('class', 'stop-left')
-			.attr('offset', '0');
-		mainGradient.append('stop')
-			.attr('class', 'stop-right')
-			.attr('offset', '1');
-	</script>
-	<style>
-		.filled {
-			fill: url(#mainGradient);
-		}
-	</style>
-
 </body>
 
 </html>
