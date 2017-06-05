@@ -21,8 +21,10 @@ var height = 500 - margin.top - margin.bottom;
 var tooltip = d3.select("body")
     .append("div")
     .attr("class", "remove")
+  	.style("opacity", "0.2")
+	.style("background-color", "#383f49")
     .style("position", "absolute")
-    .style("z-index", "20")
+    .style("z-index", "1")
     .style("visibility", "hidden")
     .style("top", "30px")
     .style("left", "55px");
@@ -91,6 +93,17 @@ var graph = d3.csv(csvpath, function(data) {
 
   x.domain(d3.extent(data, function(d) { return d.date; }));
   y.domain([0, d3.max(data, function(d) { return d.y0 + d.y; })]);
+	
+  var vertical = d3.select(".chart")
+        .append("div")
+        .attr("class", "remove")
+        .style("position", "absolute")
+        .style("z-index", "0")
+        .style("width", "2px")
+        .style("height", parseInt(0.37* docWidth)+"px")
+        .style("top", "150px")
+        .style("left", "0px")
+        .style("background", "#383f49");
 
   svg.selectAll(".layer")
       .data(layers)
@@ -156,17 +169,6 @@ var graph = d3.csv(csvpath, function(data) {
       .classed("hover", false)
       .attr("stroke-width", "0px"), tooltip.html( "<p>" + d.key + "<br>" + pro + "</p>" ).style("visibility", "hidden");
   })
-    
-  var vertical = d3.select(".chart")
-        .append("div")
-        .attr("class", "remove")
-        .style("position", "absolute")
-        .style("z-index", "19")
-        .style("width", "2px")
-        .style("height", parseInt(0.45* docWidth)+"px")
-        .style("top", "-10px")
-        .style("left", "0px")
-        .style("background", "#fff");
 
   function getMod(a) {
 	  if (a>0)
@@ -191,7 +193,6 @@ var graph = d3.csv(csvpath, function(data) {
 		 $(".x-axis text").eq(selectedIndex).addClass("selectedTime");
 	 }
   }
-	
   d3.select(".chart")
       .on("mousemove", function(){
 	  	console.log('mouseover');
