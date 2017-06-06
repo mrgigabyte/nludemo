@@ -1,4 +1,4 @@
-//generateMapView();
+generateMapView();
 
 function generateMapView() {
 	var center = [28.733837000000003, 77.256175];
