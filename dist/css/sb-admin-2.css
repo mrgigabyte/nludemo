@@ -24,6 +24,17 @@ body {
   margin-left: 88px;
   float: left;
 }
+.stickyButton {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 48px;
+  border-radius: 50%;
+  background: #920029;
+  height: 48px;
+  z-index: 10;
+  padding: 10px 16px;
+}
 .searchicon {
   background: url('../../images/search.png');
   width: 24px;
