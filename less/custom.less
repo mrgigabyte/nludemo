@@ -47,12 +47,19 @@ body {
 }
 
 .searchHeader {
+    border: 0px;
+    outline:none;
 	float: left;
 	font-size: 34px;
-	color: rgba(81, 87, 95, 0.2);
+	color: rgb(81, 87, 95);
+    opacity: 0.2;
 	margin-top: 43px;
 	margin-left: 15px;
 }
+.searchHeader:focus{
+opacity:0.4;    
+}
+
 
 .row.steamgraph {
 	display: none;

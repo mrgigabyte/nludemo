@@ -7,10 +7,12 @@ if (username == "admin" && password == "nludemo")
 {
     window.location = "index.html"; // Redirecting to other page.
     return false;
+
     
 }
 else
 {
+    
     myFunction("snackbar1");
     
     // Disabling fields after 3 attempts.
