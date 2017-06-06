@@ -166,6 +166,9 @@ button {
   src: url("../../assets/fonts/THEINHARDT-MEDIUM.OTF");
 }
 /*LOGIN PANEL*/
+body {
+  background-color: #fafcfe;
+}
 .lgn-container {
   font-family: "ubuntu";
   background-color: #fafcfe;
@@ -237,6 +240,7 @@ button {
   height: 200px;
 }
 .lgn-btn {
+  outline: none;
   width: 280px;
   height: 80px;
   border-radius: 100px;
@@ -434,52 +438,9 @@ However, delay the fade out process for 2.5 seconds */
 #snackbar1.show {
   visibility: visible;
   /* Show the snackbar */
-  /* Add animation: Take 0.5 seconds to fade in and out the snackbar. 
+}
+/* Add animation: Take 0.5 seconds to fade in and out the snackbar. 
 However, delay the fade out process for 2.5 seconds */
-  -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
-  animation: fadein 0.5s, fadeout 0.5s 2.5s;
-}
-/* Animations to fade the snackbar in and out */
-@-webkit-keyframes fadein {
-  from {
-    bottom: 0;
-    opacity: 0;
-  }
-  to {
-    bottom: 30px;
-    opacity: 1;
-  }
-}
-@keyframes fadein {
-  from {
-    bottom: 0;
-    opacity: 0;
-  }
-  to {
-    bottom: 30px;
-    opacity: 1;
-  }
-}
-@-webkit-keyframes fadeout {
-  from {
-    bottom: 30px;
-    opacity: 1;
-  }
-  to {
-    bottom: 0;
-    opacity: 0;
-  }
-}
-@keyframes fadeout {
-  from {
-    bottom: 30px;
-    opacity: 1;
-  }
-  to {
-    bottom: 0;
-    opacity: 0;
-  }
-}
 /* STEAMGRAPH */
 .steamgraph.chart svg {
   z-index: 10;
@@ -570,11 +531,10 @@ button {
   right: 0px;
 }
 /* Transitions */
-.cbp-spmenu,
-.cbp-spmenu-push {
-  -webkit-transition: all 0.5s ease;
-  -moz-transition: all 0.5s ease;
-  transition: all 0.5s ease;
+.cbp-spmenu {
+  -webkit-transition: all 0.2s ease;
+  -moz-transition: all 0.2s ease;
+  transition: all 0.2s ease;
 }
 @media screen and (max-height: 26.375em) {
   .cbp-spmenu-vertical {
