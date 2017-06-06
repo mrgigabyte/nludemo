@@ -1,25 +1,29 @@
-var attempt = 3; // Variable to count number of attempts.
+// Variable to count number of attempts.
 // Below function Executes on click of login button.
 function validate(){
 var username = document.getElementById("username").value;
 var password = document.getElementById("password").value;
-if (username == "nandan" && password == "nandan")
+if (username == "admin" && password == "nludemo")
 {
-    window.alert("Login successful!")
     window.location = "index.html"; // Redirecting to other page.
     return false;
+    
 }
 else
 {
-    attempt --;// Decrementing by one.
-    window.alert("Login failed. You have "+attempt+ " left.")
+    myFunction("snackbar1");
+    
     // Disabling fields after 3 attempts.
-    if( attempt == 0){
-        document.getElementById("username").disabled = true;
-        document.getElementById("password").disabled = true;
-        document.getElementById("submit").disabled = true;
-        return false;
-                    }
 }   
 
+}
+
+function myFunction(txt) {
+      var x = document.getElementById(txt);
+
+    // Add the "show" class to DIV
+    x.className = "show";
+
+    // After 3 seconds, remove the show class from DIV
+    setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
 }
