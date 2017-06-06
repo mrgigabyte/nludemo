@@ -15,7 +15,7 @@ function generateMapView() {
 
 	var polyPoints = [];
 	
-	$.getJSON("../../assets/delhi.geojson", function(json) {
+	$.getJSON("../assets/delhi.geojson", function(json) {
 		poly = L.polygon(json.features);
 		
 		L.geoJSON(json, {
