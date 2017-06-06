@@ -38,18 +38,20 @@
      class="img_logo_login">
         </div>
         <div class="lgn-panel">
-            <input type="text" placeholder="Email" class="lgn-input">
+            <form name="login">
+            <input type="text" placeholder="Email" class="lgn-input" id="username">
                 <hr class="lgn-hr">
-            <input type="text" placeholder="Password" class="lgn-input"></div>
+                <input type="password" placeholder="Password" class="lgn-input" id="password"></form></div>
        <div class="lgn-button">
-           <a href="index.html" class="lgn-btn"><p class="Login">Login</p></a>
+           <button class="lgn-btn" id="submit" onclick="validate()"><p class="Login" >Login</p></button>
        </div>
     </div>
+
     </div>
 
     <!-- jQuery -->
     <script src="../vendor/jquery/jquery.min.js"></script>
-
+    <script src="../js/login.js"></script>
     <!-- Bootstrap Core JavaScript -->
     <script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
 
