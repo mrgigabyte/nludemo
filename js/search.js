@@ -5,25 +5,12 @@ $('#searchHeader').click(function(){
         .attr({
             'type': 'text',
             'name': 'fname',
-            'id': 'searchHeader',
+            'id': '#txt_fullname',
             'size': '30',
             'value': ""
         })
         .appendTo('#searchHeader');
-    $('searchHeader').focus();
-});
-
-$('#searchHeader').focusout(function(){
-    if($(this).text()=""){
-    $(this).html('');
-    $('<span>Search</span>')
-        .attr({
-            'class': 'searchHeader',
-            'id': 'searchHeader'
-            
-        })
-        .appendTo('#searchHeader');
-    $('searchHeader').focus();}
+    $('#txt_fullname').focus();
 });
 
 $(document).on('blur','#txt_fullname', function(){

@@ -5,7 +5,15 @@ var colorrange = [];
 
 function chart(csvpath) {
 //  colorrange = ["#f4760a", "#dd8819", "#d36e1f", "#c50052", "#f4760a", "#d36e1f"];
-  colorrange = [["242deg", "#f4760a", "#f4760a"], ["251deg", "#dd8819", "#ff9200"], ["250deg", "#d36e1f", "#b01a33"], ["244deg", "#c50052", "#920029"], ["238deg", "#f4760a", "#ffc900"], ["247deg", "#d36e1f", "#b01a33"], ["238deg", "#f4760a", "#ffc900"]];
+  colorrange = [
+	  ["238", "#f4760a", "#ffc900"],
+	  ["238", "#dd8819", "#ffc900"],
+	  ["247", "#d36e1f", "#b01a33"],
+	  ["244", "#c50052", "#920029"],
+	  ["250", "#d36e1f", "#b01a33"],
+	  ["251", "#dd8819", "#ff9200"],
+	  ["242", "#f4760a", "#ffc900"]
+  ];
 //  colorrange = ["linear-gradient(242deg, #f4760a, #f4760a)", "linear-gradient(251deg, #dd8819, #ff9200)", "#linear-gradient(250deg, #d36e1f, #b01a33)", "linear-gradient(244deg, #c50052, #920029", "linear-gradient(238deg, #f4760a, #ffc900)", "linear-gradient(247deg, #d36e1f, #b01a33)"];
 
 strokecolor = colorrange[0];
@@ -73,7 +81,9 @@ svg.attr("width", width + margin.left + margin.right)
     	.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
 for (var i=0; i<colorrange.length; i++) {
-	var mainGradient = svgDefs.append('linearGradient').attr('id', 'mainGradient'+(i+1));
+	var mainGradient = svgDefs.append('linearGradient')
+							.attr('id', 'mainGradient'+(i+1))
+							.attr('gradientTransform', "rotate("+colorrange[i][0]+")");
 	// Create the stops of the main gradient. Each stop will be assigned a class to style the stop using CSS.
 	mainGradient.append('stop')
 		.attr('stop-color', colorrange[i][1])
@@ -137,7 +147,7 @@ var graph = d3v3.csv(csvpath, function(data) {
       svg.selectAll(".layer").transition()
       .duration(250)
       .attr("opacity", function(d, j) {
-        return j != i ? 0.9 : 1;
+        return j != i ? 0.5 : 1;
     })})
 
     .on("mousemove", function(d, i) {
