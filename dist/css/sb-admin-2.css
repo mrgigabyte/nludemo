@@ -15,7 +15,7 @@ body {
   margin: 0px;
 }
 .bigCol {
-  width: 501px;
+  width: 563px;
   height: 296px;
   margin-bottom: 100px;
   float: left;
@@ -43,7 +43,7 @@ body {
   object-fit: contain;
 }
 .row {
-  display: flex;
+  display: inline;
   flex-direction: column;
 }
 #page-wrapper {
@@ -725,16 +725,16 @@ button {
 }
 /* Orientation-dependent styles for the content of the menu */
 .cbp-spmenu-vertical {
-  width: 400px;
+  width: 450px;
   height: 912px;
   top: 0;
   z-index: 1000;
 }
 .cbp-spmenu-right {
-  right: -400px;
+  right: -450px;
 }
 .cbp-spmenu-right.cbp-spmenu-open {
-  right: 0px;
+  right: -3px;
 }
 /* Transitions */
 .cbp-spmenu {
