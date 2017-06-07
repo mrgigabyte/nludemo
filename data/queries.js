@@ -8,4 +8,4 @@ queries = [["Which unsecured products are private sector banks getting the most 
 product_queries = [["the return of overdrafts", "doubleBarChart"],
 				["the return of unsecured landing", "drawSteamGraph"],
 				["the return of consumer loans", "generateMapView"],
-				["the return of business loans"], "generateMapView"];
+				["the return of business loans", "generateMapView"]];
