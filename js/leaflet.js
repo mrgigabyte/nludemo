@@ -6,7 +6,7 @@ function generateMapView() {
     d3v3.select('.notselected2').html(cross_sell);
     $('#page-wrapper').html("");
     $("#page-wrapper").append('<div class="row map"> \
-	<div id="map" style="width: 912px; height: 780px; margin-top: 20px; background: #fff;"> \
+	   <div id="map" style="width: 912px; height: 780px; margin-top: 20px; background: #fff;"> \
 	</div></div>');
 
     var center = [22.4, 78.9629];
@@ -85,16 +85,9 @@ function generateMapView() {
     var longFn = d3.randomNormal(center[1], 5);
 
     var generateData = function() {
-        // var data = [];
-        // for (i = 0; i < 2000; i++) {
-        //     var point = [longFn(), latFn()];
-        //     if (isMarkerInsidePolygon(point)) {
-        //         data.push(point);
-        //     }
-        // }
-		$.getJSON("../assets/points.json", function(json) {
-		   	var data = json["coordinates"].map(function(a) { return [a[1], a[0]]});
-	       	hexLayer.data(data);
-    	});
+        $.post(baseApiUrl + "search", {"search": "What have been the product trends for ABFL by state in the last 12 months?"}, function(data, textStatus) {
+            var data = data.rows.map(function(a) { return [a[1], a[0]]});
+            hexLayer.data(data);
+        }, "json");
     };
 }

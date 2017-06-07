@@ -14,9 +14,29 @@ $('.box.first').click(function() {
 	query = "What have been the product trends for ABFL in the last 12 months?";
 	var txt = $('.srch-container input').val(query);
 	drawSteamGraph();
+	removeHeaderButtons();
 	addHeaderButton("VS INFLATION", "addInflationGraph", "inflateBtn");
 	addHeaderButton("VS GDP", "doNothing");
 });
+
+function unsecuredLoans() {
+	singleBarChart();
+	removeHeaderButtons();
+	addHeaderButton("FOR NBFC", "unsecuredNBFC", "nbfcButton");
+	addHeaderButton("VS RISK", "doubleBarChartOk");
+}
+
+function unsecuredNBFC() {
+	singleBarChartNBFC();
+	removeHeaderButtons();
+	addHeaderButton("VS RISK", "doubleBarChartOk");
+}
+
+function doubleBarChartOk() {
+	removeHeaderButtons();
+	doubleBarChart();
+	addHeaderButton("SHOW OPPORTUNITIES GEOGRAPHICALLY", "generateMapView");
+}
 
 function addInflationGraph() {
 	console.log("TO BE ADDED #TODO ?");
@@ -28,3 +48,4 @@ function doNothing() {
 }
 
 
+baseApiUrl = "http://52.66.179.123:4000/";

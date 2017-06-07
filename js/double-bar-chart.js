@@ -2,24 +2,37 @@ var singleBarChart = barChart("single");
 var doubleBarChart = barChart("double");
 
 // singleBarChart();
-// doubleBarChart();
+doubleBarChart();
+var singleBarChartNBFC = barChart("single", "nbfc");
 
-function barChart(type) {
+function barChart(type, api_type) {
     return function() {
     	d3v3.select("#page-wrapper").html("");
-    	$("#page-wrapper").append(`<div style="margin-top: 60px; magin-bottom: 40px;"><div class="chartHead" style="width:370px; margin-right: 100px;">
-    			<div class="title">Risk</div>
-    			<div class="description">GNPA%</div>
-    		</div>
-    		<div class="chartHead" style="width:150px; margin-top: -20px">
-    			<div class="vsTitle">vs</div>
-    		</div>
-    		<div class="chartHead">
-    			<div class="title">Return</div>
-    			<div class="description">Good Understanding INR CR</div>
-    		</div>
-            </div>
-    	`);
+
+        if (type === "double") {
+            $("#page-wrapper").append(`<div style="margin-top: 60px; magin-bottom: 40px;"><div class="chartHead" style="width:370px; margin-right: 100px;">
+                    <div class="title">Risk</div>
+                    <div class="description">GNPA%</div>
+                </div>
+                <div class="chartHead" style="width:150px; margin-top: -20px">
+                    <div class="vsTitle">vs</div>
+                </div>
+                <div class="chartHead">
+                    <div class="title">Return</div>
+                    <div class="description">Good Understanding INR CR</div>
+                </div>
+                </div>
+            `);
+        }
+
+    	else {
+                $("#page-wrapper").append(`<div style="margin-top: 60px; magin-bottom: 40px;"><div class="chartHead" style="width:370px; margin-right: 100px; margin-left: 35px;">
+        			<div class="title">Return</div>
+        			<div class="description">Good Understanding INR CR</div>
+        		</div>
+                </div>
+        	`);
+        }
 
     	var labelArea = 200;
         var chart,
@@ -47,6 +60,15 @@ function barChart(type) {
             var xFrom2 = d3v3.scale.linear()
                 .range([50, width]);
         }
+
+        var tooltip = d3.select("body")
+            .append("div")
+            .style("position", "absolute")
+            .style("z-index", "10")
+            .style("visibility", "hidden")
+            .style("background", "#fff")
+            .text("a simple tooltip")
+            .attr("class", "hoverTooltip");
 
         function render(data) {
             var chart = d3v3.select("#page-wrapper")
@@ -136,24 +158,22 @@ function barChart(type) {
                         .attr("rx", 5)
                         .attr("ry", 5)
                         .attr("class", "left")
-                        // .attr("class", "bg"+function(d) {return })
+                        .attr("score", function(d){return d[lCol];})
                         .attr("width", function (d) {
                             return Math.max(xFrom(d[lCol]) - 30, 0);
                         })
-                        .attr("height", 10);
-
-                chart.selectAll("text.leftscore")
-                        .data(data)
-                        .enter().append("text")
-                        .attr("x", function (d) {
-                            return width - xFrom(d[lCol]);
+                        .attr("height", 10)
+                        .on("mouseover", function(d) {
+                        tooltip.text(d[lCol]);
+                            return tooltip
+                                .style("top", ((yPosByIndexText(d) + 405 + 115) + "px"))
+                                .style("left", (width - xFrom(d[lCol]) + 65 + 30) + "px" )
+                                .style("visibility", "visible");
                         })
-                        .attr("y", yPosByIndexText)
-                        .attr("dx", "20")
-                        .attr("dy", "0.36em")
-                        .attr("text-anchor", "end")
-                        .attr('class', 'leftscore')
-                        .text(function(d){return d[lCol];});
+                        .on("mouseout", function(){
+                            return tooltip
+                                .style("visibility", "hidden");
+                        });
 
                 chart.selectAll("rect.left2")
                         .data(data)
@@ -168,20 +188,18 @@ function barChart(type) {
                         .attr("width", function (d) {
                             return Math.max(xFrom2(d[lCol2]) - 30, 0);
                         })
-                        .attr("height", 10);
-
-                chart.selectAll("text.leftscore2")
-                        .data(data)
-                        .enter().append("text")
-                        .attr("x", function (d) {
-                            return width - xFrom2(d[lCol2]);
+                        .attr("height", 10)
+                        .on("mouseover", function(d) {
+                            tooltip.text(d[lCol2]);
+                            return tooltip
+                                    .style("top", ((yPosByIndexText(d) + 425 + 115) + "px"))
+                                    .style("left", (width - xFrom2(d[lCol2]) + 60 + 30) + "px" )
+                                    .style("visibility", "visible");
                         })
-                        .attr("y", yPosByIndex2Text)
-                        .attr("dx", "20")
-                        .attr("dy", "0.36em")
-                        .attr("text-anchor", "end")
-                        .attr('class', 'leftscore')
-                        .text(function(d){return d[lCol2];});
+                        .on("mouseout", function(){
+                            return tooltip
+                                .style("visibility", "hidden");
+                        });
             }
 
             chart.selectAll("text.name")
@@ -191,8 +209,10 @@ function barChart(type) {
                     .attr("y", yPosByIndex2)
                     .attr("dy", ".20em")
                     .attr("text-anchor", type === "double" ? "middle" : "left")
-                    .attr('class', 'name')
-                    .text(function(d){return d.products;});
+                    .attr('class', 'wrap')
+                    .attr('randomInfo', function(d){return d.products;})
+                    .call(wrap, 140);
+                    // .text(function(d){return d.products;});
 
             chart.selectAll("rect.right")
                     .data(data)
@@ -205,20 +225,18 @@ function barChart(type) {
                     .attr("width", function (d) {
                         return xTo(d[rCol]);
                     })
-                    .attr("height", 10);
-
-            chart.selectAll("text.score")
-                    .data(data)
-                    .enter().append("text")
-                    .attr("x", function (d) {
-                        return xTo(d[rCol]) + rightOffset+40;
+                    .attr("height", 10)
+                    .on("mouseover", function(d) {
+                        tooltip.text(d[rCol]);
+                        return tooltip
+                                .style("top", ((yPosByIndexText(d) + 408) + "px"))
+                                .style("left", (xTo(d[rCol]) + rightOffset + 72 + 30) + "px" )
+                                .style("visibility", "visible");
                     })
-                    .attr("y", yPosByIndexText)
-                    .attr("dx", -5)
-                    .attr("dy", "0.36em")
-                    .attr("text-anchor", "end")
-                    .attr('class', 'score')
-                    .text(function(d){return d[rCol];});
+                    .on("mouseout", function(){
+                        return tooltip
+                                .style("visibility", "hidden");
+                    })
 
             chart.selectAll("rect.right2")
                     .data(data)
@@ -231,7 +249,18 @@ function barChart(type) {
                     .attr("width", function (d) {
                         return xTo2(d[rCol2]);
                     })
-                    .attr("height", 10);
+                    .attr("height", 10)
+                    .on("mouseover", function(d) {
+                        tooltip.text(d[rCol2]);
+                        return tooltip
+                                .style("top", ((yPosByIndexText(d) + 430) + "px"))
+                                .style("left", (xTo2(d[rCol2]) + rightOffset + 45 + 60) + "px" )
+                                .style("visibility", "visible");
+                    })
+                    .on("mouseout", function(){
+                        return tooltip
+                            .style("visibility", "hidden");
+                    });
 
             chart.selectAll("text.score2")
                     .data(data)
@@ -245,7 +274,43 @@ function barChart(type) {
                     .attr("text-anchor", "end")
                     .attr('class', 'score')
                     .text(function(d){return d[rCol2];});
+
         }
+
+        function wrap(text, width) {
+            text.each(function () {
+                var text = d3.select(this);
+                var sentence = text.attr('randomInfo');
+                var words = sentence.split(/\s+/).reverse(),
+                    word,
+                    line = [],
+                    lineNumber = 0,
+                    lineHeight = 1.1, // ems
+                    x = text.attr("x"),
+                    y = text.attr("y"),
+                    dy = 0, //parseFloat(text.attr("dy")),
+                    tspan = text.text(null)
+                                .append("tspan")
+                                .attr("x", x)
+                                .attr("y", y)
+                                .attr("dy", dy + "em");
+                while (word = words.pop()) {
+                    line.push(word);
+                    tspan.text(line.join(" "));
+                    if (tspan.node().getComputedTextLength() > width) {
+                        line.pop();
+                        tspan.text(line.join(" "));
+                        line = [word];
+                        tspan = text.append("tspan")
+                                    .attr("x", x)
+                                    .attr("y", y)
+                                    .attr("dy", ++lineNumber * lineHeight + dy + "em")
+                                    .text(word);
+                    }
+                }
+            });
+        }
+
 
         function getTypes(d) {
             if (type === "double") {
