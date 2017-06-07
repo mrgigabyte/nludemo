@@ -25,13 +25,19 @@ function showRecent(txt){
     $('.search-container-parent').html("");
     if(txt===""){
         for(index in queries) {
-            $('.search-container-parent').append('<p class="search-suggestions">'+queries[index]+"</p>");
+            var ele = '<p class="search-suggestions" onclick="'+queries[index][1]+'()">'+queries[index][0]+'</p>';
+            $('.search-container-parent').append(ele);
         }
     }
     
     else{
+<<<<<<< HEAD
         for(index in product_queries) {
               $('.search-container-parent').append('<p class="search-suggestions">'+product_queries[index]+"</p>");
+=======
+          for(index in product_queries) {
+              $('.search-container-parent').append('<p class="search-suggestions" onclick="'+product_queries[index][1]+'()">'+product_queries[index]+"</p>");
+>>>>>>> 4dbf26a8a833bb420d331cff3dc464f4d46eed50
         }  
         
     }
