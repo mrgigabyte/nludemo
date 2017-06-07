@@ -181,10 +181,12 @@ function drawSteamGraph() {
         svg.selectAll(".layer")
             .attr("opacity", 1)
             .on("mouseover", function(d, i) {
+                console.log('mouseover');
                 svg.selectAll(".layer").transition()
                     .duration(250)
                     .attr("opacity", function(d, j) {
-                        return j != i ? 0.5 : 1;
+                        console.log(j != i ? 0.4 : 1);
+                        return j != i ? 0.4 : 1;
                     })
             })
 
@@ -253,14 +255,12 @@ function drawSteamGraph() {
         }
         d3v3.select(".chart")
             .on("mousemove", function() {
-                console.log('mouseover');
                 mousex = d3v3.mouse(this);
                 mousex = mousex[0] + 5;
                 vertical.style("left", mousex + "px");
                 updateHeadings(mousex);
             })
             .on("mouseover", function() {
-                //       console.log('mouseover');
                 mousex = d3v3.mouse(this);
                 mousex = mousex[0] + 5;
                 vertical.style("left", mousex + "px");
