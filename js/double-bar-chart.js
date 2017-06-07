@@ -49,7 +49,6 @@ function barChart(type) {
         }
 
         function render(data) {
-            console.log(data);
             var chart = d3v3.select("#page-wrapper")
                     .append('svg')
                     .attr('class', 'biChart '+type)

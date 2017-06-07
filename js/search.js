@@ -11,7 +11,10 @@ var showSuggestions = function() {
 };
 
 document.getElementById("searchHeader").addEventListener("keyup", showSuggestions);
-document.getElementById("searchHeader").addEventListener("click", showSuggestions);
+document.getElementById("searchHeader").addEventListener("click", function() {
+    var txt = $('.srch-container input').val("");
+    showSuggestions();
+});
 
 
 document.getElementById("nav-cust").addEventListener("focusout", function() {
@@ -28,7 +31,7 @@ document.getElementById("nav-cust").addEventListener("focusout", function() {
 
 function updateSearchResult(func_name, query) {
     var txt = $('.srch-container input').val(query);
-    eval(func_name);
+    eval(func_name+"()");
 }
 
 function showRecent(){
@@ -37,7 +40,7 @@ function showRecent(){
 
     $('.search-container-parent.searchSuggest').html("");
     for(index in localQueries) {
-        var ele = `<p class="search-suggestions" onclick='updateSearchResult(`+localQueries[index][1]+`,"`+localQueries[index][0]+`")'>`+localQueries[index][0]+`</p>`;
+        var ele = `<p class="search-suggestions" onclick='updateSearchResult("`+localQueries[index][1]+`","`+localQueries[index][0]+`")'>`+localQueries[index][0]+`</p>`;
         $('.search-container-parent.searchSuggest').append(ele);
     }
 }
