@@ -2,19 +2,18 @@ doubleBarChart();
 
 function doubleBarChart() {
 	d3v3.select("#page-wrapper").html("");
-	$("#page-wrapper").append(`<div>
+	$("#page-wrapper").append(`<div style="margin-top: 60px; magin-bottom: 40px;"><div class="chartHead" style="width:370px; margin-right: 100px;">
 			<div class="title">Risk</div>
 			<div class="description">GNPA%</div>
 		</div>
-		<div>
+		<div class="chartHead" style="width:150px; margin-top: -20px">
 			<div class="vsTitle">vs</div>
 		</div>
-
-		<div>
+		<div class="chartHead">
 			<div class="title">Return</div>
 			<div class="description">Good Understanding INR CR</div>
 		</div>
-
+        </div>
 	`);
 
 	var labelArea = 200;
@@ -45,11 +44,11 @@ function doubleBarChart() {
 
         var chart = d3v3.select("#page-wrapper")
                 .append('svg')
-                .attr('class', 'chart')
+                .attr('class', 'biChart')
                 .attr('width', labelArea + width + width + 200)
                 .attr('height', height)
 
-        var svg = d3v3.select(".chart").append("svg");
+        var svg = d3v3.select(".biChart").append("svg");
 	    var svgDefs = svg.append('defs');
 
 	    var margin = {
@@ -125,6 +124,7 @@ function doubleBarChart() {
                 .attr("rx", 5)
                 .attr("ry", 5)
                 .attr("class", "left")
+                // .attr("class", "bg"+function(d) {return })
                 .attr("width", function (d) {
                     return Math.max(xFrom(d[lCol]) - 30, 0);
                 })
