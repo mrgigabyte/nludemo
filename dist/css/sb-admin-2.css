@@ -91,12 +91,15 @@ body {
   -webkit-transition: 0.3s;
   width: 600px;
   height: 30%;
-  bottom: 0;
+  bottom: -22px;
   position: absolute;
   margin-left: 16px;
 }
 .search-container-parent.isActive {
   transition: 0.3s;
+  bottom: 0;
+  transition-delay: 1s;
+  -webkit-transition-delay: 1s;
   -webkit-transition: 0.3s;
   height: 64%;
 }
