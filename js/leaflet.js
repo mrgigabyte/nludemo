@@ -26,9 +26,6 @@ function generateMapView() {
     document.getElementById('map').style.cursor = 'default';
 
     $.getJSON("../assets/india.json", function(json) {
-        // var polyPoints = json.geometries[0].coordinates[0];
-        // console.log(polyPoints);
-
         L.geoJSON(json, {
             style: function(feature) {
                 return {
