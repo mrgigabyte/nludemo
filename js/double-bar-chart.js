@@ -148,18 +148,6 @@ function doubleBarChart() {
                 .attr("text-anchor", "end")
                 .attr('class', 'score')
                 .text(function(d){return d[rCol];});
-
-        // chart.append("text").attr("x",width/3).attr("y", 10).attr("class","title").html('Risk');
-        // chart.append("div").attr("x",width/3).attr("y", 10).attr("class","title").html('<div class="title">Risk</div><div class="subtitle">GNPA%</div></div>');
-
-   //      chart.append("div").attr("x",width/3+rightOffset).attr("y", 10).attr("class","title").html(`<div>
-			// 	<div class="title">Return</div>
-			// 	<div class="subtitle">Good Understanding INR CR</div>
-			// </div>`);
-
-   //      chart.append("div").attr("x",width+labelArea/3).attr("y", 10).attr("class","title").html(`<div>
-			// 	<div class="vsTitle">vs</div>
-			// </div>`);
     }
 
     function type(d) {
