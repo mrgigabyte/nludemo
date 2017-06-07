@@ -31,7 +31,7 @@ document.getElementById("nav-cust").addEventListener("focusout", function() {
 function showRecent(){
     console.log('hi');
     var txt = $('.search-container-parent').html();
-    if(txt==="") {
+    if(txt=="") {
         $('.search-container-parent').html("");
         for(index in queries) {
             var ele = '<p class="search-suggestions" onclick="'+queries[index][1]+'()">'+queries[index][0]+'</p>';

@@ -117,11 +117,11 @@ function barChart(type) {
             };
 
             var yPosByIndex2 = function (d) {
-                return y(d.products) + 23;
+                return y(d.products) + 28;
             };
 
             var yPosByIndex2Text = function (d) {
-                return y(d.products) + 23 + 5;
+                return y(d.products) + 28 + 5;
                 // return y(d.products) + y.rangeBand() / 2;
             };
             
