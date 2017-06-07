@@ -82,7 +82,7 @@ body {
 }
 .biChart.double {
   margin-left: 100px;
-  margin-top: 40px;
+  margin-top: 60px;
 }
 .biChart.single {
   position: absolute;
@@ -151,27 +151,16 @@ body {
   -webkit-transition: 0.3s;
   height: 64%;
 }
-.search-btn1 {
+.search-btn {
+  padding: 8px 24px 10px 24px;
   margin: 10px;
   height: 40px;
-  width: 129px;
   border-radius: 20.5px;
   background-color: #eca305;
   border: 0px;
   color: white;
   outline: none;
   text-align: center;
-}
-.search-btn2 {
-  margin: 10px;
-  height: 40px;
-  width: 90px;
-  border-radius: 20.5px;
-  background-color: #eca305;
-  border: 0px;
-  color: white;
-  text-align: center;
-  outline: none;
 }
 .search-suggestions {
   font-family: Theinhardt;
@@ -197,7 +186,7 @@ body {
   padding: 10px 16px;
 }
 .searchicon {
-  background: url('/images/search.png');
+  background: url('../../images/search.png');
   width: 24px;
   height: 13vh;
   margin-left: 64px;
@@ -206,7 +195,7 @@ body {
   background-repeat: no-repeat;
 }
 .searchicon.Active {
-  background: url('/images/ic-search-active.png');
+  background: url('../../images/ic-search-active.png');
   background-repeat: no-repeat;
 }
 .searchHeader {
@@ -352,7 +341,7 @@ button {
 .image {
   margin: 30px;
 }
-.row {
+.horizontal {
   display: inline;
 }
 .first-container {
@@ -362,8 +351,6 @@ button {
   padding: 20px;
 }
 .copy_pros {
-  width: 44px;
-  height: 22px;
   opacity: 0.4;
   font-family: Theinhardt;
   font-size: 12px;
@@ -371,29 +358,10 @@ button {
   line-height: 1.83;
   text-align: left;
   color: #ffffff;
-}
-.text {
-  width: 261px;
-  height: 100px;
-  font-family: Theinhardt;
-  font-size: 18px;
-  font-weight: 500;
-  line-height: 1.39;
-  letter-spacing: -0.5px;
-  text-align: left;
-  color: #ffffff;
-}
-.Rectangle-3 {
-  width: 227px;
-  height: 36px;
-  border-radius: 100px;
-  background-color: #ffffff;
-  box-shadow: 0 9px 17px 0 rgba(202, 33, 46, 0.2);
-  margin: auto;
+  margin: 0px;
 }
 .comment-for-item {
-  width: 261px;
-  height: 100px;
+  height: 80px;
   font-family: Theinhardt;
   font-size: 18px;
   font-weight: 500;
@@ -401,7 +369,7 @@ button {
   letter-spacing: -0.5px;
   text-align: left;
   color: #ffffff;
-  margin-bottom: 30px;
+  margin: 0px;
 }
 .btnAdd {
   text-align: center;
@@ -417,7 +385,6 @@ button {
   font-family: Theinhardt;
   font-size: 64px;
   font-weight: 500;
-  letter-spacing: -1.9px;
   text-align: center;
   color: #000000;
 }
