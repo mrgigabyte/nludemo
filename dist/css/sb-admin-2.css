@@ -860,6 +860,17 @@ rect.right {
   text-align: left;
   color: #3d4351;
 }
+.daily_digest {
+  font-size: 48px;
+  font-weight: 500;
+  line-height: 1.08;
+  letter-spacing: -1px;
+  text-align: left;
+  color: #3d4351;
+}
+.daily_digest_second {
+  color: #920029;
+}
 #wrapper {
   width: 100%;
 }

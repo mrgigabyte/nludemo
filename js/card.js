@@ -36,3 +36,4 @@ var allproducts=`<div class="allproducts">
 var initialcard=`<div class="initialcard">  
             Customer Growth for in Q4 in the last 4 years
             </div>`;
+var daily_digest='<div class="daily_digest">Your daily <span class="daily_digest_second">digest</span></div>';
