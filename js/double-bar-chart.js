@@ -1,6 +1,9 @@
 // doubleBarChart(); 
 
 function doubleBarChart() {
+    d3v3.select('.selected').html(credit_policy2);
+    d3v3.select('.notselected1').html(kycauthentication);
+    d3v3.select('.notselected2').html(salesefficiency);
 	d3v3.select("#page-wrapper").html("");
 	$("#page-wrapper").append(`<div>
 			<div class="title">Risk</div>
