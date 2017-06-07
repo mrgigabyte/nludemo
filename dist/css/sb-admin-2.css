@@ -260,6 +260,7 @@ button {
   color: white;
   background-image: linear-gradient(219deg, #c50052, #920029);
   margin-top: 3.2%;
+  transition: all 1s;
 }
 .box:hover {
   position: relative;
@@ -277,6 +278,9 @@ button {
 }
 .image {
   margin: 30px;
+}
+.row {
+  display: inline;
 }
 .first-container {
   background-color: #c50052;
