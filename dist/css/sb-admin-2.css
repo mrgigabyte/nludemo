@@ -6,6 +6,11 @@
 .navbar-default {
   background-color: white;
 }
+.biChart text.wrap {
+  font-size: 20px;
+  word-wrap: break-word;
+  fill-opacity: 0.4;
+}
 .navbar {
   min-height: 120px;
 }

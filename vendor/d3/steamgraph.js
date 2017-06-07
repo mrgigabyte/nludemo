@@ -1,4 +1,4 @@
-// drawSteamGraph();
+drawSteamGraph();
 function drawSteamGraph() {
     
     d3v3.select('.selected').html(up_sell);
@@ -7,7 +7,6 @@ function drawSteamGraph() {
     var datearray = [];
     var colorrange = [];
 
-    csvpath = "../data/steam-data.csv";
     colorrange = [
         ["238", "#f4760a", "#ffc900"],
         ["238", "#dd8819", "#ffc900"],
@@ -55,7 +54,7 @@ function drawSteamGraph() {
     var xAxis = d3v3.svg.axis()
         .scale(x)
         .orient("bottom")
-        .ticks(d3v3.time.weeks);
+        .ticks(d3v3.time.years);
 
     var yAxis = d3v3.svg.axis()
         .scale(y);
@@ -72,12 +71,12 @@ function drawSteamGraph() {
             return d.date;
         })
         .y(function(d) {
-            return d.value;
+            return d.metric;
         });
 
     var nest = d3v3.nest()
         .key(function(d) {
-            return d.key;
+            return d.product;
         });
 
     var area = d3v3.svg.area()
@@ -98,7 +97,7 @@ function drawSteamGraph() {
         <div class="chart steamgraph"> \
         </div> \
       </div> \
-');
+    ');
 
     var svg = d3v3.select(".chart").append("svg");
     var svgDefs = svg.append('defs');
@@ -121,10 +120,13 @@ function drawSteamGraph() {
             .attr('offset', '95%');
     }
 
-    var graph = d3v3.csv(csvpath, function(data) {
+    var plotGraph = function(response) {
+        var data = response.rows;
+        console.log(data);
+
         data.forEach(function(d) {
             d.date = format.parse(d.date);
-            d.value = +d.value;
+            d.metric = +d.metric;
         });
 
         var layers = stack(nest.entries(data));
@@ -205,9 +207,9 @@ function drawSteamGraph() {
                     .classed("hover", true)
                     .attr("stroke", strokecolor)
                     .attr("stroke-width", "0.5px"),
-                    tooltip.html("<p>" + d.key + "<br>" + pro + "</p>").style("visibility", "visible");
+                    tooltip.html("<p>" + d.product + "<br>" + pro + "</p>").style("visibility", "visible");
 
-                $('#productName').text(d.key);
+                $('#productName').text(d.product);
 
             })
             .on("mouseout", function(d, i) {
@@ -220,7 +222,7 @@ function drawSteamGraph() {
 
                 d3v3.select(this)
                     .classed("hover", false)
-                    .attr("stroke-width", "0px"), tooltip.html("<p>" + d.key + "<br>" + pro + "</p>").style("visibility", "hidden");
+                    .attr("stroke-width", "0px"), tooltip.html("<p>" + d.product + "<br>" + pro + "</p>").style("visibility", "hidden");
             })
 
         function getMod(a) {
@@ -263,5 +265,13 @@ function drawSteamGraph() {
                 vertical.style("left", mousex + "px");
                 updateHeadings(mousex);
             });
+    };
+
+    $.ajax({
+      type: "POST",
+      url: baseApiUrl + 'search',
+      data: { "search" : "What have been the product trends for ABFL in the last 12 months?" },
+      success: plotGraph
     });
+
 }

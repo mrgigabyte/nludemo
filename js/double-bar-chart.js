@@ -7,19 +7,31 @@ var doubleBarChart = barChart("double");
 function barChart(type) {
     return function() {
     	d3v3.select("#page-wrapper").html("");
-    	$("#page-wrapper").append(`<div style="margin-top: 60px; magin-bottom: 40px;"><div class="chartHead" style="width:370px; margin-right: 100px;">
-    			<div class="title">Risk</div>
-    			<div class="description">GNPA%</div>
-    		</div>
-    		<div class="chartHead" style="width:150px; margin-top: -20px">
-    			<div class="vsTitle">vs</div>
-    		</div>
-    		<div class="chartHead">
-    			<div class="title">Return</div>
-    			<div class="description">Good Understanding INR CR</div>
-    		</div>
-            </div>
-    	`);
+
+        if (type === "double") {
+            $("#page-wrapper").append(`<div style="margin-top: 60px; magin-bottom: 40px;"><div class="chartHead" style="width:370px; margin-right: 100px;">
+                    <div class="title">Risk</div>
+                    <div class="description">GNPA%</div>
+                </div>
+                <div class="chartHead" style="width:150px; margin-top: -20px">
+                    <div class="vsTitle">vs</div>
+                </div>
+                <div class="chartHead">
+                    <div class="title">Return</div>
+                    <div class="description">Good Understanding INR CR</div>
+                </div>
+                </div>
+            `);
+        }
+
+    	else {
+                $("#page-wrapper").append(`<div style="margin-top: 60px; magin-bottom: 40px;"><div class="chartHead" style="width:370px; margin-right: 100px; margin-left: 35px;">
+        			<div class="title">Return</div>
+        			<div class="description">Good Understanding INR CR</div>
+        		</div>
+                </div>
+        	`);
+        }
 
     	var labelArea = 200;
         var chart,
@@ -153,6 +165,9 @@ function barChart(type) {
                         .attr("dy", "0.36em")
                         .attr("text-anchor", "end")
                         .attr('class', 'leftscore')
+                        .tspans(function(d) {
+                            return d3.wordwrap(text, 15);  // break line after 15 characters
+                        })
                         .text(function(d){return d[lCol];});
 
                 chart.selectAll("rect.left2")
@@ -191,7 +206,8 @@ function barChart(type) {
                     .attr("y", yPosByIndex2)
                     .attr("dy", ".20em")
                     .attr("text-anchor", type === "double" ? "middle" : "left")
-                    .attr('class', 'name')
+                    .attr('class', 'wrap')
+                    .call(wrap, 30)
                     .text(function(d){return d.products;});
 
             chart.selectAll("rect.right")
@@ -245,7 +261,42 @@ function barChart(type) {
                     .attr("text-anchor", "end")
                     .attr('class', 'score')
                     .text(function(d){return d[rCol2];});
+
         }
+
+        function wrap(text, width) {
+            text.each(function () {
+                var text = d3.select(this),
+                    words = "Foo is not a long word".split(/\s+/).reverse(),
+                    word,
+                    line = [],
+                    lineNumber = 0,
+                    lineHeight = 1.1, // ems
+                    x = text.attr("x"),
+                    y = text.attr("y"),
+                    dy = 0, //parseFloat(text.attr("dy")),
+                    tspan = text.text(null)
+                                .append("tspan")
+                                .attr("x", x)
+                                .attr("y", y)
+                                .attr("dy", dy + "em");
+                while (word = words.pop()) {
+                    line.push(word);
+                    tspan.text(line.join(" "));
+                    if (tspan.node().getComputedTextLength() > width) {
+                        line.pop();
+                        tspan.text(line.join(" "));
+                        line = [word];
+                        tspan = text.append("tspan")
+                                    .attr("x", x)
+                                    .attr("y", y)
+                                    .attr("dy", ++lineNumber * lineHeight + dy + "em")
+                                    .text(word);
+                    }
+                }
+            });
+        }
+
 
         function getTypes(d) {
             if (type === "double") {
