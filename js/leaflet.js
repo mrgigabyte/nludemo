@@ -1,12 +1,12 @@
-generateMapView();
+// generateMapView();
 
 function generateMapView() {
     $('#page-wrapper').html("");
     $("#page-wrapper").append('<div class="row map"> \
-	<div id="map" style="width: 912px; height: 780px; margin-top: 120px; background: #fff;"> \
+	<div id="map" style="width: 912px; height: 780px; margin-top: 20px; background: #fff;"> \
 	</div></div>');
 
-    var center = [24.5, 78.9629];
+    var center = [22.4, 78.9629];
     map = new L.Map('map', {
         zoomControl: false,
         center: new L.LatLng(center[0], center[1]),
@@ -26,9 +26,6 @@ function generateMapView() {
     document.getElementById('map').style.cursor = 'default';
 
     $.getJSON("../assets/india.json", function(json) {
-        // var polyPoints = json.geometries[0].coordinates[0];
-        // console.log(polyPoints);
-
         L.geoJSON(json, {
             style: function(feature) {
                 return {

@@ -34,6 +34,7 @@
 
 <body>
 
+    <div class="fall-back"></div>
     <div id="wrapper">
 
         <!-- Navigation -->
@@ -47,8 +48,13 @@
                 </button>
                 <div class="logo"></div>
                 <div class="searchicon"></div>
-				
-                <input type="text" placeholder="Search" class="searchHeader" id="searchHeader">
+				<div class="srch-container">
+                    <input type="text" placeholder="What is..." class="searchHeader" id="searchHeader">
+                    <div class="search-container-parent">
+                        <button class="search-btn1">VS INFLATION</button>
+                        <button class="search-btn2">VS GDP</button>
+                    </div>
+                </div>
             </div>
 		<div id="sidenav" style="z-index:500;height:21hv;">    
             
@@ -56,8 +62,11 @@
 				<div>
 					A trending or relevant search query is listed here. Tapping it runs the query   
 					<br><br>
-					<div class="subtitle">
-							BY SANJAY, CFO ABFL
+					<div class="subtitle"><img src="/images/ic-trending.png"
+     srcset="/images/ic-trending@2x.png 2x,
+             /images/ic-trending@3x.png 3x"
+     class="ic_trending">
+							TRENDING
 					</div>    
 				</div>
 			</div>
@@ -66,7 +75,43 @@
         </nav>
 
         <div id="page-wrapper">
+<<<<<<< HEAD
             
+=======
+        <div class="inner-container">
+            <div class="row-fluid">
+                    <div class="bigCol">
+                        <div class="title"> %ROI
+                        </div>
+                        <div class="description"> Weighted
+                        </div>
+                        <div><img src="../images/img-chart-roi.png" class="graphImage"/></div>
+                    </div>
+                    <div class="bigCol">
+                        <div class="title"> Average Tenure
+                        </div>
+                        <div class="description"> In Months
+                        </div>
+                        <div><img src="../images/img-chart-tenure.png" class="graphImage"/></div>    
+                    </div>
+                <br>
+                    <div class="bigCol">
+                        <div class="title"> Average Ticket Size
+                        </div>
+                        <div class="description"> INR L
+                        </div>
+                        <div><img src="../images/img-chart-ticket.png" class="graphImage"/></div>    
+                    </div>
+                    <div class="bigCol">
+                        <div class="title"> Book Size
+                        </div>
+                        <div class="description"> INR Cr
+                        </div>
+                        <div><img src="../images/img-chart-book.png" class="graphImage"/></div>    
+                    </div>
+            </div>
+        </div>
+>>>>>>> 01a97f5555be80a3e2437bbf2d7233d180afc29d
         </div>
         <!-- /#page-wrapper -->
 
@@ -85,7 +130,7 @@
 			<div class="box">
 				<div>
 					Monthly profits as affected as affected by
-					ecternal events
+					ecter nal events
 				</div>            
 			</div>
 		</div>
@@ -131,7 +176,13 @@
     <script src="../vendor/leaflet/dist/leaflet-src.js"></script>
     <script src="../vendor/d3-hexbin/build/d3-hexbin.min.js"></script>
 	<script src="../vendor/leaflet-d3/dist/leaflet-d3.min.js"></script>
-	<script src="../js/search.js"></script>
+
+    <script src="../js/search.js"></script>
+	<script src="../js/double-bar-chart.js"></script>
+
+
+	<script src="../data/queries.js"></script>
+
 	
 	<script src="../vendor/d3/steamgraph.js"></script>
 	<script src="../js/leaflet.js"></script>
