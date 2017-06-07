@@ -1,4 +1,4 @@
-// generateMapView();
+ generateMapView();
 
 function generateMapView() {
     d3v3.select('.selected').html(treasury);
