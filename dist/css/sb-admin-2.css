@@ -82,7 +82,7 @@ body {
 }
 .biChart.double {
   margin-left: 100px;
-  margin-top: 40px;
+  margin-top: 60px;
 }
 .biChart.single {
   position: absolute;
@@ -107,7 +107,7 @@ body {
   background: rgba(0, 0, 0, 0.5);
 }
 .logo {
-  background: url('../../images/logo.png');
+  background: url('../images/logo.png');
   width: 91px;
   height: 17vh;
   margin-top: 27px;
@@ -154,7 +154,6 @@ body {
 .search-btn1 {
   margin: 10px;
   height: 40px;
-  width: 129px;
   border-radius: 20.5px;
   background-color: #eca305;
   border: 0px;
@@ -165,8 +164,7 @@ body {
 .search-btn2 {
   margin: 10px;
   height: 40px;
-  width: 90px;
-  border-radius: 20.5px;
+  widtborder-radius: 20.5px;
   background-color: #eca305;
   border: 0px;
   color: white;
