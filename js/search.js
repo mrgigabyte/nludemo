@@ -11,7 +11,6 @@ var showSuggestions = function() {
 };
 
 document.getElementById("searchHeader").addEventListener("keyup", showSuggestions);
-
 document.getElementById("searchHeader").addEventListener("click", showSuggestions);
 
 
@@ -23,26 +22,23 @@ document.getElementById("nav-cust").addEventListener("focusout", function() {
         $('.search-container-parent').html("<button class='search-btn1'>VS INFLATION</button><button class='search-btn2'>VS GDP</button>");    
         $('.fall-back').removeClass('isActive');
         $('.searchicon').removeClass('Active');
-    
     }, 200);
 });
 
+function updateSearchResult(func_name, query) {
+    var txt = $('.srch-container input').val(query);
+    eval(func_name);
+}
 
 function showRecent(){
     var txt = $('.srch-container input').val();
-    if(txt=="") {
-        $('.search-container-parent').html("");
-        for(index in queries) {
-            var ele = '<p class="search-suggestions" onclick="'+queries[index][1]+'()">'+queries[index][0]+'</p>';
-            $('.search-container-parent').append(ele);
-        }
-    }
-    else {
-        $('.search-container-parent').html("");
-        for(index in product_queries) {
-              $('.search-container-parent').append('<p class="search-suggestions" onclick="'+product_queries[index][1]+'()">'+product_queries[index][0]+"</p>");
-        }  
-        
+    var localQueries = (txt == "") ? queries : product_queries;
+
+    $('.search-container-parent').html("");
+    for(index in localQueries) {
+        var ele = `<p class="search-suggestions" onclick='updateSearchResult(`+localQueries[index][1]+`,"`+localQueries[index][0]+`")'>`+localQueries[index][0]+`</p>`;
+        console.log(ele);
+        $('.search-container-parent').append(ele);
     }
 }
 
