@@ -198,6 +198,9 @@ body {
   background: url('../../images/ic-search-active.png');
   background-repeat: no-repeat;
 }
+.box {
+  cursor: pointer;
+}
 .searchHeader {
   border: 0px;
   outline: none;
