@@ -1,7 +1,7 @@
 var singleBarChart = barChart("single");
 var doubleBarChart = barChart("double");
 
-singleBarChart();
+// singleBarChart();
 // doubleBarChart();
 
 function barChart(type) {
