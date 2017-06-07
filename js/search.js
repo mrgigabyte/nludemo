@@ -31,13 +31,15 @@ document.getElementById("nav-cust").addEventListener("focusout", function() {
 function showRecent(){
     console.log('hi');
     var txt = $('.search-container-parent').html();
-    if(txt==="") {
+    if(txt=="") {
+        $('.search-container-parent').html("");
         for(index in queries) {
             var ele = '<p class="search-suggestions" onclick="'+queries[index][1]+'()">'+queries[index][0]+'</p>';
             $('.search-container-parent').append(ele);
         }
     }
     else {
+        $('.search-container-parent').html("");
         for(index in product_queries) {
               $('.search-container-parent').append('<p class="search-suggestions" onclick="'+product_queries[index][1]+'()">'+product_queries[index][0]+"</p>");
         }  
