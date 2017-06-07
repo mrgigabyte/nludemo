@@ -15,3 +15,5 @@ $(document).keyup(function(e) {
 showRight.onclick = function() {
 	toggleMenu();
 };
+
+document.getElementById( 'closeMenu' ).onclick = function() { toggleMenu(); };
