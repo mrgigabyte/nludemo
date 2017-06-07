@@ -26,3 +26,5 @@ function addInflationGraph() {
 function doNothing() {
 	console.log('I do nothing. Really.');
 }
+
+

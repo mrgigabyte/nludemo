@@ -105,13 +105,13 @@ function addcomment() {
                     </div>
                     <div class="col-xs-10">
                         <p class="copy_pros">&copy pros</p>
-                        <textarea>
+                        <textarea placeholder="comment" class="user_comments" id="comment_value">
                         </textarea>
                     </div>
             </div>
               <div class="comment">
-                <span class="comment_cancel">CANCEL</span>
-                <span class="comment_save">SAVE</span>
+                <span class="comment_cancel" type="button" id="delete_comment">CANCEL</span>
+                <span class="comment_save" type="button" id="add_comment">SAVE</span>
             </div>
     </div>`;
          
