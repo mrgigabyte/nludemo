@@ -33,7 +33,7 @@ function showRecent(txt){
     }
     else {
         for(index in product_queries) {
-              $('.search-container-parent').append('<p class="search-suggestions" onclick="'+product_queries[index][1]+'()">'+product_queries[index]+"</p>");
+              $('.search-container-parent').append('<p class="search-suggestions" onclick="'+product_queries[index][1]+'()">'+product_queries[index][0]+"</p>");
         }  
         
     }
