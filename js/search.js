@@ -31,13 +31,8 @@ function showRecent(txt){
     }
     
     else{
-<<<<<<< HEAD
-        for(index in product_queries) {
-              $('.search-container-parent').append('<p class="search-suggestions">'+product_queries[index]+"</p>");
-=======
           for(index in product_queries) {
               $('.search-container-parent').append('<p class="search-suggestions" onclick="'+product_queries[index][1]+'()">'+product_queries[index]+"</p>");
->>>>>>> 4dbf26a8a833bb420d331cff3dc464f4d46eed50
         }  
         
     }
