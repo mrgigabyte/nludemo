@@ -31,13 +31,13 @@ function doubleBarChart() {
     var rCol2 = "return2";
 
     var xFrom = d3v3.scale.linear()
-            .range([0, width]);
+            .range([50, width]);
     var xFrom2 = d3v3.scale.linear()
-            .range([0, width]);
+            .range([50, width]);
     var xTo = d3v3.scale.linear()
-            .range([0, width]);
+            .range([20, width]);
     var xTo2 = d3v3.scale.linear()
-            .range([0, width]);
+            .range([20, width]);
     var y = d3v3.scale.ordinal()
             .rangeBands([20, height]);
 
@@ -126,7 +126,7 @@ function doubleBarChart() {
                 .attr("ry", 5)
                 .attr("class", "left")
                 .attr("width", function (d) {
-                    return xFrom(d[lCol]) - 30;
+                    return Math.max(xFrom(d[lCol]) - 30, 0);
                 })
                 .attr("height", 10);
 
@@ -154,7 +154,7 @@ function doubleBarChart() {
                 .attr("ry", 5)
                 .attr("class", "left2")
                 .attr("width", function (d) {
-                    return xFrom2(d[lCol2]) - 30;
+                    return Math.max(xFrom2(d[lCol2]) - 30, 0);
                 })
                 .attr("height", 10);
 
@@ -162,7 +162,7 @@ function doubleBarChart() {
                 .data(data)
                 .enter().append("text")
                 .attr("x", function (d) {
-                    return width - xFrom2(d[lCol2])-40;
+                    return width - xFrom2(d[lCol2]);
                 })
                 .attr("y", yPosByIndex2Text)
                 .attr("dx", "20")
