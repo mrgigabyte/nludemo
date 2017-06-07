@@ -18,7 +18,8 @@ document.getElementById("nav-cust").addEventListener("focusout", function() {
         $('.nav-cust').removeClass("isActive");
         $('.srch-container').removeClass("isActive");
         $('.search-container-parent').removeClass('isActive');
-        $('.search-container-parent').html("");
+        $('.search-container-parent').html("<button class='search-btn1'>VS INFLATION</button><button class='search-btn2'>VS GDP</button>");
+        
         $('.fall-back').removeClass('isActive');
     }, 200);
 });
