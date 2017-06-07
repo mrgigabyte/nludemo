@@ -19,6 +19,25 @@ $('.box.first').click(function() {
 	addHeaderButton("VS GDP", "doNothing");
 });
 
+function unsecuredLoans() {
+	singleBarChart();
+	removeHeaderButtons();
+	addHeaderButton("FOR NBFC", "unsecuredNBFC", "nbfcButton");
+	addHeaderButton("VS RISK", "doubleBarChartOk");
+}
+
+function unsecuredNBFC() {
+	singleBarChartNBFC();
+	removeHeaderButtons();
+	addHeaderButton("VS RISK", "doubleBarChartOk");
+}
+
+function doubleBarChartOk() {
+	removeHeaderButtons();
+	doubleBarChart();
+	addHeaderButton("SHOW OPPORTUNITIES GEOGRAPHICALLY", "generateMapView");
+}
+
 function addInflationGraph() {
 	console.log("TO BE ADDED #TODO ?");
 	$('#inflateBtn').remove();

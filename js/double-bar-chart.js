@@ -3,8 +3,9 @@ var doubleBarChart = barChart("double");
 
 // singleBarChart();
 doubleBarChart();
+var singleBarChartNBFC = barChart("single", "nbfc");
 
-function barChart(type) {
+function barChart(type, api_type) {
     return function() {
     	d3v3.select("#page-wrapper").html("");
 
