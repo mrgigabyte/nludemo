@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="483" height="279" viewBox="0 0 483 279">
+    <defs>
+        <linearGradient id="a" x1="81.869%" x2="81.869%" y1="0%" y2="100%">
+            <stop offset="0%" stop-color="#A6003A"/>
+            <stop offset="100%" stop-color="#FFC900" stop-opacity="0"/>
+        </linearGradient>
+        <path id="c" d="M1 222c77.637 0 141.041-13.254 222.56-32.03 81.52-18.776 47.877-96.09 111.28-101.612 63.405-5.522 42.701-61.85 73.756-69.582C429.3 13.622 450.434 7.363 472 0"/>
+        <filter id="b" width="103.8%" height="108.1%" x="-1.9%" y="-3.2%" filterUnits="objectBoundingBox">
+            <feMorphology in="SourceAlpha" operator="dilate" radius="2" result="shadowSpreadOuter1"/>
+            <feOffset dy="2" in="shadowSpreadOuter1" result="shadowOffsetOuter1"/>
+            <feMorphology in="SourceAlpha" radius="2" result="shadowInner"/>
+            <feOffset dy="2" in="shadowInner" result="shadowInner"/>
+            <feComposite in="shadowOffsetOuter1" in2="shadowInner" operator="out" result="shadowOffsetOuter1"/>
+            <feGaussianBlur in="shadowOffsetOuter1" result="shadowBlurOuter1" stdDeviation="2"/>
+            <feColorMatrix in="shadowBlurOuter1" values="0 0 0 0 0.57254902 0 0 0 0 0 0 0 0 0 0.160784314 0 0 0 0.2 0"/>
+        </filter>
+        <rect id="e" width="55" height="30" x="308" y="67" rx="15"/>
+        <filter id="d" width="125.5%" height="146.7%" x="-12.7%" y="-16.7%" filterUnits="objectBoundingBox">
+            <feOffset dy="2" in="SourceAlpha" result="shadowOffsetOuter1"/>
+            <feGaussianBlur in="shadowOffsetOuter1" result="shadowBlurOuter1" stdDeviation="2"/>
+            <feColorMatrix in="shadowBlurOuter1" values="0 0 0 0 0.376470588 0 0 0 0 0.396078431 0 0 0 0 0.439215686 0 0 0 0.2 0"/>
+        </filter>
+    </defs>
+    <g fill="none" fill-rule="evenodd">
+        <path fill="url(#a)" d="M1 222c77.637 0 141.041-13.254 222.56-32.03 81.52-18.776 47.877-96.09 111.28-101.612 63.405-5.522 42.701-61.85 73.756-69.582C429.3 13.622 450.434 7.363 472 0v275.045H.999L1 222z" opacity=".1" transform="translate(5 4)"/>
+        <g stroke-linecap="round" stroke-linejoin="round" transform="translate(5 4)">
+            <use fill="#000" filter="url(#b)" xlink:href="#c"/>
+            <use stroke="#920029" stroke-width="4" xlink:href="#c"/>
+        </g>
+        <text fill="#3D4351" font-family="Theinhardt-Medium, Theinhardt" font-size="12" font-weight="400" opacity=".2" transform="translate(5 4)">
+            <tspan x="43" y="239">Jan</tspan>
+        </text>
+        <text fill="#3D4351" font-family="Theinhardt-Medium, Theinhardt" font-size="12" font-weight="400" opacity=".2" transform="translate(5 4)">
+            <tspan x="137" y="239">Feb</tspan>
+        </text>
+        <text fill="#3D4351" font-family="Theinhardt-Medium, Theinhardt" font-size="12" font-weight="400" opacity=".2" transform="translate(5 4)">
+            <tspan x="233" y="239">Mar</tspan>
+        </text>
+        <text fill="#3D4351" font-family="Theinhardt-Medium, Theinhardt" font-size="12" font-weight="400" transform="translate(5 4)">
+            <tspan x="328" y="239">Apr</tspan>
+        </text>
+        <text fill="#3D4351" font-family="Theinhardt-Medium, Theinhardt" font-size="12" font-weight="400" opacity=".2" transform="translate(5 4)">
+            <tspan x="423" y="239">May</tspan>
+        </text>
+        <g transform="translate(5 4)">
+            <use fill="#000" filter="url(#d)" xlink:href="#e"/>
+            <use fill="#FFF" xlink:href="#e"/>
+        </g>
+        <text fill="#3D4351" font-family="Theinhardt-Medium, Theinhardt" font-size="14" font-weight="400" transform="translate(5 4)">
+            <tspan x="317" y="82">14.29</tspan>
+        </text>
+        <text fill="#383F49" font-family="Theinhardt-Medium, Theinhardt" font-size="12" font-weight="400" opacity=".2" transform="translate(5 4)">
+            <tspan x="43" y="25">20</tspan>
+        </text>
+        <text fill="#383F49" font-family="Theinhardt-Medium, Theinhardt" font-size="12" font-weight="400" transform="translate(5 4)">
+            <tspan x="43" y="78">15</tspan>
+        </text>
+        <text fill="#383F49" font-family="Theinhardt-Medium, Theinhardt" font-size="12" font-weight="400" opacity=".2" transform="translate(5 4)">
+            <tspan x="43" y="131">10</tspan>
+        </text>
+        <text fill="#383F49" font-family="Theinhardt-Medium, Theinhardt" font-size="12" font-weight="400" opacity=".2" transform="translate(5 4)">
+            <tspan x="44" y="184">5</tspan>
+        </text>
+    </g>
+</svg>
