@@ -1,4 +1,4 @@
-drawSteamGraph();
+// drawSteamGraph();
 function drawSteamGraph() {
     
     d3v3.select('.selected').html(up_sell);

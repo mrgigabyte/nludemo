@@ -1,7 +1,7 @@
 var singleBarChart = barChart("single");
 var doubleBarChart = barChart("double");
 
-// singleBarChart();
+singleBarChart();
 // doubleBarChart();
 
 function barChart(type) {
@@ -165,9 +165,6 @@ function barChart(type) {
                         .attr("dy", "0.36em")
                         .attr("text-anchor", "end")
                         .attr('class', 'leftscore')
-                        .tspans(function(d) {
-                            return d3.wordwrap(text, 15);  // break line after 15 characters
-                        })
                         .text(function(d){return d[lCol];});
 
                 chart.selectAll("rect.left2")
@@ -207,8 +204,9 @@ function barChart(type) {
                     .attr("dy", ".20em")
                     .attr("text-anchor", type === "double" ? "middle" : "left")
                     .attr('class', 'wrap')
-                    .call(wrap, 30)
-                    .text(function(d){return d.products;});
+                    .attr('randomInfo', function(d){return d.products;})
+                    .call(wrap, 140);
+                    // .text(function(d){return d.products;});
 
             chart.selectAll("rect.right")
                     .data(data)
@@ -266,8 +264,9 @@ function barChart(type) {
 
         function wrap(text, width) {
             text.each(function () {
-                var text = d3.select(this),
-                    words = "Foo is not a long word".split(/\s+/).reverse(),
+                var text = d3.select(this);
+                var sentence = text.attr('randomInfo');
+                var words = sentence.split(/\s+/).reverse(),
                     word,
                     line = [],
                     lineNumber = 0,
