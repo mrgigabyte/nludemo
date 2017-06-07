@@ -21,7 +21,7 @@ function doubleBarChart() {
     var chart,
             width = 300,
             bar_height = 30,
-            height = bar_height * 20;
+            height = bar_height * 14;
 
     var rightOffset = width + labelArea + 20;
 
@@ -119,14 +119,14 @@ function doubleBarChart() {
                 .data(data)
                 .enter().append("rect")
                 .attr("x", function (d) {
-                    return width - xFrom(d[lCol]);
+                    return width + 30 - xFrom(d[lCol]);
                 })
                 .attr("y", yPosByIndex)
                 .attr("rx", 5)
                 .attr("ry", 5)
                 .attr("class", "left")
                 .attr("width", function (d) {
-                    return xFrom(d[lCol]);
+                    return xFrom(d[lCol]) - 30;
                 })
                 .attr("height", 10);
 
@@ -134,7 +134,7 @@ function doubleBarChart() {
                 .data(data)
                 .enter().append("text")
                 .attr("x", function (d) {
-                    return width - xFrom(d[lCol])-40;
+                    return width - xFrom(d[lCol]);
                 })
                 .attr("y", yPosByIndexText)
                 .attr("dx", "20")
@@ -147,14 +147,14 @@ function doubleBarChart() {
                 .data(data)
                 .enter().append("rect")
                 .attr("x", function (d) {
-                    return width - xFrom2(d[lCol2]);
+                    return width + 30 - xFrom2(d[lCol2]);
                 })
                 .attr("y", yPosByIndex2)
                 .attr("rx", 5)
                 .attr("ry", 5)
                 .attr("class", "left2")
                 .attr("width", function (d) {
-                    return xFrom2(d[lCol2]);
+                    return xFrom2(d[lCol2]) - 30;
                 })
                 .attr("height", 10);
 
