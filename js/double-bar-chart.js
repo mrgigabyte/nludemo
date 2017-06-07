@@ -187,10 +187,10 @@ function barChart(type) {
             chart.selectAll("text.name")
                     .data(data)
                     .enter().append("text")
-                    .attr("x", (labelArea / 2) + startX + 10)
+                    .attr("x", (labelArea / 2) + startX - (type === "double" ? -10 : 30))
                     .attr("y", yPosByIndex2)
                     .attr("dy", ".20em")
-                    .attr("text-anchor", "middle")
+                    .attr("text-anchor", type === "double" ? "middle" : "left")
                     .attr('class', 'name')
                     .text(function(d){return d.products;});
 
