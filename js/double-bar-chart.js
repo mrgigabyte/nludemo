@@ -1,7 +1,7 @@
 doubleBarChart(); 
 
 function doubleBarChart() {
-	d3v3.select("#page-wrapper").html();
+	d3v3.select("#page-wrapper").html("");
 	$("#page-wrapper").append(`<div>
 			<div class="title">Risk</div>
 			<div class="description">GNPA%</div>
@@ -22,7 +22,7 @@ function doubleBarChart() {
             width = 400,
             bar_height = 30,
             height = bar_height * 10;
-    var rightOffset = width + labelArea;
+    var rightOffset = width + labelArea + 20;
 
     var lCol = "risk";
     var rCol = "return";
