@@ -1,4 +1,4 @@
-generateMapView();
+// generateMapView();
 
 function generateMapView() {
     d3v3.select('.selected').html(treasury);
@@ -85,13 +85,6 @@ function generateMapView() {
     var longFn = d3.randomNormal(center[1], 5);
 
     var generateData = function() {
-        // var data = [];
-        // for (i = 0; i < 2000; i++) {
-        //     var point = [longFn(), latFn()];
-        //     if (isMarkerInsidePolygon(point)) {
-        //         data.push(point);
-        //     }
-        // }
         $.post(baseApiUrl + "search", {"search": "What have been the product trends for ABFL by state in the last 12 months?"}, function(data, textStatus) {
             var data = data.rows.map(function(a) { return [a[1], a[0]]});
             hexLayer.data(data);

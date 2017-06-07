@@ -1,8 +1,8 @@
 var singleBarChart = barChart("single");
 var doubleBarChart = barChart("double");
 
-singleBarChart();
-// doubleBarChart();
+// singleBarChart();
+doubleBarChart();
 
 function barChart(type) {
     return function() {
@@ -59,6 +59,15 @@ function barChart(type) {
             var xFrom2 = d3v3.scale.linear()
                 .range([50, width]);
         }
+
+        var tooltip = d3.select("body")
+            .append("div")
+            .style("position", "absolute")
+            .style("z-index", "10")
+            .style("visibility", "hidden")
+            .style("background", "#fff")
+            .text("a simple tooltip")
+            .attr("class", "hoverTooltip");
 
         function render(data) {
             var chart = d3v3.select("#page-wrapper")
@@ -148,24 +157,22 @@ function barChart(type) {
                         .attr("rx", 5)
                         .attr("ry", 5)
                         .attr("class", "left")
-                        // .attr("class", "bg"+function(d) {return })
+                        .attr("score", function(d){return d[lCol];})
                         .attr("width", function (d) {
                             return Math.max(xFrom(d[lCol]) - 30, 0);
                         })
-                        .attr("height", 10);
-
-                chart.selectAll("text.leftscore")
-                        .data(data)
-                        .enter().append("text")
-                        .attr("x", function (d) {
-                            return width - xFrom(d[lCol]);
+                        .attr("height", 10)
+                        .on("mouseover", function(d) {
+                        tooltip.text(d[lCol]);
+                            return tooltip
+                                .style("top", ((yPosByIndexText(d) + 405 + 115) + "px"))
+                                .style("left", (width - xFrom(d[lCol]) + 65 + 30) + "px" )
+                                .style("visibility", "visible");
                         })
-                        .attr("y", yPosByIndexText)
-                        .attr("dx", "20")
-                        .attr("dy", "0.36em")
-                        .attr("text-anchor", "end")
-                        .attr('class', 'leftscore')
-                        .text(function(d){return d[lCol];});
+                        .on("mouseout", function(){
+                            return tooltip
+                                .style("visibility", "hidden");
+                        });
 
                 chart.selectAll("rect.left2")
                         .data(data)
@@ -180,20 +187,18 @@ function barChart(type) {
                         .attr("width", function (d) {
                             return Math.max(xFrom2(d[lCol2]) - 30, 0);
                         })
-                        .attr("height", 10);
-
-                chart.selectAll("text.leftscore2")
-                        .data(data)
-                        .enter().append("text")
-                        .attr("x", function (d) {
-                            return width - xFrom2(d[lCol2]);
+                        .attr("height", 10)
+                        .on("mouseover", function(d) {
+                            tooltip.text(d[lCol2]);
+                            return tooltip
+                                    .style("top", ((yPosByIndexText(d) + 425 + 115) + "px"))
+                                    .style("left", (width - xFrom2(d[lCol2]) + 60 + 30) + "px" )
+                                    .style("visibility", "visible");
                         })
-                        .attr("y", yPosByIndex2Text)
-                        .attr("dx", "20")
-                        .attr("dy", "0.36em")
-                        .attr("text-anchor", "end")
-                        .attr('class', 'leftscore')
-                        .text(function(d){return d[lCol2];});
+                        .on("mouseout", function(){
+                            return tooltip
+                                .style("visibility", "hidden");
+                        });
             }
 
             chart.selectAll("text.name")
@@ -219,20 +224,18 @@ function barChart(type) {
                     .attr("width", function (d) {
                         return xTo(d[rCol]);
                     })
-                    .attr("height", 10);
-
-            chart.selectAll("text.score")
-                    .data(data)
-                    .enter().append("text")
-                    .attr("x", function (d) {
-                        return xTo(d[rCol]) + rightOffset+40;
+                    .attr("height", 10)
+                    .on("mouseover", function(d) {
+                        tooltip.text(d[rCol]);
+                        return tooltip
+                                .style("top", ((yPosByIndexText(d) + 408) + "px"))
+                                .style("left", (xTo(d[rCol]) + rightOffset + 72 + 30) + "px" )
+                                .style("visibility", "visible");
                     })
-                    .attr("y", yPosByIndexText)
-                    .attr("dx", -5)
-                    .attr("dy", "0.36em")
-                    .attr("text-anchor", "end")
-                    .attr('class', 'score')
-                    .text(function(d){return d[rCol];});
+                    .on("mouseout", function(){
+                        return tooltip
+                                .style("visibility", "hidden");
+                    })
 
             chart.selectAll("rect.right2")
                     .data(data)
@@ -245,7 +248,18 @@ function barChart(type) {
                     .attr("width", function (d) {
                         return xTo2(d[rCol2]);
                     })
-                    .attr("height", 10);
+                    .attr("height", 10)
+                    .on("mouseover", function(d) {
+                        tooltip.text(d[rCol2]);
+                        return tooltip
+                                .style("top", ((yPosByIndexText(d) + 430) + "px"))
+                                .style("left", (xTo2(d[rCol2]) + rightOffset + 45 + 60) + "px" )
+                                .style("visibility", "visible");
+                    })
+                    .on("mouseout", function(){
+                        return tooltip
+                            .style("visibility", "hidden");
+                    });
 
             chart.selectAll("text.score2")
                     .data(data)
