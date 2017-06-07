@@ -151,7 +151,8 @@ body {
   -webkit-transition: 0.3s;
   height: 64%;
 }
-.search-btn1 {
+.search-btn {
+  padding: 8px 24px 10px 24px;
   margin: 10px;
   height: 40px;
   border-radius: 20.5px;
@@ -160,16 +161,6 @@ body {
   color: white;
   outline: none;
   text-align: center;
-}
-.search-btn2 {
-  margin: 10px;
-  height: 40px;
-  widtborder-radius: 20.5px;
-  background-color: #eca305;
-  border: 0px;
-  color: white;
-  text-align: center;
-  outline: none;
 }
 .search-suggestions {
   font-family: Theinhardt;
