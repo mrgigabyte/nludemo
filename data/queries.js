@@ -5,7 +5,7 @@ queries = [["Which unsecured products are private sector banks getting the most 
 		   ["What is the churn rate for ABFL in the last 12 months?", "generateMapView"],
 		   ["What are the number of branches that have opened in the last 5 months?", "singleBarChart"]];
 
-product_queries = [["the return of overdrafts", "doubleBarChart"],
-				["the return of unsecured landing", "drawSteamGraph"],
-				["the return of consumer loans", "generateMapView"],
+product_queries = [["the return of overdrafts", "singleBarChart"],
+				["the return of unsecured landing", "singleBarChart"],
+				["the return of consumer loans", "singleBarChart"],
 				["the return of business loans", "singleBarChart"]];

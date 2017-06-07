@@ -1,10 +1,9 @@
 // drawSteamGraph();
 function drawSteamGraph() {
     
-    d3v3.select('.selected').html(up_sell);
+    d3v3.select('.selected').html(daily_digest);
     d3v3.select('.notselected1').html(credit_policy1);
     d3v3.select('.notselected2').html(cross_sell);
-    console.log("lkfjsdlkf");
     var datearray = [];
     var colorrange = [];
 
@@ -181,11 +180,9 @@ function drawSteamGraph() {
         svg.selectAll(".layer")
             .attr("opacity", 1)
             .on("mouseover", function(d, i) {
-                console.log('mouseover');
                 svg.selectAll(".layer").transition()
                     .duration(250)
                     .attr("opacity", function(d, j) {
-                        console.log(j != i ? 0.4 : 1);
                         return j != i ? 0.4 : 1;
                     })
             })

@@ -123,16 +123,13 @@ body {
   color: #3d4351;
 }
 .srch-container {
-  transition: 0.3s;
-  -webkit-transition: 0.3s;
   width: 600px;
   height: 145px;
   margin-left: 268px;
-}
-.srch-container.isActive {
   transition: 0.3s;
   -webkit-transition: 0.3s;
-  height: 40vh;
+  height: 30vh;
+  max-height: 200px;
 }
 .search-container-parent {
   transition: 0.3s;
@@ -198,6 +195,9 @@ body {
   background: url('../../images/ic-search-active.png');
   background-repeat: no-repeat;
 }
+.box {
+  cursor: pointer;
+}
 .searchHeader {
   border: 0px;
   outline: none;
@@ -207,6 +207,7 @@ body {
   opacity: 0.2;
   margin-top: 43px;
   margin-left: 15px;
+  width: 70vw;
 }
 .searchHeader:focus {
   opacity: 0.4;
@@ -310,7 +311,7 @@ button {
 .nav-cust.isActive {
   transition: 0.3s;
   -webkit-transition: 0.3s;
-  height: 60vh !important;
+  height: 350px !important;
 }
 .box.selected {
   margin: 25px auto;
@@ -896,6 +897,17 @@ rect.right {
   line-height: 1.43;
   text-align: left;
   color: #3d4351;
+}
+.daily_digest {
+  font-size: 48px;
+  font-weight: 500;
+  line-height: 1.08;
+  letter-spacing: -1px;
+  text-align: left;
+  color: #3d4351;
+}
+.daily_digest_second {
+  color: #920029;
 }
 #wrapper {
   width: 100%;
