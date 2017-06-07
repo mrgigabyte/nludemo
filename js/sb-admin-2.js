@@ -1,7 +1,9 @@
 $(function() {
     $('#side-menu').metisMenu();
 });
-
+d3v3.select('.selected').html(daily_digest);
+d3v3.select('.notselected1').html(credit_policy2);
+d3v3.select('.notselected2').html(treasury);
 //Loads the correct sidebar on window load,
 //collapses the sidebar on window resize.
 // Sets the min-height of #page-wrapper to window size
