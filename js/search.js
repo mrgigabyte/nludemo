@@ -1,9 +1,14 @@
-document.getElementById("searchHeader").addEventListener("click", function() {
+var showSuggestions = function() {
+    var str = this.value;
     $('.nav-cust').addClass("isActive");
     $('.srch-container').addClass("isActive");
     $('.search-container-parent').addClass('isActive');
-    showRecent();
-});
+    showRecent(str);
+};
+
+document.getElementById("searchHeader").addEventListener("keyup", showSuggestions);
+
+document.getElementById("searchHeader").addEventListener("click", showSuggestions);
 
 
 document.getElementById("nav-cust").addEventListener("focusout", function() {
@@ -13,9 +18,20 @@ document.getElementById("nav-cust").addEventListener("focusout", function() {
     $('.search-container-parent').html("");
 });
 
-function showRecent(){
+function showRecent(txt){
     $('.search-container-parent').html("");
-    for(index in queries) {
-        $('.search-container-parent').append('<p class="search-suggestions">'+queries[index]+"</p>");
+    if(txt===""){
+        for(index in queries) {
+            $('.search-container-parent').append('<p class="search-suggestions">'+queries[index]+"</p>");
+        }
+    }
+    
+    else{
+          for(index in product_queries) {
+              $('.search-container-parent').append('<p class="search-suggestions">'+product_queries[index]+"</p>");
+        }  
+        
     }
 }
+
+
