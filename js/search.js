@@ -7,7 +7,7 @@ var showSuggestions = function() {
     $('.search-container-parent').html("");
     $('.searchicon').addClass('Active');
     
-    setTimeout(showRecent, 200);
+    setTimeout(showRecent, 100);
 };
 
 document.getElementById("searchHeader").addEventListener("keyup", showSuggestions);
@@ -29,8 +29,7 @@ document.getElementById("nav-cust").addEventListener("focusout", function() {
 
 
 function showRecent(){
-    console.log('hi');
-    var txt = $('.search-container-parent').html();
+    var txt = $('.srch-container input').val();
     if(txt=="") {
         $('.search-container-parent').html("");
         for(index in queries) {
