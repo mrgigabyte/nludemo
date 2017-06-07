@@ -1,4 +1,4 @@
-doubleBarChart(); 
+// doubleBarChart(); 
 
 function doubleBarChart() {
 	d3v3.select("#page-wrapper").html("");

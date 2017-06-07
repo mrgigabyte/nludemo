@@ -111,6 +111,7 @@ body {
     background-repeat: no-repeat;
 }
 
+
 .srch-container{
     transition: 0.3s;
     -webkit-transition:0.3s;
@@ -203,15 +204,18 @@ body {
 }
 
 .searchicon {
-	background: url('../../images/search.png');
+	background: url('/images/search.png');
 	width: 24px;
 	height: 13vh;
 	margin-left: 64px;
 	margin-top: 50px;
 	float: left;
     background-repeat: no-repeat;
+    &.Active{
+        background: url('/images/ic-search-active.png');
+        background-repeat: no-repeat;
+    }
 }
-
 
 .searchHeader {
     border: 0px;
@@ -226,6 +230,9 @@ body {
 .searchHeader:focus{
 opacity:0.4;    
 }
+
+
+
 
 
 .row.steamgraph {

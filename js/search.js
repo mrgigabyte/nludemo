@@ -3,9 +3,10 @@ var showSuggestions = function() {
     $('.nav-cust').addClass("isActive");
     $('.srch-container').addClass("isActive");
     $('.search-container-parent').addClass('isActive');
-//    $('.page-wrapper').addClass('isActive');
-     $('.fall-back').addClass('isActive');
+    $('.fall-back').addClass('isActive');
     $('.search-container-parent').html("");
+    $('.searchicon').addClass('Active');
+    
     setTimeout(showRecent, 200);
 };
 
@@ -19,11 +20,13 @@ document.getElementById("nav-cust").addEventListener("focusout", function() {
         $('.nav-cust').removeClass("isActive");
         $('.srch-container').removeClass("isActive");
         $('.search-container-parent').removeClass('isActive');
-        $('.search-container-parent').html("<button class='search-btn1'>VS INFLATION</button><button class='search-btn2'>VS GDP</button>");
-        
+        $('.search-container-parent').html("<button class='search-btn1'>VS INFLATION</button><button class='search-btn2'>VS GDP</button>");    
         $('.fall-back').removeClass('isActive');
+        $('.searchicon').removeClass('Active');
+    
     }, 200);
 });
+
 
 function showRecent(){
     console.log('hi');
