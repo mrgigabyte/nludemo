@@ -12,9 +12,44 @@
 body {
   font-family: Theinhardt;
   background: white;
+  margin: 0px;
+}
+.bigCol {
+  width: 490px;
+  height: 296px;
+  margin-bottom: 40px;
+  float: left;
+}
+.bigCol .title {
+  font-size: 36px;
+  opacity: 0.2;
+  padding-left: 90px;
+  color: #3d4351;
+  font-weight: 500;
+  text-align: left;
+  font-family: Theinhardt;
+}
+.bigCol .description {
+  font-size: 16px;
+  padding-left: 90px;
+  color: #606570;
+  font-weight: 500;
+  line-height: 1.38;
+  text-align: left;
+  font-family: Theinhardt;
+}
+.bigCol .graphImage {
+  width: 102%;
+  object-fit: contain;
+}
+.row {
+  display: flex;
+  flex-direction: column;
 }
 #page-wrapper {
   height: calc(-54vw);
+  margin: 145px 0 0 0;
+  padding-top: 30px;
 }
 .logo {
   background: url('../../images/logo.png');
@@ -191,6 +226,7 @@ button {
   position: absolute;
   width: 100%;
   z-index: 1000;
+  top: 0px;
 }
 .nav-cust.isActive {
   transition: 0.3s;
@@ -573,8 +609,6 @@ However, delay the fade out process for 2.5 seconds */
   visibility: visible;
   /* Show the snackbar */
 }
-/* Add animation: Take 0.5 seconds to fade in and out the snackbar. 
-However, delay the fade out process for 2.5 seconds */
 /* STEAMGRAPH */
 .steamgraph.chart svg {
   z-index: 10;
@@ -690,15 +724,12 @@ button {
   width: 100%;
 }
 #page-wrapper {
-  padding: 0 15px;
   min-height: 568px;
   background-color: white;
 }
 @media (min-width: 768px) {
   #page-wrapper {
     position: inherit;
-    margin: 0 0 0 0px;
-    padding: 0 30px;
     border-left: 1px solid #e7e7e7;
   }
 }
