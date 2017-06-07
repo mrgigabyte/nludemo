@@ -107,7 +107,7 @@ body {
   background: rgba(0, 0, 0, 0.5);
 }
 .logo {
-  background: url('../images/logo.png');
+  background: url('../../images/logo.png');
   width: 91px;
   height: 17vh;
   margin-top: 27px;
@@ -195,7 +195,7 @@ body {
   padding: 10px 16px;
 }
 .searchicon {
-  background: url('/images/search.png');
+  background: url('../../images/search.png');
   width: 24px;
   height: 13vh;
   margin-left: 64px;
@@ -204,7 +204,7 @@ body {
   background-repeat: no-repeat;
 }
 .searchicon.Active {
-  background: url('/images/ic-search-active.png');
+  background: url('../../images/ic-search-active.png');
   background-repeat: no-repeat;
 }
 .searchHeader {
