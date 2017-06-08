@@ -2,11 +2,13 @@ var singleBarChart = barChart("single");
 var doubleBarChart = barChart("double");
 
 // singleBarChart();
-doubleBarChart();
+// FdoubleBarChart();
 var singleBarChartNBFC = barChart("single", "nbfc");
 
 function barChart(type, api_type) {
     return function() {
+        $('body #commentsIndex').html("");
+        
     	d3v3.select("#page-wrapper").html("");
 
         if (type === "double") {

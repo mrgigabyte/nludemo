@@ -1,37 +1,76 @@
 //addSidebar();
 //addCommentsbar();
-addcomment();
 
-function addSidebar() {
-   var html = `<div class="row horizontal">
-                <div class="col-md-2">
-                    <img src="../images/ic-insights.svg" class="image">
-                </div>
-                <div class="col-md-6" style="padding-top:12px;">
-                    <h3>Insights</h3>
-                </div>
-                <div class="col-md-3">
-                    <img src="../images/ic-exit.svg" class="image" style="cursor: pointer" id="closeMenu">
-                </div>
-            </div>
-            <div class="first-container">
+var commentArray = [];
+addSidebar();
+
+function addSidebar(addComment, karDoAdd) {
+    if (karDoAdd) {
+        commentArray.push($('.commentText').val());
+    }
+
+    var header = `<div class="row topBar">
+                    <div class="col-md-2">
+                        <img src="../images/ic-insights.svg" class="image">
+                    </div>
+                    <div class="col-md-6" style="padding-top:12px;">
+                        <h3>Insights</h3>
+                    </div>
+                    <div class="col-md-3">
+                        <img src="../images/ic-exit.svg" class="image" style="cursor: pointer" id="closeMenu">
+                    </div>
+                </div>`;
+
+   var commentsHTML = "";
+
+   for (var i=1; i<= commentArray.length; i++) {
+       commentsHTML = commentsHTML + `<div class="first-container">
+                <div class="row comment">
                     <div class="col-xs-2">
-                        <p class="bold-Number">1</p>
+                        <p class="bold-Number">`+i+`</p>
                     </div>
                     <div class="col-xs-10">
                         <p class="copy_pros">&copy pros</p>
-                        <p class="comment-for-item">Good to see the upward trend in prices. Seems our personalized pricing model is working well @seker,fyi</p>
+                        <p class="comment-for-item">`+commentArray[i-1  ]+`</p>
                     </div>
-                    <div class="btnAdd">
-                        <span class="btnAddComment">LEAVE A COMMENT OR INSIGHT</span>
+                </div>
+            </div>`;
+    }
+
+    var addCommentBtn = `<div class="row comment">
+            <div class="btnAdd">
+                <span class="btnAddComment">LEAVE A COMMENT OR INSIGHT</span>
+            </div>
+        </div`;
+
+    var addCommentHTML = "";
+    if (addComment) {
+        addCommentHTML = `
+            <div class="first-container">
+                <div class="row comment">
+                    <div class="col-xs-2">
+                        <p class="bold-Number">`+(commentArray.length+1)+`</p>
                     </div>
+                    <div class="col-xs-10">
+                        <p class="copy_pros">&copy pros</p>
+                        <textarea class="commentText"></textarea>
+                        <div class="float-right">
+                            <span class="btun" onclick="addSidebar();">Cancel</span>
+                            <span class="btun save" onclick="addSidebar(false, true)">Save</span>
+                        </div>
+                    </div>
+                </div>
             </div> `;
-         
+    }
+        
+    html = header + commentsHTML + addCommentHTML + addCommentBtn;
     
     $('#cbp-spmenu-s2').html(html);
 
     document.getElementById( 'closeMenu' ).onclick = function() { toggleMenu(); };
 }
+
+
 
 function addCommentsbar() {
    var html = `    <div class="row horizontal">
@@ -80,43 +119,3 @@ function addCommentsbar() {
     document.getElementById( 'closeMenu' ).onclick = function() { toggleMenu(); };
 }
 
-
-
-
-
-
-
-function addcomment() {
-   var html = `    <div class="row horizontal">
-                <div class="col-md-2">
-                    <img src="../images/ic-insights.svg" class="image">
-                </div>
-                <div class="col-md-6" style="padding-top:12px;">
-                    <h3>Insights</h3>
-                </div>
-                <div class="col-md-3">
-                    <img src="../images/ic-exit.svg" class="image" style="cursor: pointer" id="closeMenu">
-                </div>
-    </div>
-    <div class="first-container">
-            <div class="row ">
-                    <div class="col-xs-2">
-                        <p class="bold-Number">1</p>
-                    </div>
-                    <div class="col-xs-10">
-                        <p class="copy_pros">&copy pros</p>
-                        <textarea placeholder="comment" class="user_comments" id="comment_value">
-                        </textarea>
-                    </div>
-            </div>
-              <div class="comment">
-                <span class="comment_cancel" type="button" id="delete_comment">CANCEL</span>
-                <span class="comment_save" type="button" id="add_comment">SAVE</span>
-            </div>
-    </div>`;
-         
-    
-    $('#cbp-spmenu-s2').html(html);
-
-    document.getElementById( 'closeMenu' ).onclick = function() { toggleMenu(); };
-}
