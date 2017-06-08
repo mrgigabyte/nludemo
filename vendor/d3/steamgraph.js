@@ -1,6 +1,8 @@
 // drawSteamGraph();
 
 var selectedDate;
+var lx;
+var vertical2;
 
 function drawSteamGraph() {
     $('body #commentsIndex').html("");
@@ -65,13 +67,15 @@ function drawSteamGraph() {
     var xAxis = d3v3.svg.axis()
         .scale(x)
         .orient("bottom")
-        .ticks(5);
+        .ticks(5)
+        .tickFormat(d3v3.time.format("%b"));
 
     var yAxis = d3v3.svg.axis()
         .scale(y);
 
     var yAxisr = d3v3.svg.axis()
-        .scale(y);
+        .scale(y)
+        .tickFormat (function (d) { return formatValue(d).replace('G', 'B'); });
 
     var stack = d3v3.layout.stack()
         .offset("silhouette")
@@ -162,18 +166,6 @@ function drawSteamGraph() {
             .style("left", "0px")
             .style("background", "#383f49");
 
-        var vertical2 = d3v3.select(".chart")
-            .append("div")
-            .attr("class", "vertical2")
-            .style("position", "absolute")
-            .style("z-index", "1")
-            .style("opacity", "1")
-            .style("width", "1px")
-            .style("height", "45px")
-            .style("top", "840px")
-            .style("left", "300px")
-            .style("background", "#383f49");
-
         svg.selectAll(".layer")
             .data(layers)
             .enter().append("path")
@@ -243,7 +235,8 @@ function drawSteamGraph() {
                     .attr("stroke-width", "0.5px"),
                     // tooltip.html("<p>" + d.product + "<br>" + pro + "</p>").style("visibility", "visible");
 
-                $('#productName').text(d.product);
+                // console.log('hi', d);
+                $('#productName').html(d.key);
 
             })
             .on("mouseout", function(d, i) {
@@ -252,7 +245,7 @@ function drawSteamGraph() {
                     .duration(250)
                     .attr("opacity", "1");
 
-                $('#productName').text("All Products");
+                $('#productName').html("All Products");
 
                 d3v3.select(this)
                     .classed("hover", false)
@@ -295,8 +288,9 @@ function drawSteamGraph() {
             var mousex_2 = mousex[0];
             selectedDate = x.invert(mousex_2);
             updateHeadings(mousex_2);
-            vertical2.style("left", (299 + (lx(selectedDate) - 244) * (715 - 299) / (601 - 244) ) + "px");
-            // console.log(lx)
+            if(lx) {
+                vertical2.style("left", (299 + (lx(selectedDate) - 244) * (715 - 299) / (601 - 244) ) + "px");
+            }
         }
 
         d3v3.select(".chart")
@@ -317,13 +311,21 @@ function drawSteamGraph() {
       data: { "search" : "What have been the product trends for ABFL in the last 12 months?" },
       success: plotGraph
     });
-
-    plotLineGraph();
 }
 
-var lx;
-
 function plotLineGraph() {
+    vertical2 = d3v3.select(".chart")
+        .append("div")
+        .attr("class", "vertical2")
+        .style("position", "absolute")
+        .style("z-index", "1")
+        .style("opacity", "1")
+        .style("width", "1px")
+        .style("height", "45px")
+        .style("top", "840px")
+        .style("left", "300px")
+        .style("background", "#383f49");
+
     var margin = {top: 30, right: 20, bottom: 30, left: 50},
         width = 780 + 70 - margin.left - margin.right,
         height = 100 - margin.top - margin.bottom;
@@ -339,7 +341,8 @@ function plotLineGraph() {
     var xAxis = d3v3.svg.axis()
         .scale(lx)
         .orient("bottom")
-        .ticks(5);
+        .ticks(5)
+        .tickFormat(d3v3.time.format("%b"));
 
     var yAxis = d3v3.svg.axis()
         .scale(y)

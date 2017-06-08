@@ -37,12 +37,17 @@ function unsecuredNBFC() {
 function doubleBarChartOk() {
 	removeHeaderButtons();
 	doubleBarChart();
-	addHeaderButton("SHOW OPPORTUNITIES GEOGRAPHICALLY", "generateMapView");
+	addHeaderButton("SHOW OPPORTUNITIES GEOGRAPHICALLY", "generateMapView", "generateMapView");
+}
+
+function mapViewDedo() {
+	$('#generateMapView').remove();
+	generateMapView();
 }
 
 function addInflationGraph() {
-	console.log("TO BE ADDED #TODO ?");
 	$('#inflateBtn').remove();
+	plotLineGraph();
 }
 
 function doNothing() {
