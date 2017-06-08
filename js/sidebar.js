@@ -118,3 +118,4 @@ function addCommentsbar() {
 
     document.getElementById( 'closeMenu' ).onclick = function() { toggleMenu(); };
 }
+

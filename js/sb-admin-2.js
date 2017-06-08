@@ -7,6 +7,7 @@ d3v3.select('.notselected2').html(treasury);
 //Loads the correct sidebar on window load,
 //collapses the sidebar on window resize.
 // Sets the min-height of #page-wrapper to window size
+
 $(function() {
     $(window).bind("load resize", function() {
         var topOffset = 50;
