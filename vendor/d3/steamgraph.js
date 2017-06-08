@@ -1,4 +1,4 @@
-drawSteamGraph();
+// drawSteamGraph();
 
 var selectedDate;
 

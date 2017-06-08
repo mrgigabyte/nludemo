@@ -1,4 +1,4 @@
-generateMapView();
+// generateMapView();
 
 function generateMapView() {
     addCommentsbar();
