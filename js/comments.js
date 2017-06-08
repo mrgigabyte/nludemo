@@ -1,4 +1,3 @@
-
 $('.bigCol').dblclick(function(eventData) {
 	var mouseX = eventData.originalEvent.clientX;
     var mouseY = eventData.originalEvent.clientY;       
@@ -10,7 +9,7 @@ $('.bigCol').dblclick(function(eventData) {
 })
 
 //sidenav comments
-function addCommentButton(txt, funcname, btnId, xpos,ypos){
+function addCommentButton(txt, funcname, btnId, xpos, ypos){
 	var idTxt = "";
 	if (btnId) { var idTxt = `id="`+btnId+`"`}
 	var ele = `<button class="comment-btn" `+idTxt+` onclick="`+funcname+`()">`+txt+`</button>`;
