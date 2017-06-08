@@ -123,6 +123,9 @@ body {
   float: left;
   background-repeat: no-repeat;
 }
+.ic_trending {
+  font-weight: bold;
+}
 .innerCard {
   font-size: 14px;
   font-weight: 500;
@@ -874,6 +877,7 @@ rect.right {
   fill: url(#barGradient1);
 }
 .cross-sell {
+  margin: 10px 15px 10px 15px;
   font-size: 14px;
   font-weight: 500;
   line-height: 1.43;
@@ -881,6 +885,7 @@ rect.right {
   color: #3d4351;
 }
 .up-sell {
+  margin: 10px 15px 10px 15px;
   font-size: 14px;
   font-weight: 500;
   line-height: 1.43;
@@ -888,6 +893,7 @@ rect.right {
   color: #3d4351;
 }
 .credit-policy1 {
+  margin: 10px 15px 10px 15px;
   font-size: 14px;
   font-weight: 500;
   line-height: 1.43;
@@ -895,6 +901,7 @@ rect.right {
   color: #3d4351;
 }
 .credit-policy2 {
+  margin: 10px 15px 10px 15px;
   font-size: 14px;
   font-weight: 500;
   line-height: 1.43;
@@ -902,6 +909,7 @@ rect.right {
   color: #3d4351;
 }
 .kycauthentication {
+  margin: 10px 15px 10px 15px;
   font-size: 14px;
   font-weight: 500;
   line-height: 1.43;
@@ -909,6 +917,7 @@ rect.right {
   color: #3d4351;
 }
 .salesefficiency {
+  margin: 10px 15px 10px 15px;
   font-size: 14px;
   font-weight: 500;
   line-height: 1.43;
@@ -916,6 +925,7 @@ rect.right {
   color: #3d4351;
 }
 .treasury {
+  margin: 10px 15px 10px 15px;
   font-size: 14px;
   font-weight: 500;
   line-height: 1.43;
@@ -923,6 +933,7 @@ rect.right {
   color: #3d4351;
 }
 .churn {
+  margin: 10px 15px 10px 15px;
   font-size: 14px;
   font-weight: 500;
   line-height: 1.43;
@@ -937,6 +948,7 @@ rect.right {
   color: #3d4351;
 }
 .initialcard {
+  margin: 10px 15px 10px 15px;
   font-size: 14px;
   font-weight: 500;
   line-height: 1.43;
@@ -953,6 +965,9 @@ rect.right {
 }
 .daily_digest_second {
   color: #920029;
+}
+.fix_margin_card {
+  margin: 10px 15px 10px 15px;
 }
 #wrapper {
   width: 100%;
