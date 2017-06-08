@@ -1,7 +1,7 @@
 // drawSteamGraph();
 function drawSteamGraph() {
     
-    d3v3.select('.selected').html(daily_digest);
+    d3v3.select('.selected').html(allproducts);
     d3v3.select('.notselected1').html(credit_policy1);
     d3v3.select('.notselected2').html(cross_sell);
     var datearray = [];

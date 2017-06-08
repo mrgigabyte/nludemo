@@ -32,7 +32,8 @@ var churn=`<div class="churn">
 var allproducts=`<div class="allproducts">
             What have been the product trends for ABFL in the last 12 months vs inflation
             </div>
-            <img src="../images/img-abfl.png" srcset="../images/img-abfl@2x.png 2x, ../images/img-abfl@3x.png 3x" class="img_abfl">`;
+            <img src="../images/img-abfl.png" srcset="../images/img-abfl@2x.png 2x, ../images/img-abfl@3x.png 3x" class="img_abfl" style=" margin-left: -22px;">
+			</div>`;
 var initialcard=`<div class="initialcard">  
             Customer Growth for in Q4 in the last 4 years
             </div>`;
