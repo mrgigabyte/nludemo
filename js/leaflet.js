@@ -1,8 +1,8 @@
-// generateMapView();
+generateMapView();
 
 function generateMapView() {
     addCommentsbar();
-    
+
     $('body #commentsIndex').html("");
     $('#sidenavModified').html(trending);
     d3v3.select('.selected').html(treasury);
@@ -57,9 +57,9 @@ function generateMapView() {
             return d[1];
         },
         value: function(d) {
-            return d.length;
+            return 3;
         },
-        valueFloor: 0,
+        valueFloor: 1,
         valueCeil: undefined
     };
 
@@ -85,13 +85,17 @@ function generateMapView() {
     var hexLayer = L.hexbinLayer(options).addTo(map)
     hexLayer.colorScale().range(["#920029", "#d36e1f", "#f4760a"]);
 
-    var latFn = d3.randomNormal(center[0], 5.5);
-    var longFn = d3.randomNormal(center[1], 5);
-
+    function checkSanity (a) {
+        if (!a)
+            return false;
+        if (a.constructor === Array)
+            return true;
+        return false;
+    }
     var generateData = function() {
         $.post(baseApiUrl + "search", {"search": "What have been the product trends for ABFL by state in the last 12 months?"}, function(data, textStatus) {
-            var data = data.rows.map(function(a) { return [a[1], a[0]]});
-            hexLayer.data(data);
+            var ndata = data.rows.filter(checkSanity).map(function(a) { return [a[1], a[0]]});
+            hexLayer.data(ndata);
         }, "json");
     };
 }

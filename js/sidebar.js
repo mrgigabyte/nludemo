@@ -92,34 +92,41 @@ function addCommentsbar() {
                 </div>
     </div>
     <div class="first-container">
-            <div class="row ">
+            <div class="row">
+                <div class="row meriRow">
                     <div class="col-xs-2">
                         <p class="bold-Number">1</p>
                     </div>
                     <div class="col-xs-10">
                         <p class="copy_pros">Sanjay, CFO ABFL</p>
-                        <p class="comment-for-item">Opportunity Area 1</p>
+                        <p class="comment-for-item">Orissa looks good, pretty dense. Tier 1, Tier 2 cities in Gujarat are showing good signs.</p>
                     </div>
+                </div>
+                <div class="row meriRow">
                     <div class="col-xs-2">
                         <p class="bold-Number">2</p>
                     </div>
                     <div class="col-xs-10">
                         <p class="copy_pros">Sanjay, CFO ABFL</p>
-                        <p class="comment-for-item">Opportunity Area 2</p>
+                        <p class="comment-for-item">438 new pin codes can be serviced. These areas are within 20KMs of existing PIN codes and have GNPA < 2%</p>
                     </div>
+                </div>
+                <div class="row meriRow">
                     <div class="col-xs-2">
                         <p class="bold-Number">3</p>
                     </div>
                     <div class="col-xs-10">
                         <p class="copy_pros">Sanjay, CFO ABFL</p>
-                        <p class="comment-for-item">Opportunity Area 3</p>
+                        <p class="comment-for-item">Rs 543.95 cr in additional opportunity</p>
                     </div>
-                    <div class="btnAdd">
-                        <span class="btnAddComment">LEAVE A COMMENT OR INSIGHT</span>
-                    </div>
+                </div>
             </div>
         </div>`;
-         
+
+        
+                    // <div class="btnAdd">
+                    //     <span class="btnAddComment">LEAVE A COMMENT OR INSIGHT</span>
+                    // </div>
     
     $('#cbp-spmenu-s2').html(html);
 
