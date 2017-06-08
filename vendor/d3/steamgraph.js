@@ -152,7 +152,7 @@ function drawSteamGraph() {
 
         var vertical = d3v3.select(".chart")
             .append("div")
-            .attr("class", "remove")
+            .attr("class", "vertical1")
             .style("position", "absolute")
             .style("z-index", "0")
             .style("opacity", "0.2")
@@ -162,16 +162,16 @@ function drawSteamGraph() {
             .style("left", "0px")
             .style("background", "#383f49");
 
-        var vertical = d3v3.select(".chart")
+        var vertical2 = d3v3.select(".chart")
             .append("div")
-            .attr("class", "remove")
+            .attr("class", "vertical2")
             .style("position", "absolute")
-            .style("z-index", "0")
-            .style("opacity", "0.2")
+            .style("z-index", "1")
+            .style("opacity", "1")
             .style("width", "1px")
-            .style("height", parseInt(0.33 * docWidth) + "px")
-            .style("top", "280px")
-            .style("left", "0px")
+            .style("height", "45px")
+            .style("top", "840px")
+            .style("left", "300px")
             .style("background", "#383f49");
 
         svg.selectAll(".layer")
@@ -289,20 +289,24 @@ function drawSteamGraph() {
                 $(".x-axis text").eq(selectedIndex).addClass("selectedTime");
             }
         }
+        function updateVerticals() {
+            var mousex_1 = mousex[0] + 5;
+            vertical.style("left", mousex_1 + "px");
+            var mousex_2 = mousex[0];
+            selectedDate = x.invert(mousex_2);
+            updateHeadings(mousex_2);
+            vertical2.style("left", (299 + (lx(selectedDate) - 244) * (715 - 299) / (601 - 244) ) + "px");
+            // console.log(lx)
+        }
+
         d3v3.select(".chart")
             .on("mousemove", function() {
                 mousex = d3v3.mouse(this);
-                var mousex_1 = mousex[0] + 5;
-                vertical.style("left", mousex_1 + "px");
-                var mousex_2 = mousex[0];
-                selectedDate = x.invert(mousex_2);
-                updateHeadings(mousex_2);
-                console.log(lx, selectedDate, lx.invert(selectedDate));
+                updateVerticals(mousex);
             })
             .on("mouseover", function() {
                 mousex = d3v3.mouse(this);
-                mousex = mousex[0] + 5;
-                vertical.style("left", mousex + "px");
+                updateVerticals(mousex);
                 updateHeadings(mousex);
             });
     };
