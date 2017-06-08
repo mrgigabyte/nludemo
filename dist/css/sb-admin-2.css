@@ -3,6 +3,9 @@
  * Copyright 2013-2017 Start Bootstrap
  * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap/blob/gh-pages/LICENSE)
  */
+.lineGraph {
+  margin-top: 500px;
+}
 .lineGraph path {
   stroke: steelblue;
   stroke-width: 2;
@@ -19,6 +22,16 @@
   fill: url(#line-gradient);
   stroke: url(#line-gradient);
   stroke-width: 2px;
+}
+.lineGraph .x-axis .tick line {
+  display: none;
+}
+.lineGraph .x-axis text {
+  font-size: 10px;
+}
+.inflationHeading {
+  fill-opacity: 0.4;
+  font-size: 10px;
 }
 .navbar-default {
   background-color: white;
@@ -504,8 +517,10 @@ button {
 .image {
   margin: 30px;
 }
-.horizontal {
-  display: inline;
+.row.horizontal {
+  background-color: #920029;
+  margin: 0px;
+  padding: 10px;
 }
 .first-container {
   width: 100%;
@@ -521,8 +536,13 @@ button {
   color: #ffffff;
   margin: 0px;
 }
+.row.meriRow {
+  margin: 5px;
+  margin-bottom: 50px;
+  margin-left: 20px;
+  margin-right: 15px;
+}
 .comment-for-item {
-  height: 80px;
   font-family: Theinhardt;
   font-size: 18px;
   font-weight: 500;

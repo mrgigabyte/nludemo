@@ -1,4 +1,6 @@
-// drawSteamGraph();
+drawSteamGraph();
+
+var selectedDate;
 
 function drawSteamGraph() {
     $('body #commentsIndex').html("");
@@ -28,7 +30,7 @@ function drawSteamGraph() {
     var docWidth = document.body.clientWidth;
 
     var margin = {
-        top: 600,
+        top: 40,
         right: 0,
         bottom: 30,
         left: 0
@@ -59,7 +61,7 @@ function drawSteamGraph() {
     var xAxis = d3v3.svg.axis()
         .scale(x)
         .orient("bottom")
-        .ticks(d3v3.time.years);
+        .ticks(5);
 
     var yAxis = d3v3.svg.axis()
         .scale(y);
@@ -127,6 +129,7 @@ function drawSteamGraph() {
 
     var plotGraph = function(response) {
         var data = response.rows;
+
         console.log(data);
 
         data.forEach(function(d) {
@@ -150,7 +153,19 @@ function drawSteamGraph() {
             .style("z-index", "0")
             .style("opacity", "0.2")
             .style("width", "1px")
-            .style("height", parseInt(0.36 * docWidth) + "px")
+            .style("height", parseInt(0.33 * docWidth) + "px")
+            .style("top", "280px")
+            .style("left", "0px")
+            .style("background", "#383f49");
+
+        var vertical = d3v3.select(".chart")
+            .append("div")
+            .attr("class", "remove")
+            .style("position", "absolute")
+            .style("z-index", "0")
+            .style("opacity", "0.2")
+            .style("width", "1px")
+            .style("height", parseInt(0.33 * docWidth) + "px")
             .style("top", "280px")
             .style("left", "0px")
             .style("background", "#383f49");
@@ -195,24 +210,34 @@ function drawSteamGraph() {
             })
 
             .on("mousemove", function(d, i) {
-                mousex = d3v3.mouse(this);
-                mousex = mousex[0];
-                var invertedx = x.invert(mousex);
-                invertedx = invertedx.getMonth() + invertedx.getDate();
-                var selected = (d.values);
-                for (var k = 0; k < selected.length; k++) {
-                    datearray[k] = selected[k].date
-                    datearray[k] = datearray[k].getMonth() + datearray[k].getDate();
-                }
+                // mousex = d3v3.mouse(this);
+                // mousex = mousex[0];
+                // selectedDate = x.invert(mousex);
+                // var invertedx = x.invert(mousex);
+                // console.log("invertedx", invertedx);
+                // invertedx = invertedx.getMonth() + invertedx.getDate();
 
-                mousedate = datearray.indexOf(invertedx);
-                pro = d.values[mousedate].value;
+                // console.log("invertedx", invertedx);
+                // var selected = (d.values);
+
+                // console.log("selected", selected);
+
+                // for (var k = 0; k < selected.length; k++) {
+                //     console.log
+                //     datearray[k] = selected[k].date
+                //     datearray[k] = datearray[k].getMonth() + datearray[k].getDate();
+                //     console.log("date aarray k", datearray[k]);
+                // }
+
+                // mousedate = datearray.indexOf(invertedx);
+                // console.log("sab", d, d.values, mousedate);
+                // pro = d.values[mousedate].metric;
 
                 d3v3.select(this)
                     .classed("hover", true)
                     .attr("stroke", strokecolor)
                     .attr("stroke-width", "0.5px"),
-                    tooltip.html("<p>" + d.product + "<br>" + pro + "</p>").style("visibility", "visible");
+                    // tooltip.html("<p>" + d.product + "<br>" + pro + "</p>").style("visibility", "visible");
 
                 $('#productName').text(d.product);
 
@@ -227,7 +252,9 @@ function drawSteamGraph() {
 
                 d3v3.select(this)
                     .classed("hover", false)
-                    .attr("stroke-width", "0px"), tooltip.html("<p>" + d.product + "<br>" + pro + "</p>").style("visibility", "hidden");
+                    .attr("stroke-width", "0px");
+
+                // tooltip.html("<p>" + d.product + "<br>" + pro + "</p>").style("visibility", "hidden");
             })
 
         function getMod(a) {
@@ -240,7 +267,8 @@ function drawSteamGraph() {
         var divs = d3v3.selectAll('.x-axis .tick')[0];
         var xPos = divs.map(function(a) {
             return a.getBoundingClientRect().left;
-        })
+        });
+
         var numHeadings = divs.length;
         var selectedIndex = numHeadings / 2;
         updateHeadings(docWidth / 2);
@@ -260,9 +288,12 @@ function drawSteamGraph() {
         d3v3.select(".chart")
             .on("mousemove", function() {
                 mousex = d3v3.mouse(this);
-                mousex = mousex[0] + 5;
-                vertical.style("left", mousex + "px");
-                updateHeadings(mousex);
+                var mousex_1 = mousex[0] + 5;
+                vertical.style("left", mousex_1 + "px");
+                var mousex_2 = mousex[0];
+                selectedDate = x.invert(mousex_2);
+                updateHeadings(mousex_2);
+                console.log(lx, selectedDate, lx.invert(selectedDate));
             })
             .on("mouseover", function() {
                 mousex = d3v3.mouse(this);
@@ -282,39 +313,41 @@ function drawSteamGraph() {
     plotLineGraph();
 }
 
+var lx;
+
 function plotLineGraph() {
     var margin = {top: 30, right: 20, bottom: 30, left: 50},
-        width = 600 - margin.left - margin.right,
-        height = 270 - margin.top - margin.bottom;
+        width = 780 + 70 - margin.left - margin.right,
+        height = 100 - margin.top - margin.bottom;
 
     var parseDate = d3v3.time.format("%d-%b-%y").parse;
 
-    var x = d3v3.time.scale()
+    lx = d3v3.time.scale()
         .range([0, width]);
 
     var y = d3v3.scale.linear()
         .range([height, 0]);
 
     var xAxis = d3v3.svg.axis()
-        .scale(x)
+        .scale(lx)
         .orient("bottom")
         .ticks(5);
 
     var yAxis = d3v3.svg.axis()
         .scale(y)
-        .orient("left")
-        .ticks(5);
+        .orient("left");
+        // .ticks(5);
 
     var valueline = d3v3.svg.line()
-        .x(function(d) { return x(d.date); })
+        .x(function(d) { return lx(d.date); })
         .y(function(d) { return y(d.inflation); })
         .interpolate("basis");
 
-    var svg = d3v3.select(".chart").append("svg")
+    var svg = d3v3.select(".chart").append("svg").attr("class", "lineGraph")
+
         .attr("width", width + margin.left + margin.right)
         .attr("height", height + margin.top + margin.bottom)
         .append("g")
-        .attr("class", "lineGraph")
         .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
     // Get the data
@@ -324,9 +357,11 @@ function plotLineGraph() {
         d.date = parseDate(d.date);
         d.inflation = +d.inflation;
     });
+
+    data.reverse();
     
     // Scale the range of the data
-    x.domain(d3v3.extent(data, function(d) { return d.date; }));
+    lx.domain(d3v3.extent(data, function(d) { return d.date; }));
     y.domain([0, d3v3.max(data, function(d) { return d.inflation; })]);
     
 
@@ -337,32 +372,61 @@ function plotLineGraph() {
     .selectAll("stop")                      
         .data([                             
             {offset: "0%", color: "#f5f5fa"},       
-            {offset: "40%", color: "#f5f5fa"},  
-            {offset: "40%", color: "#920029"},        
-            {offset: "62%", color: "#920029"},        
-            {offset: "62%", color: "#f5f5fa"},    
-            {offset: "90%", color: "#f5f5fa"} 
+            {offset: "28.5%", color: "#f5f5fa"},  
+            {offset: "28.5%", color: "#920029"},        
+            {offset: "78.5%", color: "#920029"},        
+            {offset: "78.5%", color: "#f5f5fa"},    
+            {offset: "100%", color: "#f5f5fa"} 
         ])       
     .enter().append("stop")         
         .attr("offset", function(d) { return d.offset; })   
         .attr("stop-color", function(d) { return d.color; });
 
     // Add the valueline path.
-    var maxX = x(d3v3.extent(data, function(d) { return d.date; })[1]);
+    var maxX = lx(d3v3.extent(data, function(d) { return d.date; })[1]);
     svg.append("path")
         .attr("class", "line").attr("fill","url(#")
-        .attr("d", ''+valueline(data)+"L0,"+y(0)+'L'+maxX+","+y(0));
+        .attr("d", ''+valueline(data)+"L0,"+y(0)+'L'+maxX+","+y(0))
+        .on("mousemove", function(d, i) {
+                // console.log(selectedDate, x(selectedDate));
+                // selectedDate = x.invert(mousex);
+                // var invertedx = x.invert(mousex);
+                // console.log("invertedx", invertedx);
+                // invertedx = invertedx.getMonth() + invertedx.getDate();
+
+                // console.log("invertedx", invertedx);
+                // var selected = i;
+                // console.log("selected", x());
+
+                // for (var k = 0; k < selected.length; k++) {
+                //     console.log
+                //     datearray[k] = selected[k].date
+                //     datearray[k] = datearray[k].getMonth() + datearray[k].getDate();
+                //     console.log("date aarray k", datearray[k]);
+                // }
+
+                // mousedate = datearray.indexOf(invertedx);
+                // console.log("sab", d, d.values, mousedate);
+                // pro = d.values[mousedate].metric;
+            })
 
     // Add the X Axis
     svg.append("g")
-        .attr("class", "x axis")
+        .attr("class", "x-axis")
         .attr("transform", "translate(0," + height + ")")
         .call(xAxis);
 
+    svg.append("text")
+        .attr("text-anchor", "middle")  // this makes it easy to centre the text as the transform is applied to the anchor
+        .attr("transform", "translate("+ (margin.left/2) +","+(height/2)+")rotate(-90)")  // text is drawn off the screen top left, move down and out and rotate
+        .attr("class", "inflationHeading")
+        .attr("y", -40)
+        .text("Inflation");
+
     // Add the Y Axis
-    svg.append("g")
-        .attr("class", "y axis")
-        .call(yAxis);
+    // svg.append("g")
+    //     .attr("class", "y axis")
+    //     .call(yAxis);
 
     });
 }

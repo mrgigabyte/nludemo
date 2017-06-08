@@ -92,6 +92,14 @@ function generateMapView() {
             return true;
         return false;
     }
+
+    var img1 = L.icon({
+        iconUrl: '../images/img-1.png',
+        iconSize: [48, 48]
+    });
+
+    L.marker([25.077787, 87.900375], {icon: img1}).addTo(map);
+
     var generateData = function() {
         $.post(baseApiUrl + "search", {"search": "What have been the product trends for ABFL by state in the last 12 months?"}, function(data, textStatus) {
             var ndata = data.rows.filter(checkSanity).map(function(a) { return [a[1], a[0]]});
