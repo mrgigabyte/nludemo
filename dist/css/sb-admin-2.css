@@ -3,6 +3,23 @@
  * Copyright 2013-2017 Start Bootstrap
  * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap/blob/gh-pages/LICENSE)
  */
+.lineGraph path {
+  stroke: steelblue;
+  stroke-width: 2;
+  fill: none;
+}
+.lineGraph .axis path,
+.lineGraph .axis line {
+  fill: none;
+  stroke: grey;
+  stroke-width: 1;
+  shape-rendering: crispEdges;
+}
+.lineGraph .line {
+  fill: url(#line-gradient);
+  stroke: url(#line-gradient);
+  stroke-width: 2px;
+}
 .navbar-default {
   background-color: white;
 }
@@ -892,7 +909,7 @@ button {
   width: 400px;
   height: 912px;
   top: 0;
-  z-index: 1000;
+  z-index: 1004;
 }
 .cbp-spmenu-right {
   right: -400px;

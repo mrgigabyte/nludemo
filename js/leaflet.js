@@ -88,10 +88,17 @@ function generateMapView() {
     var latFn = d3.randomNormal(center[0], 5.5);
     var longFn = d3.randomNormal(center[1], 5);
 
+    function checkSanity (a) {
+        if (!a)
+            return false;
+        if (a.constructor === Array)
+            return true;
+        return false;
+    }
     var generateData = function() {
         $.post(baseApiUrl + "search", {"search": "What have been the product trends for ABFL by state in the last 12 months?"}, function(data, textStatus) {
-            console.log(data.rows.length);
-            var ndata = data.rows.map(function(a) { return [a[1], a[0]]});
+            console.log(data.rows.length, data.rows.filter(checkSanity).length);
+            var ndata = data.rows.filter(checkSanity).map(function(a) { return [a[1], a[0]]});
             hexLayer.data(ndata);
         }, "json");
     };
