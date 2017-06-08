@@ -7,8 +7,13 @@ $(function() {
     $('#side-menu').metisMenu();
 });
 d3v3.select('.selected').html(daily_digest);
-d3v3.select('.notselected1').html(credit_policy2);
-d3v3.select('.notselected2').html(treasury);
+d3v3.select('.notselected1').html(treasury);
+d3v3.select('.notselected2').html(sales_efficiency);
+d3v3.select('.notselected3').html(cross_sell);
+d3v3.select('.notselected4').html(credit_policy2);
+d3v3.select('.notselected5').html(kycauthentication);
+d3v3.select('.notselected6').html(credit_policy1);
+
 //Loads the correct sidebar on window load,
 //collapses the sidebar on window resize.
 // Sets the min-height of #page-wrapper to window size
