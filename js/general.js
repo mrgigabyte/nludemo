@@ -15,6 +15,7 @@ $('.box.first').click(function() {
 	query = "What have been the product trends for ABFL in the last 12 months?";
 	var txt = $('.srch-container input').val(query);
 	drawSteamGraph();
+    $('.box').removeClass("selected");
 	removeHeaderButtons();
 	addHeaderButton("VS INFLATION", "addInflationGraph", "inflateBtn");
 	addHeaderButton("VS GDP", "doNothing");

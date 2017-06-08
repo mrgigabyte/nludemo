@@ -51,3 +51,11 @@ var trending = `<div class="box first">
 					</div>    
 				</div>
                 </div>`;
+var sales_efficiency=`<div class="sales-efficiency">
+                      What is the RoI of sales RMs by region for the digital business?
+                      </div>
+                      <img src="../images/img-sales-eff.png" srcset="../images/img-sales-eff@2x.png 2x,../images/img-sales-eff@3x.png 3x" class="img_sales_chart fix_margin_card">`;
+
+var daily_digest_extended = `<div class="daily_digest_extended">Your daily <span class="daily_digest_extended_second">digest</span></div>
+                            <img src="../images/img-digest-chart.png" srcset="../images/img-digest-chart@2x.png 2x, ../images/img-digest-chart@3x.png 3x"
+                            class="img_digest_chart fix_margin_card">`;
