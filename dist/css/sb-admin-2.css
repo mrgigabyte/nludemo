@@ -114,6 +114,36 @@ body {
   -webkit-transition: 0.3s;
   background: rgba(0, 0, 0, 0.5);
 }
+.sidebar-sources {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  height: 35%;
+}
+.sidebar-sources-container {
+  margin-left: 25%;
+  height: 100vh;
+}
+.sidebar-sources-content {
+  margin-top: 5%;
+  height: 100vh;
+  font-family: Theinhardt;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.67;
+  text-align: left;
+  color: #ffffff;
+}
+.sidebar-sources-content-txt {
+  color: rgba(255, 255, 255, 0.4);
+}
+.sidebar-sources-content-header {
+  font-size: 12px;
+  font-weight: 900;
+  line-height: 1.83;
+  text-align: left;
+  color: #ffffff;
+}
 .logo {
   background: url('../../images/logo.png');
   width: 91px;

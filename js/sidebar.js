@@ -41,7 +41,13 @@ function addSidebar(addComment, karDoAdd) {
             <div class="btnAdd">
                 <span class="btnAddComment">LEAVE A COMMENT OR INSIGHT</span>
             </div>
-        </div`;
+        </div><div class="sidebar-sources"><div class="sidebar-sources-container"><div class="sidebar-sources-content"><div class="sidebar-sources-content-header">SOURCES</div><br/>
+<div class="sidebar-sources-content-txt">Trending query source:</div>
+ABFL DWH<br/><br/>
+<div class="sidebar-sources-content-txt">Natural language query:</div>
+CIBIL Market Sizing Report (March 2017)<br/><br/>
+<div class="sidebar-sources-content-txt">Query #3:</div>
+CIBIL CIR Archives (March 2017)</div></div>`;
 
     var addCommentHTML = "";
     if (addComment) {
