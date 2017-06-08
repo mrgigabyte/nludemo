@@ -289,9 +289,9 @@ function barChart(type, api_type) {
                     line = [],
                     lineNumber = 0,
                     lineHeight = 1.1, // ems
-                    x = text.attr("x"),
-                    y = text.attr("y"),
-                    dy = 0, //parseFloat(text.attr("dy")),
+                    x = text.attr("x");
+                var y = (sentence.length > 9) ? text.attr("y") - 10 : text.attr("y");
+                var dy = 0, //parseFloat(text.attr("dy")),
                     tspan = text.text(null)
                                 .append("tspan")
                                 .attr("x", x)
