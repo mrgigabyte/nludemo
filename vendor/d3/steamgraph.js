@@ -1,7 +1,10 @@
 // drawSteamGraph();
 function drawSteamGraph() {
     $('body #commentsIndex').html("");
-    
+    $('#sidenavModified').html(`<div class="box Modifiedfirst">
+				<div class="modifiedfirstText">
+					What have been the product trends for ABFL in the last 12 months vs inflation</div><hr><div class="modified-container"><div class="modified-cancel">Cancel</div><div class="modified-save">Save</div></div>`);
+//    d3v3.select('.Modifiedfirst').html(modified_card);
     d3v3.select('.selected').html(allproducts);
     d3v3.select('.notselected1').html(credit_policy1);
     d3v3.select('.notselected2').html(cross_sell);

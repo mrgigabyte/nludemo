@@ -88,6 +88,13 @@ body {
   margin: 145px 0 0 0;
   padding-top: 30px;
 }
+text.wrap {
+  font-size: 20px;
+  font-weight: 500;
+  text-align: left;
+  color: #3d4351;
+  opacity: 0.6;
+}
 .biChart.double {
   margin-left: 100px;
   margin-top: 60px;
@@ -145,7 +152,8 @@ body {
   color: #ffffff;
 }
 .logo {
-  background: url('../../images/logo.png');
+  background: url('../../images/img-logo@2x.png');
+  background-size: 91px 72px;
   width: 91px;
   height: 17vh;
   margin-top: 27px;
@@ -235,7 +243,8 @@ body {
   padding: 7px 13px;
 }
 .searchicon {
-  background: url('../../images/search.png');
+  background: url('../../images/ic-search@2x.png');
+  background-size: 27px 27px;
   width: 24px;
   height: 13vh;
   margin-left: 64px;
@@ -314,7 +323,7 @@ button {
   height: 48px;
   box-shadow: 0 2px 80px 0 rgba(202, 33, 46, 0.14);
   position: fixed;
-  z-index: 1007;
+  z-index: 1000;
   border-radius: 50%;
   border: none;
   color: #fff;
@@ -411,8 +420,9 @@ button {
   color: #920029;
 }
 .nav-cust {
+  box-shadow: 0 2px 80px 0 rgba(60, 98, 159, 0.05);
   transition: 0.3s;
-  height: 145px;
+  height: 120px;
   position: absolute;
   width: 100%;
   z-index: 1000;
@@ -438,6 +448,23 @@ button {
 .box.first.isActive {
   transition: 0.5s;
   margin-top: 10%;
+}
+.box.firstModified {
+  z-index: 500;
+  font-size: 30px !important;
+  font-weight: 500 !important;
+  line-height: 1.17 !important;
+  background-color: #ffffff;
+  margin-top: 3.2%;
+}
+.box.firstModified.isActive {
+  transition: 0.5s;
+  margin-top: 10%;
+}
+.firstModifiedText {
+  font-size: 23px;
+  font-weight: 500;
+  line-height: 1.17;
 }
 .box:hover {
   position: relative ;
@@ -851,6 +878,7 @@ button {
 .cbp-spmenu {
   background-image: linear-gradient(187deg, #c50052, #920029);
   position: fixed;
+  z-index: 1110;
 }
 .cbp-spmenu h3 {
   color: #ffffff;
@@ -976,6 +1004,16 @@ rect.right {
   line-height: 1.43;
   text-align: left;
   color: #3d4351;
+}
+.modified-card {
+  font-size: 30px;
+  font-weight: 500;
+  line-height: 1.17;
+  text-align: left;
+  color: #3d4351;
+}
+.modified-container {
+  column-count: 3;
 }
 .initialcard {
   margin: 10px 15px 10px 15px;
