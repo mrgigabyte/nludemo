@@ -6,6 +6,7 @@ var showSuggestions = function() {
     $('.search-container-parent.searchSuggest').addClass('isActive');
     $('.fall-back').addClass('isActive');
     $('.searchicon').addClass('Active');
+    $('.box.first ').addClass('isActive');
     
     setTimeout(showRecent, 100);
 };
@@ -24,6 +25,7 @@ document.getElementById("nav-cust").addEventListener("focusout", function() {
         $('.search-container-parent.searchSuggest').removeClass('isActive');
         $('.fall-back').removeClass('isActive');
         $('.searchicon').removeClass('Active');
+         $('.box.first ').removeClass('isActive');
         $('.search-container-parent.searchSuggest').html("");
         $('.search-container-parent.buttons').show();
     }, 200);
