@@ -1,4 +1,4 @@
-//generateMapView();
+// generateMapView();
 
 function generateMapView() {
     addCommentsbar();
@@ -92,6 +92,30 @@ function generateMapView() {
             return true;
         return false;
     }
+
+    var img1 = L.icon({
+        iconUrl: '../images/img-1.png',
+        iconSize: [144, 144]
+    });
+
+    L.marker([21.049540, 76.532028], {icon: img1}).addTo(map);
+
+    var img2 = L.icon({
+        iconUrl: '../images/img-2.png',
+        iconSize: [144, 144]
+    });
+
+    L.marker([18.245655, 76.505356], {icon: img2}).addTo(map);
+
+    var img3 = L.icon({
+        iconUrl: '../images/img-3.png',
+        iconSize: [144, 144]
+    });
+
+    L.marker([19.853060, 74.000633], {icon: img3}).addTo(map);
+
+    $('.leaflet-marker-icon').click(openMenu);
+    
     var generateData = function() {
         $.post(baseApiUrl + "search", {"search": "What have been the product trends for ABFL by state in the last 12 months?"}, function(data, textStatus) {
             var ndata = data.rows.filter(checkSanity).map(function(a) { return [a[1], a[0]]});
