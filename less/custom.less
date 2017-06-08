@@ -92,9 +92,8 @@ body {
     }
 }
 .bigCol {
-    width: 563px;
+    width: 523px;
     height: 296px;
-    margin-bottom: 100px;
     float: left;
     .title {
         font-size: 36px;
@@ -243,13 +242,12 @@ text.wrap {
     margin-left:16px;
     &.isActive
     {
-        transition: 0.3s;
+        transition: all 50ms cubic-bezier(0.165, 0.84, 0.44, 1);
         bottom: 0;
-        transition-delay: 1s;
-         -webkit-transition-delay: 1s;
-      -webkit-transition:0.3s;
+        transition-delay: all 50ms cubic-bezier(0.165, 0.84, 0.44, 1);
+         -webkit-transition-delay: all 50ms cubic-bezier(0.165, 0.84, 0.44, 1);
+        -webkit-transition:all 50ms cubic-bezier(0.165, 0.84, 0.44, 1);
         height:64%;
-        
     }
 }
 .search-btn{
@@ -324,6 +322,7 @@ text.wrap {
 
 .box {
     cursor: pointer;
+    z-index: 10;
 }
 
 .searchHeader {

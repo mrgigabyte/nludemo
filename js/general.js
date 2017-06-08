@@ -37,11 +37,11 @@ function unsecuredNBFC() {
 function doubleBarChartOk() {
 	removeHeaderButtons();
 	doubleBarChart();
-	addHeaderButton("SHOW OPPORTUNITIES GEOGRAPHICALLY", "generateMapView", "generateMapView");
+	addHeaderButton("SHOW OPPORTUNITIES GEOGRAPHICALLY", "mapViewDedo", "thisismapview");
 }
 
 function mapViewDedo() {
-	$('#generateMapView').remove();
+	$('#thisismapview').remove();
 	generateMapView();
 }
 
