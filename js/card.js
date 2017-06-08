@@ -39,4 +39,15 @@ var initialcard=`<div class="initialcard">
             </div>`;
 var daily_digest='<div class="daily_digest">Your daily <span class="daily_digest_second">digest</span></div>';
 
-var cancel_save_type=`<div class="cancel_save_type">What have been the product trends for ABFL in the last 12 months vs inflation</div>`;
+var modified_card=`<div class="modified-card">What have been the product trends for ABFL in the last 12 months vs inflation</div><hr style="opacity:0.1;"><div class="modified-container"><div class="modified-cancel">Cancel</div><div class="modified-save">Save</div></div>`;
+
+var trending = `<div class="box first">
+				<div>
+					What have been the product trends for ABFL in the last 12 months?
+					<br><br>
+					<div class="subtitle"><img src="../images/ic-trending.png"   srcset="../images/ic-trending@2x.png 2x, ../images/ic-trending@3x.png 3x"
+                            class="ic_trending"><strong>
+                        TRENDING</strong>
+					</div>    
+				</div>
+                </div>`;
