@@ -8,6 +8,7 @@ function addHeaderButton(txt, funcname, btnId){
 
 function removeHeaderButtons(){
     $('.search-container-parent.buttons').html("");
+    $('body #commentsIndex').html("");
 }
 
 $('.box.first').click(function() {

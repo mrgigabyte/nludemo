@@ -1,6 +1,8 @@
 // generateMapView();
 
 function generateMapView() {
+    $('body #commentsIndex').html("");
+    
     d3v3.select('.selected').html(treasury);
     d3v3.select('.notselected1').html(churn);
     d3v3.select('.notselected2').html(cross_sell);

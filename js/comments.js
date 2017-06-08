@@ -14,7 +14,7 @@ function addCommentButton(txt, funcname, btnId, xpos,ypos){
 	var idTxt = "";
 	if (btnId) { var idTxt = `id="`+btnId+`"`}
 	var ele = `<button class="comment-btn" `+idTxt+` onclick="`+funcname+`()">`+txt+`</button>`;
-    $('body').append(ele);
+    $('body #commentsIndex').append(ele);
     $('#'+btnId).css('top', ypos - 24 +'px'); //or wherever you want it
     $('#'+btnId).css('left', xpos - 24 +'px');
 }
