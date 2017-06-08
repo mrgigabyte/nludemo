@@ -37,7 +37,8 @@ function addSidebar(addComment, karDoAdd) {
             </div>`;
     }
 
-    var addCommentBtn = `<div class="row comment">
+    var addCommentBtn = "";
+    `<div class="row comment">
             <div class="btnAdd">
                 <span class="btnAddComment">LEAVE A COMMENT OR INSIGHT</span>
             </div>

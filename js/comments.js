@@ -4,7 +4,7 @@ $('.bigCol').dblclick(function(eventData) {
     // create a marker using CSS #TODO
     addSidebar(true);
     addCommentButton(commentArray.length+1, "toggleMenu", "comment-btn"+commentArray.length+1, mouseX, mouseY)
-	toggleMenu();
+	openMenu();
     
 })
 

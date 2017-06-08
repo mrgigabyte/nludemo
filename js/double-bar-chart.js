@@ -2,13 +2,14 @@ var singleBarChart = barChart("single");
 var doubleBarChart = barChart("double");
 
 // singleBarChart();
-// FdoubleBarChart();
+doubleBarChart();
+
 var singleBarChartNBFC = barChart("single", "nbfc");
 
 function barChart(type, api_type) {
     return function() {
         $('body #commentsIndex').html("");
-        
+
     	d3v3.select("#page-wrapper").html("");
 
         if (type === "double") {
@@ -168,8 +169,8 @@ function barChart(type, api_type) {
                         .on("mouseover", function(d) {
                         tooltip.text(d[lCol]);
                             return tooltip
-                                .style("top", ((yPosByIndexText(d) + 405 + 115) + "px"))
-                                .style("left", (width - xFrom(d[lCol]) + 65 + 30) + "px" )
+                                .style("top", ((yPosByIndexText(d) + 408) + "px"))
+                                .style("left", (width - xFrom(d[lCol]) + 65 + 44) + "px" )
                                 .style("visibility", "visible");
                         })
                         .on("mouseout", function(){
@@ -194,8 +195,8 @@ function barChart(type, api_type) {
                         .on("mouseover", function(d) {
                             tooltip.text(d[lCol2]);
                             return tooltip
-                                    .style("top", ((yPosByIndexText(d) + 425 + 115) + "px"))
-                                    .style("left", (width - xFrom2(d[lCol2]) + 60 + 30) + "px" )
+                                    .style("top", ((yPosByIndexText(d) + 428) + "px"))
+                                    .style("left", (width - xFrom2(d[lCol2]) + 60 + 47) + "px" )
                                     .style("visibility", "visible");
                         })
                         .on("mouseout", function(){
@@ -213,7 +214,7 @@ function barChart(type, api_type) {
                     .attr("text-anchor", type === "double" ? "middle" : "left")
                     .attr('class', 'wrap')
                     .attr('randomInfo', function(d){return d.products;})
-                    .call(wrap, 140);
+                    .call(wrap, 110);
                     // .text(function(d){return d.products;});
 
             chart.selectAll("rect.right")
@@ -232,7 +233,7 @@ function barChart(type, api_type) {
                         tooltip.text(d[rCol]);
                         return tooltip
                                 .style("top", ((yPosByIndexText(d) + 408) + "px"))
-                                .style("left", (xTo(d[rCol]) + rightOffset + 72 + 30) + "px" )
+                                .style("left", (xTo(d[rCol]) + rightOffset + 72 + (type === "double" ? 30 : 0)) + "px" )
                                 .style("visibility", "visible");
                     })
                     .on("mouseout", function(){
@@ -255,8 +256,8 @@ function barChart(type, api_type) {
                     .on("mouseover", function(d) {
                         tooltip.text(d[rCol2]);
                         return tooltip
-                                .style("top", ((yPosByIndexText(d) + 430) + "px"))
-                                .style("left", (xTo2(d[rCol2]) + rightOffset + 45 + 60) + "px" )
+                                .style("top", ((yPosByIndexText(d) + 428) + "px"))
+                                .style("left", (xTo2(d[rCol2]) + rightOffset + 72 + (type === "double" ? 30 : 0)) + "px" )
                                 .style("visibility", "visible");
                     })
                     .on("mouseout", function(){
