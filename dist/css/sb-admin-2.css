@@ -396,7 +396,6 @@ button {
   top: 0px;
   right: 0px;
   height: 100vh;
-  z-index: 500;
 }
 .row.topBar {
   margin: 0;
@@ -459,7 +458,7 @@ button {
   height: 120px;
   position: absolute;
   width: 100%;
-  z-index: 1000;
+  z-index: 900;
   top: 0px;
 }
 .nav-cust.isActive {
