@@ -2,7 +2,7 @@
 
 function generateMapView() {
     addCommentsbar();
-    
+
     $('body #commentsIndex').html("");
 
     d3v3.select('.selected').html(treasury);
@@ -90,8 +90,9 @@ function generateMapView() {
 
     var generateData = function() {
         $.post(baseApiUrl + "search", {"search": "What have been the product trends for ABFL by state in the last 12 months?"}, function(data, textStatus) {
-            var data = data.rows.map(function(a) { return [a[1], a[0]]});
-            hexLayer.data(data);
+            console.log(data.rows.length);
+            var ndata = data.rows.map(function(a) { return [a[1], a[0]]});
+            hexLayer.data(ndata);
         }, "json");
     };
 }
