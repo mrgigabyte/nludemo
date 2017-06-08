@@ -3,5 +3,6 @@ $('.bigCol').dblclick(function(eventData) {
 	var mouseY = eventData.originalEvent.clientY;
 
 	// create a marker using CSS #TODO
+	addSidebar(true);
 	toggleMenu();
 })

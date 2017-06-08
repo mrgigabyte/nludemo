@@ -2,7 +2,7 @@ var singleBarChart = barChart("single");
 var doubleBarChart = barChart("double");
 
 // singleBarChart();
-doubleBarChart();
+// doubleBarChart();
 var singleBarChartNBFC = barChart("single", "nbfc");
 
 function barChart(type, api_type) {
