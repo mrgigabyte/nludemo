@@ -1,4 +1,9 @@
 var showSuggestions = function() {
+    // if the modified card is there... change its text
+    // TODOALPHA
+    if($('.sidenavModified').hasClass('isActive')!=false){
+        $('.modifiedfirstText').text($('.srch-container input').val());}
+    
     var str = this.value;
     $('.search-container-parent.buttons').hide();
     $('.nav-cust').addClass("isActive");
@@ -7,13 +12,17 @@ var showSuggestions = function() {
     $('.fall-back').addClass('isActive');
     $('.searchicon').addClass('Active');
     $('.box.first ').addClass('isActive');
-    
+    if($('.sidenavModified').hasClass('isActive')==false){
+    $('.trending_box_container').addClass('isSearchActive');
+    $('.trending_box_container').removeClass('isActive');}
     setTimeout(showRecent, 100);
 };
 
 document.getElementById("searchHeader").addEventListener("keyup", showSuggestions);
 document.getElementById("searchHeader").addEventListener("click", function() {
-    var txt = $('.srch-container input').val("");
+    if ($('.sidenavModified').hasClass('isActive')==false) // modified card is not open) // TODOALPHA
+    {var txt = $('.srch-container input').val("");}
+    else{var txt = $('.srch-container input').val();}
     showSuggestions();
 });
 
@@ -28,6 +37,9 @@ document.getElementById("nav-cust").addEventListener("focusout", function() {
          $('.box.first ').removeClass('isActive');
         $('.search-container-parent.searchSuggest').html("");
         $('.search-container-parent.buttons').show();
+        if($('.sidenavModified').hasClass('isActive')==false){
+    $('.trending_box_container').removeClass('isSearchActive');
+    $('.trending_box_container').addClass('isActive');}
     }, 200);
 });
 

@@ -7,16 +7,19 @@ var vertical2;
 function drawSteamGraph() {
     $('body #commentsIndex').html("");
     $('#sidenavModified').html(`
-                <div class="box trendingModified trending_box_container">What have been the product trends for ABFL in the last 12 months?
+                <div class="box trendingModified trending_box_container">How many customers have more than 10 Cr and collateralized property?
 					<br><br>
 					<div class="subtitle"><img src="../images/ic-trending.png"   srcset="../images/ic-trending@2x.png 2x, ../images/ic-trending@3x.png 3x"
                             class="ic_trending"><strong>
                         TRENDING</strong>
 					</div>    
 				</div>
-                <div class="box Modifiedfirst">
+                <div class="box" style="margin: 25px auto;
+    padding: 15px 40px;
+    width: 320px;
+    padding-top: 35px;">
 				<div class="modifiedfirstText">
-					What have been the product trends for ABFL in the last 12 months?</div><hr><button class="modified-save" onclick=ModifiedSave()>Save</button></div>`);
+					What have been the product trends for ABFL in the last 12 months?</div><hr id="modifiedHR"><button class="modified-save" onclick=ModifiedSave() id="modifiedSave">Save</button></div>`);
 //    d3v3.select('.Modifiedfirst').html(modified_card);
     d3v3.select('.selected').html(daily_digest_extended);
     d3v3.select('.notselected1').html(treasury);

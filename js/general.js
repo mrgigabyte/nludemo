@@ -26,6 +26,21 @@ function unsecuredLoans() {
 	removeHeaderButtons();
 	addHeaderButton("FOR NBFC", "unsecuredNBFC", "nbfcButton");
 	addHeaderButton("VS RISK", "doubleBarChartOk");
+    $('#sidenavModified').html(`
+                <div class="box trendingModified trending_box_container">How many customers have more than 10 Cr and collateralized property?
+					<br><br>
+					<div class="subtitle"><img src="../images/ic-trending.png"   srcset="../images/ic-trending@2x.png 2x, ../images/ic-trending@3x.png 3x"
+                            class="ic_trending"><strong>
+                        TRENDING</strong>
+					</div>    
+				</div>
+                <div class="box" style="margin: 25px auto;
+    padding: 15px 40px;
+    width: 320px;
+    padding-top: 35px;">
+				<div class="modifiedfirstText">
+					What have been the product trends for ABFL in the last 12 months?</div><hr id="modifiedHR"><button class="modified-save" onclick=ModifiedSave() id="modifiedSave">Save</button></div>`);
+    $('.modifiedfirstText').text($('.srch-container input').val());
 }
 
 function unsecuredNBFC() {
@@ -48,6 +63,11 @@ function mapViewDedo() {
 }
 
 function addInflationGraph() {
+    // UPDATE SEARCH QUERY
+    // TODOALPHA
+    // UPDATE MODIFIED CARD IS THERE
+     $('.srch-container input').val("What have been the product trends for ABFL in the last 12 months vs inflation");
+    $('.modifiedfirstText').text("What have been the product trends for ABFL in the last 12 months vs inflation");
 	$('#inflateBtn').remove();
 	plotLineGraph();
 }
@@ -59,7 +79,10 @@ function doNothing() {
 function ModifiedSave(){
     $('.trending_box_container').addClass('isActive');
     $('.sidenavModified').removeClass('isActive');
+    $('#modifiedHR').remove();
+    $('#modifiedSave').remove();
     
+//  $("<div class='box selected' style='height:400px;'>HI THIS IS ME</div>").prependTo('#sidenav').hide().slideDown();
 }
 
 baseApiUrl = "http://52.66.179.123:4000/";
