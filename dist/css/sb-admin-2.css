@@ -265,8 +265,8 @@ text.wrap {
   height: 64%;
 }
 .search-btn {
-  padding: 8px 24px 10px 24px;
-  margin: 10px;
+  padding: 12px 24px 10px 24px;
+  margin: 4px;
   height: 40px;
   border-radius: 20.5px;
   background-color: #eca305;
@@ -488,6 +488,7 @@ button {
   color: #920029;
 }
 .nav-cust {
+  border: 0px;
   box-shadow: 0 2px 80px 0 rgba(60, 98, 159, 0.05);
   transition: 0.3s;
   height: 120px;
