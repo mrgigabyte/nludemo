@@ -74,6 +74,10 @@ function barChart(type, api_type) {
             .attr("class", "hoverTooltip");
 
         function render(data) {
+            console.log(data);
+            data = data['rows'];
+            data.forEach(getTypes);
+
             var chart = d3v3.select("#page-wrapper")
                     .append('svg')
                     .attr('class', 'biChart '+type)
@@ -118,7 +122,7 @@ function barChart(type, api_type) {
                     return d[lCol2];
                 }));
             }
-
+            console.log(data);
             y.domain(data.map(function (d) {
                 return d.products;
             }));
@@ -167,7 +171,7 @@ function barChart(type, api_type) {
                         })
                         .attr("height", 10)
                         .on("mouseover", function(d) {
-                        tooltip.text(d[lCol]);
+                        tooltip.text(d[lCol+"Readable"]);
                             return tooltip
                                 .style("top", ((yPosByIndexText(d) + 408) + "px"))
                                 .style("left", (width - xFrom(d[lCol]) + 65 + 44) + "px" )
@@ -193,7 +197,7 @@ function barChart(type, api_type) {
                         })
                         .attr("height", 10)
                         .on("mouseover", function(d) {
-                            tooltip.text(d[lCol2]);
+                            tooltip.text(d[lCol2+"Readable"]);
                             return tooltip
                                     .style("top", ((yPosByIndexText(d) + 428) + "px"))
                                     .style("left", (width - xFrom2(d[lCol2]) + 60 + 47) + "px" )
@@ -230,7 +234,7 @@ function barChart(type, api_type) {
                     })
                     .attr("height", 10)
                     .on("mouseover", function(d) {
-                        tooltip.text(d[rCol]);
+                        tooltip.text(d[rCol+"Readable"]);
                         return tooltip
                                 .style("top", ((yPosByIndexText(d) + 408) + "px"))
                                 .style("left", (xTo(d[rCol]) + rightOffset + 72 + (type === "double" ? 30 : 0)) + "px" )
@@ -254,7 +258,7 @@ function barChart(type, api_type) {
                     })
                     .attr("height", 10)
                     .on("mouseover", function(d) {
-                        tooltip.text(d[rCol2]);
+                        tooltip.text(d[rCol2+"Readable"]);
                         return tooltip
                                 .style("top", ((yPosByIndexText(d) + 428) + "px"))
                                 .style("left", (xTo2(d[rCol2]) + rightOffset + 72 + (type === "double" ? 30 : 0)) + "px" )
@@ -319,13 +323,22 @@ function barChart(type, api_type) {
             if (type === "double") {
                 d[lCol] = +d[lCol];
                 d[lCol2] = +d[lCol2];
+                // d[lCol+"Readable"] = d[lCol+"Readable"];
+                // d[lCol2+"Readable"] = d[lCol2+"Readable"];
             }
 
             d[rCol] = +d[rCol];
             d[rCol2] = +d[rCol2];
+            // d[rCol+"Readable"] = d[rCol+"Readable"];
+            // d[rCol2+"Readable"] = d[rCol2+"Readable"];
             return d;
         }
 
-        d3v3.csv("../assets/un.csv", getTypes, render);
+        $.ajax({
+            type: "POST",
+            url: baseApiUrl + 'search',
+            data: { "search" : "The returns of unsecured lending" },
+            success: render
+        });
     }
 }
