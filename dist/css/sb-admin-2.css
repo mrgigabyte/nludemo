@@ -184,6 +184,24 @@ text.wrap {
   text-align: left;
   color: #ffffff;
 }
+.sidenavModified.isActive {
+  position: relative;
+  z-index: 950;
+}
+.modified-save {
+  padding: 10px 100px;
+  outline: none;
+  border: 0px;
+  background: #ffffff;
+  color: orange;
+}
+.modifiedfirstText {
+  font-size: 30px;
+  font-weight: 500;
+  line-height: 1.17;
+  text-align: left;
+  color: #3d4351;
+}
 .logo {
   background: url('../../images/img-logo@2x.png');
   background-size: 91px 72px;
@@ -481,6 +499,21 @@ button {
 .box.first.isActive {
   transition: 0.5s;
   margin-top: 10%;
+}
+.box.trendingModified {
+  color: #ffffff;
+  background-image: linear-gradient(219deg, #c50052, #920029);
+  margin-top: 3.2%;
+}
+.trending_box_container {
+  position: relative;
+  z-index: 950;
+  height: 10%;
+  display: none;
+}
+.trending_box_container.isActive {
+  transition: all 1s ease;
+  display: block;
 }
 .box.firstModified {
   z-index: 500;

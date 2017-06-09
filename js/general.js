@@ -49,5 +49,10 @@ function doNothing() {
 	console.log('I do nothing. Really.');
 }
 
+function ModifiedSave(){
+    $('.trending_box_container').addClass('isActive');
+    $('.sidenavModified').removeClass('isActive');
+    
+}
 
 baseApiUrl = "http://52.66.179.123:4000/";

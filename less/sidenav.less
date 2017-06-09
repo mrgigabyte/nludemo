@@ -103,6 +103,24 @@ box-shadow: 0 2px 80px 0 rgba(60, 98, 159, 0.15)!important;
     }
 }
 
+.box.trendingModified{
+    color:#ffffff;
+    background-image: linear-gradient(219deg, #c50052, @red-wine);
+    margin-top: 3.2%;
+}
+
+.trending_box_container{
+    position: relative;
+    z-index: 950;
+    height:10%;
+    display:none;
+    &.isActive{
+        transition: all 1s ease;
+        display: block;
+    }
+}
+
+
 .box.firstModified{
     z-index: 500;
     font-size: 30px !important;

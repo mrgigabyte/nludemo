@@ -4,9 +4,17 @@ var selectedDate;
 
 function drawSteamGraph() {
     $('body #commentsIndex').html("");
-    $('#sidenavModified').html(`<div class="box Modifiedfirst">
+    $('#sidenavModified').html(`
+                <div class="box trendingModified trending_box_container">What have been the product trends for ABFL in the last 12 months?
+					<br><br>
+					<div class="subtitle"><img src="../images/ic-trending.png"   srcset="../images/ic-trending@2x.png 2x, ../images/ic-trending@3x.png 3x"
+                            class="ic_trending"><strong>
+                        TRENDING</strong>
+					</div>    
+				</div>
+                <div class="box Modifiedfirst">
 				<div class="modifiedfirstText">
-					What have been the product trends for ABFL in the last 12 months vs inflation</div><hr><div class="modified-container"><div class="modified-cancel">Cancel</div><div class="modified-save">Save</div></div>`);
+					What have been the product trends for ABFL in the last 12 months?</div><hr><button class="modified-save" onclick=ModifiedSave()>Save</button></div>`);
 //    d3v3.select('.Modifiedfirst').html(modified_card);
     d3v3.select('.selected').html(daily_digest_extended);
     d3v3.select('.notselected1').html(treasury);
