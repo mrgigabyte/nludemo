@@ -44,16 +44,20 @@ function unsecuredLoans() {
 }
 
 function unsecuredNBFC() {
+    $('.modifiedfirstText').text($('#searchHeader').val()+" for NBFC");
 	$('#searchHeader').val($('#searchHeader').val()+" for NBFC");
 	singleBarChartNBFC();
 	removeHeaderButtons();
+    
 	addHeaderButton("VS RISK", "doubleBarChartOk");
 }
 
 function doubleBarChartOk() {
+    $('.modifiedfirstText').text($('#searchHeader').val()+" vs RISK");
 	$('#searchHeader').val($('#searchHeader').val()+" vs RISK");
 	removeHeaderButtons();
 	doubleBarChart();
+    
 	addHeaderButton("SHOW OPPORTUNITIES GEOGRAPHICALLY", "mapViewDedo", "thisismapview");
 }
 
@@ -66,7 +70,7 @@ function addInflationGraph() {
     // UPDATE SEARCH QUERY
     // TODOALPHA
     // UPDATE MODIFIED CARD IS THERE
-     $('.srch-container input').val("What have been the product trends for ABFL in the last 12 months vs inflation");
+    $('.srch-container input').val("What have been the product trends for ABFL in the last 12 months vs inflation");
     $('.modifiedfirstText').text("What have been the product trends for ABFL in the last 12 months vs inflation");
 	$('#inflateBtn').remove();
 	plotLineGraph();
