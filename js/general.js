@@ -2,7 +2,6 @@ function addHeaderButton(txt, funcname, btnId){
 	var idTxt = "";
 	if (btnId) { var idTxt = `id="`+btnId+`"`}
 	var ele = `<button class="search-btn" `+idTxt+` onclick="`+funcname+`()">`+txt+`</button>`;
-	console.log(ele);
 	$('.search-container-parent.buttons').append(ele);
 }
 

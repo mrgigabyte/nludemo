@@ -84,10 +84,8 @@ box-shadow: 0 2px 51px 0 rgba(60, 98, 159, 0.15)">
 
     var yAxis = d3v3.svg.axis()
         .scale(y);
-
-    var yAxisr = d3v3.svg.axis()
-        .scale(y)
-        .tickFormat (function (d) { return formatValue(d).replace('G', 'B'); });
+        // .tickFormat(d3v3.formatPrefix(".1", 1e6));
+        // .tickFormat(d3v3.format(".0s"));
 
     var stack = d3v3.layout.stack()
         .offset("silhouette")
@@ -150,7 +148,7 @@ box-shadow: 0 2px 51px 0 rgba(60, 98, 159, 0.15)">
     var plotGraph = function(response) {
         var data = response.rows;
 
-        console.log(data);
+        // console.log(data);
 
         data.forEach(function(d) {
             d.date = format.parse(d.date);
@@ -201,7 +199,9 @@ box-shadow: 0 2px 51px 0 rgba(60, 98, 159, 0.15)">
         svg.append("g")
             .attr("class", "y-axis")
             .attr("transform", "translate(" + docWidth * 0.06 + ", 0)")
-            .call(yAxis.orient("left"));
+            .call(yAxis.orient("left").tickFormat(d3v3.format("s")));
+            // .call(yAxis.orient("left").tickFormat(function(d){ return console.log(d); d["text"]; }));
+            // .tickFormat(function(d){return d["text"]}));
 
         //  svg.append("g")
         //      .attr("class", "y axis")
