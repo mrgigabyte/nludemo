@@ -31,8 +31,8 @@ $('#searchHeader').on('keyup', function(e) {
             success: function(data) {
                 if ( data.chart_type == "streamo" )
                     drawSteamGraph(data);
-                if ( data.chart_type == 'doublebar')
-                    doubleBarChart(data);
+                if ( data.chart_type == 'double')
+                    barChart("single", data)();
                 if ( data.chart_type == 'map')
                     generateMapView(data);
             }

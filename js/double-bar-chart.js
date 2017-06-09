@@ -4,9 +4,9 @@ var doubleBarChart = barChart("double");
 // singleBarChart();
 // doubleBarChart();
 
-var singleBarChartNBFC = barChart("single", "nbfc");
+var singleBarChartNBFC = barChart("single");
 
-function barChart(type, api_type) {
+function barChart(type, sdata) {
     return function() {
         $('body #commentsIndex').html("");
 //        $('#sidenavModified').html(trending);
@@ -334,11 +334,16 @@ function barChart(type, api_type) {
             return d;
         }
 
-        $.ajax({
-            type: "POST",
-            url: baseApiUrl + 'search',
-            data: { "search" : "The returns of unsecured lending" },
-            success: render
-        });
+        if(!sdata) {
+            $.ajax({
+                type: "POST",
+                url: baseApiUrl + 'search',
+                data: { "search" : "The returns of unsecured lending" },
+                success: render
+            });
+        }
+        else {
+            render(sdata);
+        }
     }
 }
