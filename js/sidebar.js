@@ -1,14 +1,12 @@
 //addSidebar();
 //addCommentsbar();
-
 var commentArray = [];
-addSidebar();
+
 
 function addSidebar(addComment, karDoAdd) {
     if (karDoAdd) {
         commentArray.push($('.commentText').val());
     }
-
     var header = `<div class="row topBar">
                     <div class="col-md-2">
                         <img src="../images/ic-insights.svg" class="image">
@@ -30,17 +28,17 @@ function addSidebar(addComment, karDoAdd) {
                         <p class="bold-Number">`+i+`</p>
                     </div>
                     <div class="col-xs-10">
-                        <p class="copy_pros">&copy pros</p>
+                        <p class="copy_pros">Rakesh</p>
                         <p class="comment-for-item">`+commentArray[i-1  ]+`</p>
                     </div>
                 </div>
             </div>`;
     }
-
-    var addCommentBtn =  
+        var addCommentBtn =  
     `<div class="comment-reply"></div><div class="sidebar-sources"><div class="sidebar-sources-container"><div class="sidebar-sources-content"><div class="sidebar-sources-content-header">SOURCES</div><br/>
-CIBIL Market Sizing Report (March 2017)<br/>
-CIBIL CIR Archives (March 2017)</div></div>`;
+ADFL DWH</div></div>`;
+
+   
 
     var addCommentHTML = "";
     if (addComment) {
@@ -51,7 +49,7 @@ CIBIL CIR Archives (March 2017)</div></div>`;
                         <p class="bold-Number">`+(commentArray.length+1)+`</p>
                     </div>
                     <div class="col-xs-10">
-                        <p class="copy_pros">&copy pros</p>
+                        <p class="copy_pros">Rakesh</p>
                         <textarea class="commentText"></textarea>
                         <div class="float-right">
                             <span class="btun" onclick="addSidebar();">Cancel</span>
@@ -79,7 +77,7 @@ var comment_reply = function commentReply(){
                     <div class="col-xs-2">
                     </div>
                     <div class="col-xs-10">
-                        <p class="copy_pros">&copy Sekhar</p>
+                        <p class="copy_pros">Sekhar</p>
                         <p class="comment-for-item">Great job, @pros, let us also discuss the trends in average tenure and ticket size.</p>
                     </div>
                 </div>
@@ -130,14 +128,18 @@ function addCommentsbar() {
                 </div>
             </div>
         </div>`;
+     var addCommentBtn =  
+    `<div class="comment-reply"></div><div class="sidebar-sources"><div class="sidebar-sources-container"><div class="sidebar-sources-content"><div class="sidebar-sources-content-header">SOURCES</div><br/>
+CIBIL Market Sizing Report (March 2017)<br/>
+CIBIL CIR Archives (March 2017)</div></div>`;
 
         
                     // <div class="btnAdd">
                     //     <span class="btnAddComment">LEAVE A COMMENT OR INSIGHT</span>
                     // </div>
     
-    $('#cbp-spmenu-s2').html(html);
+    $('#cbp-spmenu-s2').html(html+addCommentBtn);
 
     document.getElementById( 'closeMenu' ).onclick = function() { toggleMenu(); };
 }
-
+addSidebar();

@@ -10,7 +10,7 @@ function generateMapView() {
     d3v3.select('.notselected2').html(cross_sell);
     $('#page-wrapper').html("");
     $("#page-wrapper").append('<div class="row map"> \
-	   <div id="map" style="width: 912px; height: 780px; margin-top: 20px; background: #fff;"> \
+	   <div id="map" style="width: 912px; height: 780px; margin-top: 20px; background: #fff;"><div style="width: 456px;height: 100px;opacity: 0.2;font-size: 64px;letter-spacing: -3px;margin-left: 5%;font-weight: 500;text-align: left;color: #3d4351;">Opportunity</div>\
 	</div></div>');
 
     var center = [22.4, 78.9629];

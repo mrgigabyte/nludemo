@@ -22,7 +22,7 @@ function barChart(type, api_type) {
                 </div>
                 <div class="chartHead">
                     <div class="title">Return</div>
-                    <div class="description">Good Understanding INR CR</div>
+                    <div class="description">Good Outstanding INR CR</div>
                 </div>
                 </div>
             `);

@@ -2,7 +2,8 @@ var showSuggestions = function() {
     // if the modified card is there... change its text
     // TODOALPHA
     if($('.sidenavModified').hasClass('isActive')!=false){
-        $('.modifiedfirstText').text($('.srch-container input').val());}
+        $('.modifiedfirstText').text($('.srch-container input').val());
+    $('.trending-text').text($('.srch-container input').val());}
     
     var str = this.value;
     $('.search-container-parent.buttons').hide();

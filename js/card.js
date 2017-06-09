@@ -43,8 +43,9 @@ var modified_card=`<div class="modified-card">What have been the product trends 
 
 var trending = `<div class="box first">
 				<div>
-					What have been the product trends for ABFL in the last 12 months?
-					<br><br>
+                    <div class="trending-text">
+					What have been the product trends for ABFL in the last 12 months?<br></div>
+					<br>
 					<div class="subtitle"><img src="../images/ic-trending.png"   srcset="../images/ic-trending@2x.png 2x, ../images/ic-trending@3x.png 3x"
                             class="ic_trending"><strong>
                         TRENDING</strong>

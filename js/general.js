@@ -1,3 +1,6 @@
+
+
+
 function addHeaderButton(txt, funcname, btnId){
 	var idTxt = "";
 	if (btnId) { var idTxt = `id="`+btnId+`"`}
