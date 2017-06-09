@@ -64,7 +64,7 @@ function barChart(type, api_type) {
                 .range([50, width]);
         }
 
-        var tooltip = d3.select("body")
+        var tooltip = d3v3.select("body")
             .append("div")
             .style("position", "absolute")
             .style("z-index", "10")

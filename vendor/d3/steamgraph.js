@@ -2,7 +2,18 @@
 
 var selectedDate;
 var lx;
+var ly;
 var vertical2;
+var inflationValue;
+
+var tooltip = d3v3.select("body")
+    .append("div")
+    .style("position", "absolute")
+    .style("z-index", "10")
+    .style("visibility", "hidden")
+    .style("background", "rgba(255,255,255,0)")
+    .text("a simple tooltip")
+    .attr("class", "hoverTooltip");
 
 function drawSteamGraph() {
     $('body #commentsIndex').html("");
@@ -56,17 +67,6 @@ box-shadow: 0 2px 51px 0 rgba(60, 98, 159, 0.15)">
     var width = document.body.clientWidth - margin.left - margin.right;
     var height = 500 - margin.top - margin.bottom;
 
-    var tooltip = d3v3.select("body")
-        .append("div")
-        .attr("class", "remove")
-        .style("opacity", "0.2")
-        .style("background-color", "#383f49")
-        .style("position", "absolute")
-        .style("z-index", "1")
-        .style("visibility", "hidden")
-        .style("top", "30px")
-        .style("left", "55px");
-
     var x = d3v3.time.scale()
         .range([0, width]);
 
@@ -80,7 +80,7 @@ box-shadow: 0 2px 51px 0 rgba(60, 98, 159, 0.15)">
         .scale(x)
         .orient("bottom")
         .ticks(5)
-        .tickFormat(d3v3.time.format("%b"));
+        .tickFormat(d3v3.time.format("%b '%y"));
 
     var yAxis = d3v3.svg.axis()
         .scale(y);
@@ -245,9 +245,7 @@ box-shadow: 0 2px 51px 0 rgba(60, 98, 159, 0.15)">
                     .classed("hover", true)
                     .attr("stroke", strokecolor)
                     .attr("stroke-width", "0.5px"),
-                    // tooltip.html("<p>" + d.product + "<br>" + pro + "</p>").style("visibility", "visible");
 
-                // console.log('hi', d);
                 $('#productName').html(d.key);
 
             })
@@ -262,8 +260,6 @@ box-shadow: 0 2px 51px 0 rgba(60, 98, 159, 0.15)">
                 d3v3.select(this)
                     .classed("hover", false)
                     .attr("stroke-width", "0px");
-
-                // tooltip.html("<p>" + d.product + "<br>" + pro + "</p>").style("visibility", "hidden");
             })
 
         function getMod(a) {
@@ -294,14 +290,68 @@ box-shadow: 0 2px 51px 0 rgba(60, 98, 159, 0.15)">
                 $(".x-axis text").eq(selectedIndex).addClass("selectedTime");
             }
         }
-        function updateVerticals() {
+        function updateVerticals(mousex) {
             var mousex_1 = mousex[0] + 5;
             vertical.style("left", mousex_1 + "px");
             var mousex_2 = mousex[0];
             selectedDate = x.invert(mousex_2);
             updateHeadings(mousex_2);
+            var leftx = -100;
+
             if(lx) {
-                vertical2.style("left", (299 + (lx(selectedDate) - 244) * (715 - 299) / (601 - 244) ) + "px");
+                leftx = (299 + (lx(selectedDate) - 244) * (715 - 299) / (601 - 244) );
+                vertical2.style("left", leftx + "px");
+
+                // console.log(inflationValue);
+
+                // function findYatX(x, linePath) {
+                //      function getXY(len) {
+                //           console.log(len);
+                //           var point = linePath.getPointAtLength(len);
+                //           return [point.x, point.y];
+                //      }
+                //      var curlen = 0;
+                //      console.log(getXY(curlen), x);
+                //      while (getXY(curlen)[0] < x) { 
+                //         console.log(getXY(curlen), x);
+                //         curlen += 0.01;
+                //      }
+                //      return getXY(curlen);
+                // }
+
+                // var findYatXbyBisection = function(x, path, error){
+                //   var length_end = path.getTotalLength()
+                //     , length_start = 0
+                //     , point = path.getPointAtLength((length_end + length_start) / 2) // get the middle point
+                //     , bisection_iterations_max = 50
+                //     , bisection_iterations = 0
+
+                //   error = error || 0.01
+
+                //   while (x < point.x - error || x > point.x + error) {
+                //     // get the middle point
+                //     point = path.getPointAtLength((length_end + length_start) / 2)
+                //     console.log(point);
+
+                //     if (x < point.x) {
+                //       length_end = (length_start + length_end)/2
+                //     } else {
+                //       length_start = (length_start + length_end)/2
+                //     }
+
+                //     // Increase iteration
+                //     if(bisection_iterations_max < ++ bisection_iterations)
+                //       break;
+                //   }
+                //   return point.y
+                // }
+
+                // console.log(lx(selectedDate), findYatXbyBisection(lx(selectedDate), document.getElementById("myline"), 10)); //, findYatX(lx(selectedDate), document.getElementById("myline")));
+
+                // tooltip.text(inflationValue)
+                //     .style("top", 830 + "px")
+                //     .style("left", leftx + 3 + "px")
+                //     .style("visibility", "visible");
             }
         }
 
@@ -347,7 +397,7 @@ function plotLineGraph() {
     lx = d3v3.time.scale()
         .range([0, width]);
 
-    var y = d3v3.scale.linear()
+    ly = d3v3.scale.linear()
         .range([height, 0]);
 
     var xAxis = d3v3.svg.axis()
@@ -357,17 +407,20 @@ function plotLineGraph() {
         .tickFormat(d3v3.time.format("%b"));
 
     var yAxis = d3v3.svg.axis()
-        .scale(y)
+        .scale(ly)
         .orient("left");
         // .ticks(5);
 
     var valueline = d3v3.svg.line()
         .x(function(d) { return lx(d.date); })
-        .y(function(d) { return y(d.inflation); })
+        .y(function(d) { return ly(d.inflation); })
         .interpolate("basis");
 
-    var svg = d3v3.select(".chart").append("svg").attr("class", "lineGraph")
+    var bisectDate = d3.bisector(function(d) { return d.date; }).left;
 
+    var svg = d3v3.select(".chart")
+        .append("svg")
+        .attr("class", "lineGraph")
         .attr("width", width + margin.left + margin.right)
         .attr("height", height + margin.top + margin.bottom)
         .append("g")
@@ -385,7 +438,7 @@ function plotLineGraph() {
     
     // Scale the range of the data
     lx.domain(d3v3.extent(data, function(d) { return d.date; }));
-    y.domain([0, d3v3.max(data, function(d) { return d.inflation; })]);
+    ly.domain([0, d3v3.max(data, function(d) { return d.inflation; })]);
     
 
     svg.append("linearGradient")                
@@ -400,7 +453,8 @@ function plotLineGraph() {
             {offset: "78.5%", color: "#920029"},        
             {offset: "78.5%", color: "#f5f5fa"},    
             {offset: "100%", color: "#f5f5fa"} 
-        ])       
+        ])
+
     .enter().append("stop")         
         .attr("offset", function(d) { return d.offset; })   
         .attr("stop-color", function(d) { return d.color; });
@@ -409,28 +463,17 @@ function plotLineGraph() {
     var maxX = lx(d3v3.extent(data, function(d) { return d.date; })[1]);
     svg.append("path")
         .attr("class", "line").attr("fill","url(#")
-        .attr("d", ''+valueline(data)+"L0,"+y(0)+'L'+maxX+","+y(0))
-        .on("mousemove", function(d, i) {
-                // console.log(selectedDate, x(selectedDate));
-                // selectedDate = x.invert(mousex);
-                // var invertedx = x.invert(mousex);
-                // console.log("invertedx", invertedx);
-                // invertedx = invertedx.getMonth() + invertedx.getDate();
-
-                // console.log("invertedx", invertedx);
-                // var selected = i;
-                // console.log("selected", x());
-
-                // for (var k = 0; k < selected.length; k++) {
-                //     console.log
-                //     datearray[k] = selected[k].date
-                //     datearray[k] = datearray[k].getMonth() + datearray[k].getDate();
-                //     console.log("date aarray k", datearray[k]);
-                // }
-
-                // mousedate = datearray.indexOf(invertedx);
-                // console.log("sab", d, d.values, mousedate);
-                // pro = d.values[mousedate].metric;
+        .attr("id", "myline")
+        .attr("d", ''+valueline(data)+"L0,"+ly(0)+'L'+maxX+","+ly(0))
+        .on("mousemove", function() {
+                // var x0 = lx.invert(d3v3.mouse(this)[0]),
+                // i = bisectDate(data, x0, 1),
+                // d0 = data[i - 1],
+                // d1 = data[i],
+                // d = x0 - d0.date > d1.date - x0 ? d1 : d0;
+                // console.log(d);
+                // focus.attr("transform", "translate(" + lx(d.date) + "," + ly(d.inflation) + ")");
+                // focus.select("text").text(d.inflation);
             })
 
     // Add the X Axis
