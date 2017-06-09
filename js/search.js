@@ -5,6 +5,7 @@ var showSuggestions = function() {
         $('.modifiedfirstText').text($('.srch-container input').val());}
     
     var str = this.value;
+    $('.box').addClass('search');
     $('.search-container-parent.buttons').hide();
     $('.nav-cust').addClass("isActive");
     $('.srch-container').addClass("isActive");
@@ -38,8 +39,10 @@ document.getElementById("nav-cust").addEventListener("focusout", function() {
         $('.search-container-parent.searchSuggest').html("");
         $('.search-container-parent.buttons').show();
         if($('.sidenavModified').hasClass('isActive')==false){
-    $('.trending_box_container').removeClass('isSearchActive');
-    $('.trending_box_container').addClass('isActive');}
+            $('.trending_box_container').removeClass('isSearchActive');
+            $('.trending_box_container').addClass('isActive');
+        }
+        $('.box').removeClass('search');
     }, 200);
 });
 
