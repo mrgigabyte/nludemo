@@ -29,12 +29,14 @@ function unsecuredLoans() {
 }
 
 function unsecuredNBFC() {
+	$('#searchHeader').val($('#searchHeader').val()+" for NBFC");
 	singleBarChartNBFC();
 	removeHeaderButtons();
 	addHeaderButton("VS RISK", "doubleBarChartOk");
 }
 
 function doubleBarChartOk() {
+	$('#searchHeader').val($('#searchHeader').val()+" vs RISK");
 	removeHeaderButtons();
 	doubleBarChart();
 	addHeaderButton("SHOW OPPORTUNITIES GEOGRAPHICALLY", "mapViewDedo", "thisismapview");

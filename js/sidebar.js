@@ -69,9 +69,12 @@ CIBIL CIR Archives (March 2017)</div></div>`;
     html = header + commentsHTML + addCommentHTML + addCommentBtn;
     
     $('#cbp-spmenu-s2').html(html);
-    if(commentArray.length<1){
-    setTimeout(comment_reply,8000);}
-    document.getElementById( 'closeMenu' ).onclick = function() { toggleMenu(); };
+    
+    if(commentArray.length === 1 && karDoAdd === true && addComment === false) {
+        setTimeout(comment_reply, 5000);
+    }
+    
+    document.getElementById( 'closeMenu' ).onclick = function() { toggleMenu();};
 }
 
 var comment_reply = function commentReply(){
@@ -80,7 +83,7 @@ var comment_reply = function commentReply(){
                     <div class="col-xs-2">
                     </div>
                     <div class="col-xs-10">
-                        <p class="copy_pros">&copy sekhar</p>
+                        <p class="copy_pros">&copy Sekhar</p>
                         <p class="comment-for-item">Great job, @pros, let us also discuss the trends in average tenure and ticket size.</p>
                     </div>
                 </div>

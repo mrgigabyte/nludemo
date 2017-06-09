@@ -39,7 +39,7 @@ var initialcard=`<div class="initialcard">
             </div>`;
 var daily_digest='<div class="daily_digest">Your daily <span class="daily_digest_second">digest</span></div>';
 
-var modified_card=`<div class="modified-card">What have been the product trends for ABFL in the last 12 months vs inflation</div><hr style="opacity:0.1;"><div class="modified-container"><div class="modified-cancel">Cancel</div><div class="modified-save">Save</div></div>`;
+var modified_card=`<div class="modified-card">What have been the product trends for ABFL in the last 12 months vs inflation</div><hr style="opacity:0.1;"><div class="modified-container"><div class="modified-cancel" onclick="cancelEditSearch()">Cancel</div><div class="modified-save" onclick="saveEditSearch()">Save</div></div>`;
 
 var trending = `<div class="box first">
 				<div>
