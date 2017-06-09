@@ -14,7 +14,7 @@ function drawSteamGraph() {
                         TRENDING</strong>
 					</div>    
 				</div>
-                <div class="box" style="margin: 25px auto;
+                <div class="box whiteboxShadow" style="margin: 25px auto;
     padding: 15px 40px;
     width: 320px;
     padding-top: 35px;">

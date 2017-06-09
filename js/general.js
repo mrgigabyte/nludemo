@@ -34,7 +34,7 @@ function unsecuredLoans() {
                         TRENDING</strong>
 					</div>    
 				</div>
-                <div class="box" style="margin: 25px auto;
+                <div class="box whiteboxShadow" style="margin: 25px auto;
     padding: 15px 40px;
     width: 320px;
     padding-top: 35px;">
@@ -62,6 +62,8 @@ function doubleBarChartOk() {
 }
 
 function mapViewDedo() {
+    $('.modifiedfirstText').text($('#searchHeader').val()+", show opportunities graphically");
+	$('#searchHeader').val($('#searchHeader').val()+", show opportunities graphically");
 	$('#thisismapview').remove();
 	generateMapView();
 }
@@ -77,7 +79,8 @@ function addInflationGraph() {
 }
 
 function doNothing() {
-	console.log('I do nothing. Really.');
+	$('.modifiedfirstText').text($('#searchHeader').val()+" vs GDP");
+	$('#searchHeader').val($('#searchHeader').val()+" vs GDP");
 }
 
 function ModifiedSave(){
