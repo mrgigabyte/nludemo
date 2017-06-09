@@ -26,6 +26,23 @@
         font-size: 10px;
     }
 }
+
+.box.Modifiedfirst {
+    padding: 20px 45px;
+    .modifiedfirstText {
+        font-size: 30px;
+    }
+}
+
+.modified-container {
+    display: flex;
+    justify-content: space-around;
+    font-size: 16px;
+    .modified-save {
+        color: #eca305;
+    }  
+}
+
 .inflationHeading {
     fill-opacity: 0.4;
     font-size: 10px;
@@ -92,9 +109,8 @@ body {
     }
 }
 .bigCol {
-    width: 563px;
+    width: 523px;
     height: 296px;
-    margin-bottom: 100px;
     float: left;
     .title {
         font-size: 36px;
@@ -169,7 +185,7 @@ text.wrap {
     width: 100%;
     position: absolute;
     bottom: 0;
-    height: 35%;
+    height: 370px;
 }
 .sidebar-sources-container
     {
@@ -267,13 +283,12 @@ text.wrap {
     margin-left:16px;
     &.isActive
     {
-        transition: 0.3s;
+        transition: all 50ms cubic-bezier(0.165, 0.84, 0.44, 1);
         bottom: 0;
-        transition-delay: 1s;
-         -webkit-transition-delay: 1s;
-      -webkit-transition:0.3s;
+        transition-delay: all 50ms cubic-bezier(0.165, 0.84, 0.44, 1);
+         -webkit-transition-delay: all 50ms cubic-bezier(0.165, 0.84, 0.44, 1);
+        -webkit-transition:all 50ms cubic-bezier(0.165, 0.84, 0.44, 1);
         height:64%;
-        
     }
 }
 .search-btn{
@@ -348,6 +363,7 @@ text.wrap {
 
 .box {
     cursor: pointer;
+    z-index: 10;
 }
 
 .searchHeader {
@@ -359,7 +375,7 @@ text.wrap {
     opacity: 0.2;
 	margin-top: 43px;
 	margin-left: 15px;
-    width: 70vw;
+    width: 780px;
 }
 .searchHeader:focus{
 opacity:0.4;    

@@ -29,20 +29,27 @@ function unsecuredLoans() {
 }
 
 function unsecuredNBFC() {
+	$('#searchHeader').val($('#searchHeader').val()+" for NBFC");
 	singleBarChartNBFC();
 	removeHeaderButtons();
 	addHeaderButton("VS RISK", "doubleBarChartOk");
 }
 
 function doubleBarChartOk() {
+	$('#searchHeader').val($('#searchHeader').val()+" vs RISK");
 	removeHeaderButtons();
 	doubleBarChart();
-	addHeaderButton("SHOW OPPORTUNITIES GEOGRAPHICALLY", "generateMapView");
+	addHeaderButton("SHOW OPPORTUNITIES GEOGRAPHICALLY", "mapViewDedo", "thisismapview");
+}
+
+function mapViewDedo() {
+	$('#thisismapview').remove();
+	generateMapView();
 }
 
 function addInflationGraph() {
-	console.log("TO BE ADDED #TODO ?");
 	$('#inflateBtn').remove();
+	plotLineGraph();
 }
 
 function doNothing() {
