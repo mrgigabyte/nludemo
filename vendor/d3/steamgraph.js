@@ -14,10 +14,11 @@ function drawSteamGraph() {
                         TRENDING</strong>
 					</div>    
 				</div>
-                <div class="box whiteboxShadow" style="margin: 25px auto;
+                <div class="box" style="margin: 25px auto;
     padding: 15px 40px;
     width: 320px;
-    padding-top: 35px;">
+    padding-top: 35px;
+box-shadow: 0 2px 51px 0 rgba(60, 98, 159, 0.15)">
 				<div class="modifiedfirstText">
 					What have been the product trends for ABFL in the last 12 months?</div><hr id="modifiedHR"><button class="modified-save" onclick=ModifiedSave() id="modifiedSave">Save</button></div>`);
 //    d3v3.select('.Modifiedfirst').html(modified_card);

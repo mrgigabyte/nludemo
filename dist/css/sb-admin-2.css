@@ -168,7 +168,7 @@ text.wrap {
   width: 100%;
   position: absolute;
   bottom: 0;
-  height: 370px;
+  height: 200px;
 }
 .sidebar-sources-container {
   margin-left: 25%;
@@ -312,9 +312,9 @@ text.wrap {
 .searchicon {
   background: url('../../images/ic-search@2x.png');
   background-size: 27px 27px;
-  width: 24px;
+  width: 30px;
   height: 13vh;
-  margin-left: 64px;
+  margin-left: 59px;
   margin-top: 50px;
   float: left;
   background-repeat: no-repeat;
