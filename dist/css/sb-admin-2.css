@@ -100,7 +100,8 @@ body {
   margin-top: -10px;
 }
 .bigCol {
-  width: 40%;
+  width: 37%;
+  height: 296px;
   float: left;
 }
 .bigCol .title {

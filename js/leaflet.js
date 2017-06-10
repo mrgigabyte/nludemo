@@ -18,7 +18,7 @@ function generateMapView() {
                 <div style="margin-top: 38.5%; margin-left: 4.5%; font-size: 64px;width:106%">
                     <div style="display: inline-block;font-weight: 600;">
                         <div style="opacity:0.2;">
-                                RISK
+                                Risk
                         </div>
                         <img src="../images/img-risk.png" srcset="../images/img-risk@2x.png 2x,../images/img-risk@3x.png 3x" class="img_risk" style="display: block; size: 347px 171px; width: 76.3%; height: 17.1%; opacity: 1 !important;">
                     </div>
