@@ -11,7 +11,7 @@ function generateMapView(sdata) {
     $('#page-wrapper').html("");
     $("#page-wrapper").append(`
        <div class="row map"> 
-	       <div id="map" style="width: 912px; height: 780px; margin-top: 20px; background: #fff;">
+	       <div id="map" style="width: 1080px; height: 780px; margin-top: 20px; background: #fff;">
                 <div style="width: 456px;height: 100px;opacity: 0.2;font-size: 64px;letter-spacing: -3px;margin-left: 4.5%;font-weight: 600;text-align: left;color: #3d4351;">
                         Opportunity
                 </div>
