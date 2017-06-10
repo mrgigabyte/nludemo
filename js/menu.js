@@ -18,7 +18,7 @@ function closeMenu() {
 
 $(document).keyup(function(e) {
     if (e.keyCode == 27) {
-		toggleMenu();
+		closeMenu();
     }
 });
 

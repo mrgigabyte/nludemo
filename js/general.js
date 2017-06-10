@@ -1,6 +1,3 @@
-
-
-
 function addHeaderButton(txt, funcname, btnId){
 	var idTxt = "";
 	if (btnId) { var idTxt = `id="`+btnId+`"`}
@@ -28,22 +25,7 @@ function unsecuredLoans() {
 	removeHeaderButtons();
 	addHeaderButton("FOR NBFC", "unsecuredNBFC", "nbfcButton");
 	addHeaderButton("VS RISK", "doubleBarChartOk");
-    $('#sidenavModified').html(`
-                <div class="box trendingModified trending_box_container">How many customers have more than 10 Cr and collateralized property?
-					<br><br>
-					<div class="subtitle"><img src="../images/ic-trending.png"   srcset="../images/ic-trending@2x.png 2x, ../images/ic-trending@3x.png 3x"
-                            class="ic_trending"><strong>
-                        TRENDING</strong>
-					</div>    
-				</div>
-                <div class="box " style="margin: 25px auto;
-    padding: 15px 40px;
-    width: 320px;
-    padding-top: 35px;
-box-shadow: 0 2px 51px 0 rgba(60, 98, 159, 0.15)">
-				<div class="modifiedfirstText">
-					What have been the product trends for ABFL in the last 12 months?</div><hr id="modifiedHR"><button class="modified-save" onclick=ModifiedSave() id="modifiedSave">Save</button></div>`);
-    $('.modifiedfirstText').text($('.srch-container input').val());
+	addSearchCard();
 }
 
 function unsecuredNBFC() {
@@ -91,6 +73,9 @@ function ModifiedSave(){
     $('.sidenavModified').removeClass('isActive');
     $('#modifiedHR').remove();
     $('#modifiedSave').remove();
+
+    //empty the search bar
+    $('#searchHeader').val("");
     
 //  $("<div class='box selected' style='height:400px;'>HI THIS IS ME</div>").prependTo('#sidenav').hide().slideDown();
 }

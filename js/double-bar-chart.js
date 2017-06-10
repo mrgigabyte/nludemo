@@ -9,7 +9,7 @@ var singleBarChartNBFC = barChart("single");
 function barChart(type, sdata) {
     return function() {
         $('body #commentsIndex').html("");
-//        $('#sidenavModified').html(trending);
+        // $('#sidenavModified').html(trending);
     	d3v3.select("#page-wrapper").html("");
 
         if (type === "double") {
