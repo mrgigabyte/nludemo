@@ -19,22 +19,16 @@ function drawSteamGraph(sdata) {
     console.log(sdata);
     
     $('body #commentsIndex').html("");
+    // addSearchCard();
     $('#sidenavModified').html(`
-                <div class="box trendingModified trending_box_container">How many customers have more than 10 Cr and collateralized property?
-					<br><br>
-					<div class="subtitle"><img src="../images/ic-trending.png"   srcset="../images/ic-trending@2x.png 2x, ../images/ic-trending@3x.png 3x"
-                            class="ic_trending"><strong>
-                        TRENDING</strong>
-					</div>    
-				</div>
                 <div class="box" style="margin: 25px auto;
-    padding: 15px 40px;
-    width: 320px;
-    padding-top: 35px;
-box-shadow: 0 2px 51px 0 rgba(60, 98, 159, 0.15)">
+                    padding: 15px 40px;
+                    width: 320px;
+                    padding-top: 35px;
+                    box-shadow: 0 2px 51px 0 rgba(60, 98, 159, 0.15)">
 				<div class="modifiedfirstText">
 					What have been the product trends for ABFL in the last 12 months?</div><hr id="modifiedHR"><button class="modified-save" onclick=ModifiedSave() id="modifiedSave">Save</button></div>`);
-//    d3v3.select('.Modifiedfirst').html(modified_card);
+
     d3v3.select('.selected').html(daily_digest_extended);
     d3v3.select('.notselected1').html(treasury);
     d3v3.select('.notselected2').html(sales_efficiency);

@@ -3,6 +3,11 @@ var showSuggestions = function(e) {
     if (e.which == 13) {
         return;
     }
+
+    if ($('#searchHeader').indexOf('return of unsecured landing') > -1) {
+        return;
+    }
+
     // if the modified card is there... change its text
     // TODOALPHA
     if($('.sidenavModified').hasClass('isActive')!=false){
