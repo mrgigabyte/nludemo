@@ -6,7 +6,7 @@ var showSuggestions = function(e) {
     // if the modified card is there... change its text
     // TODOALPHA
     if($('.sidenavModified').hasClass('isActive')!=false){
-        $('.modifiedfirstText').text($('.srch-container input').val());
+        $('.modifiedfirstText:first').text($('.srch-container input').val());
         // $('.trending-text').text($('.srch-container input').val());
     }
     
@@ -28,28 +28,24 @@ var showSuggestions = function(e) {
 };
 
 function addSearchCard() {
-    $('#sidenavModified').html(`
-        <div class="box trendingModified trending_box_container">How many customers have more than 10 Cr and collateralized property?
-            <br><br>
-            <div class="subtitle"><img src="../images/ic-trending.png"   srcset="../images/ic-trending@2x.png 2x, ../images/ic-trending@3x.png 3x"
-                    class="ic_trending"><strong>
-                TRENDING</strong>
-            </div>    
-        </div>
-        <div class="box" style="margin: 25px auto;
-                padding: 15px 40px;
-                width: 320px;
-                padding-top: 35px;
-                box-shadow: 0 2px 51px 0 rgba(60, 98, 159, 0.15)">
-            <div class="modifiedfirstText">
-                What have been the product trends for ABFL in the last 12 months?
-            </div>
-            <hr id="modifiedHR">
-            <button class="modified-save" onclick=ModifiedSave() id="modifiedSave">
-                Save
-            </button>
-        </div>`);
-    $('.modifiedfirstText').text($('#searchHeader').val());
+    // DO it when there is no active search card
+    if ($('.sidenavModified.isActive').length==0) {
+        var cardHTML = `<div class="sidenavModified isActive" id="sidenavModified">
+            <div class="box" style="margin: 25px auto;
+                    padding: 15px 40px;
+                    width: 320px;
+                    padding-top: 35px;
+                    box-shadow: 0 2px 51px 0 rgba(60, 98, 159, 0.15)">
+                <div class="modifiedfirstText">
+                    `+$('#searchHeader').val()+`
+                </div>
+                <hr id="modifiedHR">
+                <button class="modified-save" onclick=ModifiedSave() id="modifiedSave">
+                    Save
+                </button>
+            </div>`;
+    }
+    $(cardHTML).prependTo('#sidenav').hide().slideDown("fast");
 }
 
 $('#searchHeader').on('keyup', function(e) {
