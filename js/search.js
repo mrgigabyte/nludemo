@@ -34,6 +34,7 @@ var showSuggestions = function(e) {
 };
 
 function addSearchCard() {
+    $('.box').removeClass('selected');
     // DO it when there is no active search card
     if ($('.sidenavModified.isActive').length==0) {
         var cardHTML = `<div class="sidenavModified isActive" id="sidenavModified">
@@ -64,7 +65,6 @@ $('#searchHeader').on('keyup', function(e) {
             url: baseApiUrl + 'search',
             data: { "search" : searchTxt },
             success: function(data) {
-                console.log(1, data);
                 if ( data.chart_type == "streamo" )
                     drawSteamGraph(data);
                 else if ( data.chart_type == 'double') {
