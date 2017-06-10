@@ -20,6 +20,27 @@ var showSuggestions = function() {
     setTimeout(showRecent, 100);
 };
 
+$('#searchHeader').on('keyup', function(e) {
+    if (e.which == 13) {
+        console.log('came here');
+        var searchTxt = $('#searchHeader').val();
+        $.ajax({
+            type: "POST",
+            url: baseApiUrl + 'search',
+            data: { "search" : searchTxt },
+            success: function(data) {
+                if ( data.chart_type == "streamo" )
+                    drawSteamGraph(data);
+                if ( data.chart_type == 'double')
+                    barChart("single", data)();
+                if ( data.chart_type == 'map')
+                    generateMapView(data);
+            }
+        });
+        e.preventDefault();
+    }
+});
+
 document.getElementById("searchHeader").addEventListener("keyup", showSuggestions);
 document.getElementById("searchHeader").addEventListener("click", function() {
     if ($('.sidenavModified').hasClass('isActive')==false) // modified card is not open) // TODOALPHA

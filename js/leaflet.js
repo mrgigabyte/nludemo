@@ -1,6 +1,6 @@
 // generateMapView();
 
-function generateMapView() {
+function generateMapView(sdata) {
     addCommentsbar();
 
     $('body #commentsIndex').html("");
@@ -117,9 +117,15 @@ function generateMapView() {
     $('.leaflet-marker-icon').click(openMenu);
     
     var generateData = function() {
-        $.post(baseApiUrl + "search", {"search": "What have been the product trends for ABFL by state in the last 12 months?"}, function(data, textStatus) {
-            var ndata = data.rows.filter(checkSanity).map(function(a) { return [a[1], a[0]]});
+        if (!sdata) {
+            $.post(baseApiUrl + "search", {"search": "What have been the product trends for ABFL by state in the last 12 months?"}, function(data, textStatus) {
+                var ndata = data.rows.filter(checkSanity).map(function(a) { return [a[1], a[0]]});
+                hexLayer.data(ndata);
+            }, "json");
+        }
+        else {
+            var ndata = sdata.rows.filter(checkSanity).map(function(a) { return [a[1], a[0]]});
             hexLayer.data(ndata);
-        }, "json");
+        }
     };
 }

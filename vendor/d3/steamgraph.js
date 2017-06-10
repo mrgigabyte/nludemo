@@ -15,7 +15,9 @@ var tooltip = d3v3.select("body")
     .text("a simple tooltip")
     .attr("class", "hoverTooltip");
 
-function drawSteamGraph() {
+function drawSteamGraph(sdata) {
+    console.log(sdata);
+    
     $('body #commentsIndex').html("");
     $('#sidenavModified').html(`
                 <div class="box trendingModified trending_box_container">How many customers have more than 10 Cr and collateralized property?
@@ -367,12 +369,18 @@ box-shadow: 0 2px 51px 0 rgba(60, 98, 159, 0.15)">
             });
     };
 
-    $.ajax({
-      type: "POST",
-      url: baseApiUrl + 'search',
-      data: { "search" : "What have been the product trends for ABFL in the last 12 months?" },
-      success: plotGraph
-    });
+    if (!sdata) {
+        $.ajax({
+          type: "POST",
+          url: baseApiUrl + 'search',
+          data: { "search" : "What have been the product trends for ABFL in the last 12 months?" },
+          success: plotGraph
+        });
+    }
+    else {
+        console.log('let`s plot');
+        plotGraph(sdata);
+    }
 }
 
 function plotLineGraph() {
