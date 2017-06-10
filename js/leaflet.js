@@ -1,6 +1,6 @@
 // generateMapView();
 
-function generateMapView(sdata) {
+function generateMapView() {
     addCommentsbar();
 
     $('body #commentsIndex').html("");
@@ -9,9 +9,28 @@ function generateMapView(sdata) {
     d3v3.select('.notselected1').html(churn);
     d3v3.select('.notselected2').html(cross_sell);
     $('#page-wrapper').html("");
-    $("#page-wrapper").append('<div class="row map"> \
-	   <div id="map" style="width: 912px; height: 780px; margin-top: 20px; background: #fff;"><div style="width: 456px;height: 100px;opacity: 0.2;font-size: 64px;letter-spacing: -3px;margin-left: 5%;font-weight: 500;text-align: left;color: #3d4351;">Opportunity</div>\
-	</div></div>');
+    $("#page-wrapper").append(`
+       <div class="row map"> 
+	       <div id="map" style="width: 912px; height: 780px; margin-top: 20px; background: #fff;">
+                <div style="width: 456px;height: 100px;opacity: 0.2;font-size: 64px;letter-spacing: -3px;margin-left: 4.5%;font-weight: 600;text-align: left;color: #3d4351;">
+                        Opportunity
+                </div>
+                <div style="margin-top: 38.5%; margin-left: 4.5%; font-size: 64px;width:106%">
+                    <div style="display: inline-block;font-weight: 600;">
+                        <div style="opacity:0.2;">
+                                RISK
+                        </div>
+                        <img src="../images/img-risk.png" srcset="../images/img-risk@2x.png 2x,../images/img-risk@3x.png 3x" class="img_risk" style="display: block; size: 347px 171px; width: 76.3%; height: 17.1%; opacity: 1 !important;">
+                    </div>
+                    <div style="display: inline-block;margin-left: 52,4%;float: right;font-weight: 600;">
+                        <div style="opacity:0.2; margin-bottom: -10%;">  
+                                Return
+                        </div>  
+                        <img src="../images/img-return.png" srcset="../images/img-return@2x.png 2x, ../images/img-return@3x.png 3x" class="img_return" style=" display: block;size: 347px 171px;width: 76.3%;height: 17.1%;opacity: 1 !important;">
+                    </div>
+                <div>
+        </div>
+</div>`);
 
     var center = [22.4, 78.9629];
     map = new L.Map('map', {
@@ -117,15 +136,9 @@ function generateMapView(sdata) {
     $('.leaflet-marker-icon').click(openMenu);
     
     var generateData = function() {
-        if (!sdata) {
-            $.post(baseApiUrl + "search", {"search": "What have been the product trends for ABFL by state in the last 12 months?"}, function(data, textStatus) {
-                var ndata = data.rows.filter(checkSanity).map(function(a) { return [a[1], a[0]]});
-                hexLayer.data(ndata);
-            }, "json");
-        }
-        else {
-            var ndata = sdata.rows.filter(checkSanity).map(function(a) { return [a[1], a[0]]});
+        $.post(baseApiUrl + "search", {"search": "What have been the product trends for ABFL by state in the last 12 months?"}, function(data, textStatus) {
+            var ndata = data.rows.filter(checkSanity).map(function(a) { return [a[1], a[0]]});
             hexLayer.data(ndata);
-        }
+        }, "json");
     };
 }
