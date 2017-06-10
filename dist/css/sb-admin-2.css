@@ -100,8 +100,7 @@ body {
   margin-top: -10px;
 }
 .bigCol {
-  width: 523px;
-  height: 296px;
+  width: 40%;
   float: left;
 }
 .bigCol .title {
@@ -219,7 +218,7 @@ text.wrap {
   background: url('../../images/img-logo@3x.png');
   background-size: 114px 84px;
   width: 109px;
-  height: 17vh;
+  height: 100px;
   margin-top: 27px;
   margin-left: 69px;
   float: left;
