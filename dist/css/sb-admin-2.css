@@ -216,12 +216,12 @@ text.wrap {
   color: #3d4351;
 }
 .logo {
-  background: url('../../images/img-logo@2x.png');
-  background-size: 91px 72px;
-  width: 91px;
+  background: url('../../images/img-logo@3x.png');
+  background-size: 114px 84px;
+  width: 109px;
   height: 17vh;
   margin-top: 27px;
-  margin-left: 88px;
+  margin-left: 69px;
   float: left;
   background-repeat: no-repeat;
 }
