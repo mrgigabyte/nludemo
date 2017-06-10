@@ -4,7 +4,6 @@ var showSuggestions = function(e) {
         return;
     }
 
-    console.log($('#searchHeader').val());
     if ($('#searchHeader').val().indexOf('return of unsecured lending ') > -1) {
         closeSearchBar();
         return;
@@ -65,15 +64,16 @@ $('#searchHeader').on('keyup', function(e) {
             url: baseApiUrl + 'search',
             data: { "search" : searchTxt },
             success: function(data) {
+                console.log(1, data);
                 if ( data.chart_type == "streamo" )
                     drawSteamGraph(data);
-                if ( data.chart_type == 'double') {
+                else if ( data.chart_type == 'double') {
                     if (data.dual == false)
                         barChart("single", data)();
                     else 
                         barChart("double", data)();
                 }
-                if ( data.chart_type == 'map')
+                else if ( data.chart_type == 'map')
                     generateMapView(data);
             }
         });

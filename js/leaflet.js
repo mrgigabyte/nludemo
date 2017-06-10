@@ -1,6 +1,8 @@
 // generateMapView();
 
-function generateMapView() {
+function generateMapView(sdata) {
+    console.log(2, sdata);
+
     addCommentsbar();
 
     $('body #commentsIndex').html("");
@@ -62,7 +64,7 @@ function generateMapView() {
             }
 		}).addTo(map);
 
-       	generateData();
+       	generateData(sdata);
     });
 
     var options = {
@@ -135,10 +137,18 @@ function generateMapView() {
 
     $('.leaflet-marker-icon').click(openMenu);
     
-    var generateData = function() {
-        $.post(baseApiUrl + "search", {"search": "What have been the product trends for ABFL by state in the last 12 months?"}, function(data, textStatus) {
-            var ndata = data.rows.filter(checkSanity).map(function(a) { return [a[1], a[0]]});
+    var generateData = function(sdata) {
+        if(!sdata) {
+            $.post(baseApiUrl + "search", 
+                    {"search": "What have been the product trends for ABFL by state in the last 12 months?"}, 
+                    function(data, textStatus) {
+                        var ndata = data.rows.filter(checkSanity).map(function(a) { return [a[1], a[0]]});
+                    hexLayer.data(ndata);
+                    },
+                    "json");
+        } else {
+            var ndata = sdata.rows.filter(checkSanity).map(function(a) { return [a[1], a[0]]});
             hexLayer.data(ndata);
-        }, "json");
+        }
     };
 }
