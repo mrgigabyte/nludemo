@@ -4,7 +4,9 @@ var showSuggestions = function(e) {
         return;
     }
 
-    if ($('#searchHeader').indexOf('return of unsecured landing') > -1) {
+    console.log($('#searchHeader').val());
+    if ($('#searchHeader').val().indexOf('return of unsecured lending') > -1) {
+        closeSearchBar();
         return;
     }
 
@@ -57,6 +59,7 @@ $('#searchHeader').on('keyup', function(e) {
     if (e.which == 13) {
         var searchTxt = $('#searchHeader').val();
         addSearchCard();
+        removeHeaderButtons();
         $.ajax({
             type: "POST",
             url: baseApiUrl + 'search',
