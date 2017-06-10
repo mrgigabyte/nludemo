@@ -31,7 +31,7 @@ function barChart(type, api_type) {
     	else {
                 $("#page-wrapper").append(`<div style="margin-top: 60px; magin-bottom: 40px;"><div class="chartHead" style="width:370px; margin-right: 100px; margin-left: 35px;">
         			<div class="title">Return</div>
-        			<div class="description">Good Understanding INR CR</div>
+        			<div class="description">Good Outstanding INR CR</div>
         		</div>
                 </div>
         	`);
