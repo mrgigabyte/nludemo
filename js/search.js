@@ -5,7 +5,7 @@ var showSuggestions = function(e) {
     }
 
     console.log($('#searchHeader').val());
-    if ($('#searchHeader').val().indexOf('return of unsecured lending') > -1) {
+    if ($('#searchHeader').val().indexOf('return of unsecured lending ') > -1) {
         closeSearchBar();
         return;
     }
@@ -67,8 +67,12 @@ $('#searchHeader').on('keyup', function(e) {
             success: function(data) {
                 if ( data.chart_type == "streamo" )
                     drawSteamGraph(data);
-                if ( data.chart_type == 'double')
-                    barChart("single", data)();
+                if ( data.chart_type == 'double') {
+                    if (data.dual == false)
+                        barChart("single", data)();
+                    else 
+                        barChart("double", data)();
+                }
                 if ( data.chart_type == 'map')
                     generateMapView(data);
             }

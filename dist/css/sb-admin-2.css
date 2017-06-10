@@ -139,8 +139,9 @@ text.wrap {
   opacity: 0.6;
 }
 .biChart.double {
-  margin-left: 100px;
-  margin-top: 60px;
+  margin-top: 180px;
+  left: 110px;
+  position: absolute;
 }
 .biChart.single {
   position: absolute;
