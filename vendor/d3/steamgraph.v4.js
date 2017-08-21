@@ -1,6 +1,7 @@
 drawSteamGraph("../data/steam-data.csv");
 
 function drawSteamGraph(csvpath) {
+    console.log('okk',csvpath);
     var datearray = [];
     var colorrange = [
         ["242deg", "#f4760a", "#f4760a"],

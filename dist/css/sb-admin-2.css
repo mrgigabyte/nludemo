@@ -207,7 +207,7 @@ text.wrap {
   outline: none;
   border: 0px;
   background: #ffffff;
-  color: orange;
+  color: #eb4783;
 }
 .modifiedfirstText {
   font-size: 30px;
@@ -215,16 +215,6 @@ text.wrap {
   line-height: 1.17;
   text-align: left;
   color: #3d4351;
-}
-.logo {
-  background: url('../../images/img-logo@3x.png');
-  background-size: 114px 84px;
-  width: 109px;
-  height: 100px;
-  margin-top: 27px;
-  margin-left: 69px;
-  float: left;
-  background-repeat: no-repeat;
 }
 .ic_trending {
   font-weight: bold;
@@ -252,7 +242,7 @@ text.wrap {
   height: 30%;
   bottom: -16px;
   position: absolute;
-  margin-left: 16px;
+  margin-left: -10%;
 }
 .search-container-parent.isActive {
   transition: all 50ms cubic-bezier(0.165, 0.84, 0.44, 1);
@@ -267,7 +257,7 @@ text.wrap {
   margin: 4px;
   height: 40px;
   border-radius: 20.5px;
-  background-color: #eca305;
+  background-color: #eb4783;
   border: 0px;
   color: white;
   outline: none;
@@ -291,7 +281,7 @@ text.wrap {
   right: 24px;
   width: 48px;
   border-radius: 50%;
-  background: linear-gradient(207deg, #c50052, #920029);
+  background: linear-gradient(207deg, #eb4783, #824bc4);
   height: 48px;
   z-index: 1002;
   padding: 10px 16px;
@@ -302,7 +292,7 @@ text.wrap {
   right: 32px;
   width: 36px;
   border-radius: 50%;
-  background: linear-gradient(195deg, #f4760a, #ffc900);
+  background: linear-gradient(195deg, #fbda61, #eb4783);
   height: 36px;
   z-index: 1002;
   padding: 7px 13px;
@@ -312,7 +302,7 @@ text.wrap {
   background-size: 27px 27px;
   width: 30px;
   height: 13vh;
-  margin-left: 59px;
+  margin-left: 4.8%;
   margin-top: 50px;
   float: left;
   background-repeat: no-repeat;
@@ -333,8 +323,8 @@ text.wrap {
   color: #51575f;
   opacity: 0.2;
   margin-top: 43px;
-  margin-left: 15px;
-  width: 780px;
+  margin-left: -29%;
+  width: 149vh;
 }
 .searchHeader:focus {
   opacity: 0.4;
@@ -387,14 +377,15 @@ button {
 .comment-btn {
   width: 48px;
   height: 48px;
-  box-shadow: 0 2px 80px 0 rgba(202, 33, 46, 0.14);
+  box-shadow: 0 2px 80px 0 rgba(171, 74, 171, 0.2);
   position: fixed;
   z-index: 1000;
   border-radius: 50%;
   border: none;
-  color: #fff;
-  background-image: linear-gradient(207deg, #c50052, #920029);
-  padding: 16px 20px;
+  color: #eb4783;
+  background-color: #ffffff;
+  font-size: 25px;
+  padding: 10px 10px;
   cursor: pointer;
   outline: none;
 }
@@ -435,7 +426,7 @@ button {
   height: 120px;
   display: flex;
   align-items: center;
-  background-color: #920029;
+  background-color: #824bc4;
 }
 .box {
   transition: 0.3s;
@@ -483,7 +474,7 @@ button {
   box-shadow: 0 9px 17px 0 rgba(202, 33, 46, 0.2);
   padding: 8px 20px;
   margin: 5px;
-  color: #920029;
+  color: #824bc4;
 }
 .nav-cust {
   border: 0px;
@@ -513,7 +504,7 @@ button {
 }
 .box.first {
   color: white;
-  background-image: linear-gradient(219deg, #c50052, #920029);
+  background-image: linear-gradient(to right, #eb4783, #824bc4);
   margin-top: 3.2%;
 }
 .box.first.isActive {
@@ -592,7 +583,7 @@ button {
   margin: 30px;
 }
 .row.horizontal {
-  background-color: #920029;
+  background-color: #824bc4;
   margin: 0px;
   padding: 10px;
 }
@@ -706,6 +697,7 @@ body {
   align-items: center;
   width: 580px;
   height: 200px;
+  font-family: Theinhardt;
 }
 .lgn-panel {
   width: 580px;
@@ -727,12 +719,13 @@ body {
   height: 80px;
   border-radius: 100px;
   border: 0px;
-  background-image: linear-gradient(241deg, #c50052, #920029);
+  background-image: linear-gradient(241deg, #824bc4, #eb4783);
   box-shadow: 0 2px 80px 0 rgba(202, 33, 46, 0.14);
   font-size: 26px;
   color: #ffffff;
   text-decoration: none;
   text-align: center;
+  cursor: pointer;
 }
 /* The snackbar - position it at the bottom and in the middle of the screen */
 #snackbar {
@@ -766,7 +759,7 @@ body {
   visibility: visible;
   /* Show the snackbar */
   /* Add animation: Take 0.5 seconds to fade in and out the snackbar.
-However, delay the fade out process for 2.5 seconds */
+    However, delay the fade out process for 2.5 seconds */
   -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
   animation: fadein 0.5s, fadeout 0.5s 2.5s;
 }
@@ -844,7 +837,7 @@ However, delay the fade out process for 2.5 seconds */
   visibility: visible;
   /* Show the snackbar */
   /* Add animation: Take 0.5 seconds to fade in and out the snackbar. 
-However, delay the fade out process for 2.5 seconds */
+    However, delay the fade out process for 2.5 seconds */
   -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
   animation: fadein 0.5s, fadeout 0.5s 2.5s;
 }
@@ -987,7 +980,7 @@ button {
 }
 /* General styles for all menus */
 .cbp-spmenu {
-  background-image: linear-gradient(187deg, #c50052, #920029);
+  background-image: linear-gradient(157deg, #eb4783, #824bc4);
   position: fixed;
   z-index: 1110;
 }
@@ -1149,10 +1142,10 @@ rect.right {
   line-height: 1.08;
   letter-spacing: -1px;
   text-align: left;
-  color: #3d4351;
+  color: #824bc4;
 }
 .daily_digest_second {
-  color: #920029;
+  color: #824bc4;
 }
 .fix_margin_card {
   margin: 10px 15px 10px 15px;
@@ -1167,7 +1160,7 @@ rect.right {
 }
 .daily_digest_extended_second {
   letter-spacing: -0.3px;
-  color: #920029;
+  color: #eb4783;
 }
 #wrapper {
   width: 100%;

@@ -11,7 +11,7 @@ function removeHeaderButtons(){
 }
 
 $('.box.first').click(function() {
-	query = "What have been the product trends for ABFL in the last 12 months?";
+	query = "What have been the product trends for TEST in the last 12 months?";
 	var txt = $('.srch-container input').val(query);
 	drawSteamGraph();
     $('.box').removeClass("selected");
@@ -57,8 +57,8 @@ function addInflationGraph() {
     // UPDATE SEARCH QUERY
     // TODOALPHA
     // UPDATE MODIFIED CARD IS THERE
-    $('.srch-container input').val("What have been the product trends for ABFL in the last 12 months vs inflation");
-    $('.modifiedfirstText').text("What have been the product trends for ABFL in the last 12 months vs inflation");
+    $('.srch-container input').val("What have been the product trends for TEST in the last 12 months vs inflation");
+    $('.modifiedfirstText').text("What have been the product trends for TEST in the last 12 months vs inflation");
 	$('#inflateBtn').remove();
 	plotLineGraph();
 }
