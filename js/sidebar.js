@@ -28,7 +28,7 @@ function addSidebar(addComment, karDoAdd) {
                         <p class="bold-Number">`+i+`</p>
                     </div>
                     <div class="col-xs-10">
-                        <p class="copy_pros">Rakesh</p>
+                        <p class="copy_pros">@PROS</p>
                         <p class="comment-for-item">`+commentArray[i-1  ]+`</p>
                     </div>
                 </div>
@@ -36,7 +36,7 @@ function addSidebar(addComment, karDoAdd) {
     }
         var addCommentBtn =  
     `<div class="comment-reply"></div><div class="sidebar-sources"><div class="sidebar-sources-container"><div class="sidebar-sources-content"><div class="sidebar-sources-content-header">SOURCES</div><br/>
-ADFL DWH</div></div>`;
+TEST DWH</div></div>`;
 
    
 
@@ -49,7 +49,7 @@ ADFL DWH</div></div>`;
                         <p class="bold-Number">`+(commentArray.length+1)+`</p>
                     </div>
                     <div class="col-xs-10">
-                        <p class="copy_pros">Rakesh</p>
+                        <p class="copy_pros">@PROS</p>
                         <textarea class="commentText"></textarea>
                         <div class="float-right">
                             <span class="btun" onclick="addSidebar();">Cancel</span>
@@ -104,8 +104,8 @@ function addCommentsbar() {
                         <p class="bold-Number">1</p>
                     </div>
                     <div class="col-xs-10">
-                        <p class="copy_pros">Sanjay, CFO ABFL</p>
-                        <p class="comment-for-item">Orissa looks good, pretty dense. Tier 1, Tier 2 cities in Gujarat are showing good signs.</p>
+                        <p class="copy_pros">Sanjay, CFO TEST</p>
+                        <p class="comment-for-item">Opportunity Area 1</p>
                     </div>
                 </div>
                 <div class="row meriRow">
@@ -113,8 +113,8 @@ function addCommentsbar() {
                         <p class="bold-Number">2</p>
                     </div>
                     <div class="col-xs-10">
-                        <p class="copy_pros">Sanjay, CFO ABFL</p>
-                        <p class="comment-for-item">438 new pin codes can be serviced. These areas are within 20KMs of existing PIN codes and have GNPA < 2%</p>
+                        <p class="copy_pros">Sanjay, CFO TEST</p>
+                        <p class="comment-for-item">Opportunity Area 2</p>
                     </div>
                 </div>
                 <div class="row meriRow">
@@ -122,8 +122,8 @@ function addCommentsbar() {
                         <p class="bold-Number">3</p>
                     </div>
                     <div class="col-xs-10">
-                        <p class="copy_pros">Sanjay, CFO ABFL</p>
-                        <p class="comment-for-item">Rs 543.95 cr in additional opportunity</p>
+                        <p class="copy_pros">Sanjay, CFO TEST</p>
+                        <p class="comment-for-item">Opportunity Area 3</p>
                     </div>
                 </div>
             </div>
@@ -134,9 +134,9 @@ CIBIL Market Sizing Report (March 2017)<br/>
 CIBIL CIR Archives (March 2017)</div></div>`;
 
         
-                    // <div class="btnAdd">
-                    //     <span class="btnAddComment">LEAVE A COMMENT OR INSIGHT</span>
-                    // </div>
+//                     <div class="btnAdd">
+//                         <span class="btnAddComment">LEAVE A COMMENT OR INSIGHT</span>
+//                     </div>
     
     $('#cbp-spmenu-s2').html(html+addCommentBtn);
 

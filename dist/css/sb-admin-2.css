@@ -168,7 +168,7 @@ text.wrap {
 .sidebar-sources {
   width: 100%;
   position: absolute;
-  bottom: 0;
+  top: 63%;
   height: 200px;
 }
 .sidebar-sources-container {
@@ -190,6 +190,9 @@ text.wrap {
 }
 .comment-reply {
   height: 35%;
+}
+.comment-reply.isDisable {
+  display: hidden;
 }
 .sidebar-sources-content-header {
   font-size: 12px;
@@ -274,6 +277,13 @@ text.wrap {
 }
 .search-suggestions.disableView {
   display: none;
+}
+.leave-comment-btn {
+  width: 227px;
+  height: 36px;
+  border-radius: 100px;
+  background-color: #ffffff;
+  box-shadow: 0 9px 17px 0 rgba(130, 75, 196, 0.2);
 }
 .stickyButton {
   position: fixed;
@@ -980,7 +990,7 @@ button {
 }
 /* General styles for all menus */
 .cbp-spmenu {
-  background-image: linear-gradient(157deg, #eb4783, #824bc4);
+  background-image: linear-gradient(157deg, #994bc4, #eb4783);
   position: fixed;
   z-index: 1110;
 }
