@@ -7,27 +7,36 @@ var vertical2;
 var inflationValue;
 
 var tooltip = d3v3.select("body")
-.append("div")
-.style("position", "absolute")
-.style("z-index", "10")
-.style("visibility", "hidden")
-.style("background", "rgba(255,255,255,0)")
-.text("a simple tooltip")
-.attr("class", "hoverTooltip");
+    .append("div")
+    .style("position", "absolute")
+    .style("z-index", "10")
+    .style("visibility", "hidden")
+    .style("background", "rgba(255,255,255,0)")
+    .text("a simple tooltip")
+    .attr("class", "hoverTooltip");
 
-function drawSteamGraph(sdata, target) {
-    console.log('ok',sdata);
-    target = 'fake';
+function drawSteamGraph(sdata) {
+    console.log(sdata);
+    
     $('body #commentsIndex').html("");
     // addSearchCard();
     $('#sidenavModified').html(`
-<div class="box" style="margin: 25px auto;
-padding: 15px 40px;
-width: 320px;
-padding-top: 35px;
-box-shadow: 0 2px 51px 0 rgba(60, 98, 159, 0.15)">
-<div class="modifiedfirstText">
-What have been the product trends for ABFL in the last 12 months?</div><hr id="modifiedHR"><button class="modified-save" onclick=ModifiedSave() id="modifiedSave">Save</button></div>`);
+                
+                <div class="box" style="margin: 25px auto;
+                    width: 320px;
+                    padding: 0px;
+                    box-shadow: 0 2px 51px 0 rgba(60, 98, 159, 0.15)">
+                    <div style='position: relative; padding: 10px;'><img style='position: absolute; top: 24px; right: 22px;' src='../images/ic-pin-red.png'></div>
+				<div class="modifiedfirstText" style='font-size: 30px;
+    font-weight: 500;
+    line-height: 1.17;
+    text-align: left;
+    padding: 40px;
+    color: #3d4351;'>
+					What have been the product trends for ABFL in the last 12 months?</div><hr id="modifiedHR" style='margin: 0;'>
+                    <div style='display: flex; justify-content: space-around; margin-bottom: -14px;'>
+                    <button class="modified-cancel" id="modifiedSave" style='outline: none; width: 40%; padding-right: 42px; border: 0px; background: #ffffff; color: orange; height: 48px; border-right: 1px solid #ccc;'>Cancel</button>
+                    <button class="modified-save" onclick=ModifiedSave() id="modifiedSave" style='height:46;'>Save</button></div></div>`);
 
     d3v3.select('.selected').html(daily_digest_extended);
     d3v3.select('.notselected1').html(treasury);
@@ -40,13 +49,13 @@ What have been the product trends for ABFL in the last 12 months?</div><hr id="m
     var colorrange = [];
 
     colorrange = [
-        ["238", "#f7edf6", "#ffc900"],
-        ["238", "#e1b7dd", "#ffc900"],
-        ["247", "#d392cc", "#b01a33"],
-        ["244", "#b149a7", "#b149a7"],
-        ["250", "#d392cc", "#b01a33"],
-        ["251", "#e1b7dd", "#ff9200"],
-        ["242", "#f7edf6", "#ffc900"]
+        ["238", "#f4760a", "#ffc900"],
+        ["238", "#dd8819", "#ffc900"],
+        ["247", "#d36e1f", "#b01a33"],
+        ["244", "#c50052", "#920029"],
+        ["250", "#d36e1f", "#b01a33"],
+        ["251", "#dd8819", "#ff9200"],
+        ["242", "#f4760a", "#ffc900"]
     ];
 
     strokecolor = colorrange[0];
@@ -64,61 +73,61 @@ What have been the product trends for ABFL in the last 12 months?</div><hr id="m
     var height = 500 - margin.top - margin.bottom;
 
     var x = d3v3.time.scale()
-    .range([0, width]);
+        .range([0, width]);
 
     var y = d3v3.scale.linear()
-    .range([height - 10, 0]);
+        .range([height - 10, 0]);
 
     var z = d3v3.scale.ordinal()
-    .range(colorrange);
+        .range(colorrange);
 
     var xAxis = d3v3.svg.axis()
-    .scale(x)
-    .orient("bottom")
-    .ticks(5)
-    .tickFormat(d3v3.time.format("%b '%y"));
+        .scale(x)
+        .orient("bottom")
+        .ticks(5)
+        .tickFormat(d3v3.time.format("%b '%y"));
 
     var yAxis = d3v3.svg.axis()
-    .scale(y);
-    // .tickFormat(d3v3.formatPrefix(".1", 1e6));
-    // .tickFormat(d3v3.format(".0s"));
+        .scale(y);
+        // .tickFormat(d3v3.formatPrefix(".1", 1e6));
+        // .tickFormat(d3v3.format(".0s"));
 
     var stack = d3v3.layout.stack()
-    .offset("silhouette")
-    .values(function(d) {
-        return d.values;
-    })
-    .x(function(d) {
-        return d.date;
-    })
-    .y(function(d) {
-        return d.metric;
-    });
+        .offset("silhouette")
+        .values(function(d) {
+            return d.values;
+        })
+        .x(function(d) {
+            return d.date;
+        })
+        .y(function(d) {
+            return d.metric;
+        });
 
     var nest = d3v3.nest()
-    .key(function(d) {
-        return d.product;
-    });
+        .key(function(d) {
+            return d.product;
+        });
 
     var area = d3v3.svg.area()
-    .interpolate("cardinal")
-    .x(function(d) {
-        return x(d.date);
-    })
-    .y0(function(d) {
-        return y(d.y0);
-    })
-    .y1(function(d) {
-        return y(d.y0 + d.y);
-    });
+        .interpolate("cardinal")
+        .x(function(d) {
+            return x(d.date);
+        })
+        .y0(function(d) {
+            return y(d.y0);
+        })
+        .y1(function(d) {
+            return y(d.y0 + d.y);
+        });
 
     $('#page-wrapper').html("")
     $("#page-wrapper").append('<div class="row"> \
-<div id="productName">All Products</div> \
-<div class="chart steamgraph"> \
-</div> \
-</div> \
-');
+        <div id="productName">All Products</div> \
+        <div class="chart steamgraph"> \
+        </div> \
+      </div> \
+    ');
 
     var svg = d3v3.select(".chart").append("svg");
     var svgDefs = svg.append('defs');
@@ -130,48 +139,29 @@ What have been the product trends for ABFL in the last 12 months?</div><hr id="m
 
     for (var i = 0; i < colorrange.length; i++) {
         var mainGradient = svgDefs.append('linearGradient')
-        .attr('id', 'mainGradient' + (i + 1))
-        .attr('gradientTransform', "rotate(" + colorrange[i][0] + ")");
+            .attr('id', 'mainGradient' + (i + 1))
+            .attr('gradientTransform', "rotate(" + colorrange[i][0] + ")");
         // Create the stops of the main gradient. Each stop will be assigned a class to style the stop using CSS.
         mainGradient.append('stop')
             .attr('stop-color', colorrange[i][1])
-            .attr('offset', '5%')
-            .attr('stop-opacity', colorrange[i][0]);
-
+            .attr('offset', '5%');
         mainGradient.append('stop')
             .attr('stop-color', colorrange[i][2])
-            .attr('offset', '95%')
-            .attr('stop-opacity', colorrange[i][0]);
+            .attr('offset', '95%');
     }
 
     var plotGraph = function(response) {
-        var data = response;
-        //        var data = JSON.parse("../data/steam-data.json");
+        var data = response.rows;
 
-        //        function test(){
-        //            }
-        //                //            console.log(data);}
-        console.log(data);
-        //        if(target='fake'){
-        //            console.log('ok')
-        //            data = d3v3.csv("../data/inflation.csv", function(data1){
-        //                data1 = data;
-        //            });
-        //            console.log(data);
-        //        }
-        //        else{
-        //             data = response.rows;
-        //        }
-        console.log(data);
+        // console.log(data);
 
         data.forEach(function(d) {
             d.date = format.parse(d.date);
             d.metric = +d.metric;
-            console.log(d);
-        });     
+        });
 
         var layers = stack(nest.entries(data));
-        console.log(layers)
+
         x.domain(d3v3.extent(data, function(d) {
             return d.date;
         }));
@@ -180,27 +170,27 @@ What have been the product trends for ABFL in the last 12 months?</div><hr id="m
         })]);
 
         var vertical = d3v3.select(".chart")
-        .append("div")
-        .attr("class", "vertical1")
-        .style("position", "absolute")
-        .style("z-index", "0")
-        .style("opacity", "0.2")
-        .style("width", "1px")
-        .style("height", parseInt(0.33 * docWidth) + "px")
-        .style("top", "280px")
-        .style("left", "0px")
-        .style("background", "#383f49");
+            .append("div")
+            .attr("class", "vertical1")
+            .style("position", "absolute")
+            .style("z-index", "0")
+            .style("opacity", "0.2")
+            .style("width", "1px")
+            .style("height", parseInt(0.33 * docWidth) + "px")
+            .style("top", "280px")
+            .style("left", "0px")
+            .style("background", "#383f49");
 
         svg.selectAll(".layer")
             .data(layers)
             .enter().append("path")
             .attr("class", "layer")
             .attr("d", function(d) {
-            return area(d.values);
-        })
+                return area(d.values);
+            })
             .style("fill", function(d, i) {
-            return "url(#mainGradient" + (i + 1) + ")";
-        });
+                return "url(#mainGradient" + (i + 1) + ")";
+            });
         //      .classed(function(d, i) { return "url(#mainGradient"+i+")"; }, true);
         //      .style("fill", "url(#mainGradient)");
         //      .style("fill", function(d, i) { return z(i); });
@@ -215,8 +205,8 @@ What have been the product trends for ABFL in the last 12 months?</div><hr id="m
             .attr("class", "y-axis")
             .attr("transform", "translate(" + docWidth * 0.06 + ", 0)")
             .call(yAxis.orient("left").tickFormat(d3v3.format("s")));
-        // .call(yAxis.orient("left").tickFormat(function(d){ return console.log(d); d["text"]; }));
-        // .tickFormat(function(d){return d["text"]}));
+            // .call(yAxis.orient("left").tickFormat(function(d){ return console.log(d); d["text"]; }));
+            // .tickFormat(function(d){return d["text"]}));
 
         //  svg.append("g")
         //      .attr("class", "y axis")
@@ -225,57 +215,57 @@ What have been the product trends for ABFL in the last 12 months?</div><hr id="m
         svg.selectAll(".layer")
             .attr("opacity", 1)
             .on("mouseover", function(d, i) {
-            svg.selectAll(".layer").transition()
-                .duration(250)
-                .attr("opacity", function(d, j) {
-                return j != i ? 0.4 : 1;
+                svg.selectAll(".layer").transition()
+                    .duration(250)
+                    .attr("opacity", function(d, j) {
+                        return j != i ? 0.4 : 1;
+                    })
             })
-        })
 
             .on("mousemove", function(d, i) {
-            // mousex = d3v3.mouse(this);
-            // mousex = mousex[0];
-            // selectedDate = x.invert(mousex);
-            // var invertedx = x.invert(mousex);
-            // console.log("invertedx", invertedx);
-            // invertedx = invertedx.getMonth() + invertedx.getDate();
+                // mousex = d3v3.mouse(this);
+                // mousex = mousex[0];
+                // selectedDate = x.invert(mousex);
+                // var invertedx = x.invert(mousex);
+                // console.log("invertedx", invertedx);
+                // invertedx = invertedx.getMonth() + invertedx.getDate();
 
-            // console.log("invertedx", invertedx);
-            // var selected = (d.values);
+                // console.log("invertedx", invertedx);
+                // var selected = (d.values);
 
-            // console.log("selected", selected);
+                // console.log("selected", selected);
 
-            // for (var k = 0; k < selected.length; k++) {
-            //     console.log
-            //     datearray[k] = selected[k].date
-            //     datearray[k] = datearray[k].getMonth() + datearray[k].getDate();
-            //     console.log("date aarray k", datearray[k]);
-            // }
+                // for (var k = 0; k < selected.length; k++) {
+                //     console.log
+                //     datearray[k] = selected[k].date
+                //     datearray[k] = datearray[k].getMonth() + datearray[k].getDate();
+                //     console.log("date aarray k", datearray[k]);
+                // }
 
-            // mousedate = datearray.indexOf(invertedx);
-            // console.log("sab", d, d.values, mousedate);
-            // pro = d.values[mousedate].metric;
+                // mousedate = datearray.indexOf(invertedx);
+                // console.log("sab", d, d.values, mousedate);
+                // pro = d.values[mousedate].metric;
 
-            d3v3.select(this)
-                .classed("hover", true)
-                .attr("stroke", strokecolor)
-                .attr("stroke-width", "0.5px"),
+                d3v3.select(this)
+                    .classed("hover", true)
+                    .attr("stroke", strokecolor)
+                    .attr("stroke-width", "0.5px"),
 
                 $('#productName').html(d.key);
 
-        })
+            })
             .on("mouseout", function(d, i) {
-            svg.selectAll(".layer")
-                .transition()
-                .duration(250)
-                .attr("opacity", "1");
+                svg.selectAll(".layer")
+                    .transition()
+                    .duration(250)
+                    .attr("opacity", "1");
 
-            $('#productName').html("All Products");
+                $('#productName').html("All Products");
 
-            d3v3.select(this)
-                .classed("hover", false)
-                .attr("stroke-width", "0px");
-        })
+                d3v3.select(this)
+                    .classed("hover", false)
+                    .attr("stroke-width", "0px");
+            })
 
         function getMod(a) {
             if (a > 0)
@@ -372,29 +362,23 @@ What have been the product trends for ABFL in the last 12 months?</div><hr id="m
 
         d3v3.select(".chart")
             .on("mousemove", function() {
-            mousex = d3v3.mouse(this);
-            updateVerticals(mousex);
-        })
+                mousex = d3v3.mouse(this);
+                updateVerticals(mousex);
+            })
             .on("mouseover", function() {
-            mousex = d3v3.mouse(this);
-            updateVerticals(mousex);
-            updateHeadings(mousex);
-        });
+                mousex = d3v3.mouse(this);
+                updateVerticals(mousex);
+                updateHeadings(mousex);
+            });
     };
 
     if (!sdata) {
-        if(target==='fake'){
-            d3v3.csv("../data/steam-data.csv", function(response){
-                plotGraph(response);
-            });
-        } else {
-            $.ajax({
-                type: "POST",
-                url: baseApiUrl + 'search',
-                data: { "search" : "What have been the product trends for ABFL in the last 12 months?" },
-                success: plotGraph
-            })
-        }
+        $.ajax({
+          type: "POST",
+          url: baseApiUrl + 'search',
+          data: { "search" : "What have been the product trends for ABFL in the last 12 months?" },
+          success: plotGraph
+        });
     }
     else {
         console.log('let`s plot');
@@ -428,98 +412,98 @@ function plotLineGraph() {
         .range([height, 0]);
 
     var xAxis = d3v3.svg.axis()
-    .scale(lx)
-    .orient("bottom")
-    .ticks(5)
-    .tickFormat(d3v3.time.format("%b"));
+        .scale(lx)
+        .orient("bottom")
+        .ticks(5)
+        .tickFormat(d3v3.time.format("%b"));
 
     var yAxis = d3v3.svg.axis()
-    .scale(ly)
-    .orient("left");
-    // .ticks(5);
+        .scale(ly)
+        .orient("left");
+        // .ticks(5);
 
     var valueline = d3v3.svg.line()
-    .x(function(d) { return lx(d.date); })
-    .y(function(d) { return ly(d.inflation); })
-    .interpolate("basis");
+        .x(function(d) { return lx(d.date); })
+        .y(function(d) { return ly(d.inflation); })
+        .interpolate("basis");
 
     var bisectDate = d3.bisector(function(d) { return d.date; }).left;
 
     var svg = d3v3.select(".chart")
-    .append("svg")
-    .attr("class", "lineGraph")
-    .attr("width", width + margin.left + margin.right)
-    .attr("height", height + margin.top + margin.bottom)
-    .append("g")
-    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+        .append("svg")
+        .attr("class", "lineGraph")
+        .attr("width", width + margin.left + margin.right)
+        .attr("height", height + margin.top + margin.bottom)
+        .append("g")
+        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
     // Get the data
     d3v3.csv("../data/inflation.csv", function(error, data) {
 
-        data.forEach(function(d) {
-            d.date = parseDate(d.date);
-            d.inflation = +d.inflation;
-        });
+    data.forEach(function(d) {
+        d.date = parseDate(d.date);
+        d.inflation = +d.inflation;
+    });
 
-        data.reverse();
+    data.reverse();
+    
+    // Scale the range of the data
+    lx.domain(d3v3.extent(data, function(d) { return d.date; }));
+    ly.domain([0, d3v3.max(data, function(d) { return d.inflation; })]);
+    
 
-        // Scale the range of the data
-        lx.domain(d3v3.extent(data, function(d) { return d.date; }));
-        ly.domain([0, d3v3.max(data, function(d) { return d.inflation; })]);
+    svg.append("linearGradient")                
+        .attr("id", "line-gradient")            
+        .attr("gradientUnits", "userSpaceOnUse")    
 
-
-        svg.append("linearGradient")                
-            .attr("id", "line-gradient")            
-            .attr("gradientUnits", "userSpaceOnUse")    
-
-            .selectAll("stop")                      
-            .data([                             
+    .selectAll("stop")                      
+        .data([                             
             {offset: "0%", color: "#f5f5fa"},       
             {offset: "28.5%", color: "#f5f5fa"},  
-            {offset: "28.5%", color: "#b149a7"},        
-            {offset: "78.5%", color: "#b149a7"},        
+            {offset: "28.5%", color: "#920029"},        
+            {offset: "78.5%", color: "#920029"},        
             {offset: "78.5%", color: "#f5f5fa"},    
             {offset: "100%", color: "#f5f5fa"} 
         ])
 
-            .enter().append("stop")         
-            .attr("offset", function(d) { return d.offset; })   
-            .attr("stop-color", function(d) { return d.color; });
+    .enter().append("stop")         
+        .attr("offset", function(d) { return d.offset; })   
+        .attr("stop-color", function(d) { return d.color; });
 
-        // Add the valueline path.
-        var maxX = lx(d3v3.extent(data, function(d) { return d.date; })[1]);
-        svg.append("path")
-            .attr("class", "line").attr("fill","url(#")
-            .attr("id", "myline")
-            .attr("d", ''+valueline(data)+"L0,"+ly(0)+'L'+maxX+","+ly(0))
-            .on("mousemove", function() {
-            // var x0 = lx.invert(d3v3.mouse(this)[0]),
-            // i = bisectDate(data, x0, 1),
-            // d0 = data[i - 1],
-            // d1 = data[i],
-            // d = x0 - d0.date > d1.date - x0 ? d1 : d0;
-            // console.log(d);
-            // focus.attr("transform", "translate(" + lx(d.date) + "," + ly(d.inflation) + ")");
-            // focus.select("text").text(d.inflation);
-        })
+    // Add the valueline path.
+    var maxX = lx(d3v3.extent(data, function(d) { return d.date; })[1]);
+    svg.append("path")
+        .attr("class", "line").attr("fill","url(#")
+        .attr("id", "myline")
+        .attr("d", ''+valueline(data)+"L0,"+ly(0)+'L'+maxX+","+ly(0))
+        .on("mousemove", function() {
+                // var x0 = lx.invert(d3v3.mouse(this)[0]),
+                // i = bisectDate(data, x0, 1),
+                // d0 = data[i - 1],
+                // d1 = data[i],
+                // d = x0 - d0.date > d1.date - x0 ? d1 : d0;
+                // console.log(d);
+                // focus.attr("transform", "translate(" + lx(d.date) + "," + ly(d.inflation) + ")");
+                // focus.select("text").text(d.inflation);
+            })
 
-        // Add the X Axis
-        svg.append("g")
-            .attr("class", "x-axis")
-            .attr("transform", "translate(0," + height + ")")
-            .call(xAxis);
+    // Add the X Axis
+    svg.append("g")
+        .attr("class", "x-axis")
+        .attr("transform", "translate(0," + height + ")")
+        .call(xAxis);
 
-        svg.append("text")
-            .attr("text-anchor", "middle")  // this makes it easy to centre the text as the transform is applied to the anchor
-            .attr("transform", "translate("+ (margin.left/2) +","+(height/2)+")rotate(-90)")  // text is drawn off the screen top left, move down and out and rotate
-            .attr("class", "inflationHeading")
-            .attr("y", -40)
-            .text("Inflation");
+    svg.append("text")
+        .attr("text-anchor", "middle")  // this makes it easy to centre the text as the transform is applied to the anchor
+        .attr("transform", "translate("+ (margin.left/2) +","+(height/2)+")rotate(-90)")  // text is drawn off the screen top left, move down and out and rotate
+        .attr("class", "inflationHeading")
+        .attr("y", -40)
+        .text("Inflation");
 
-        // Add the Y Axis
-        // svg.append("g")
-        //     .attr("class", "y axis")
-        //     .call(yAxis);
+    // Add the Y Axis
+    // svg.append("g")
+    //     .attr("class", "y axis")
+    //     .call(yAxis);
 
     });
 }
