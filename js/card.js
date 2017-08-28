@@ -46,7 +46,7 @@ var trending = `<div class="box first">
                     <div class="trending-text">
 					What have been the product trends for ABFL in the last 12 months?<br></div>
 					<br>
-					<div class="subtitle"><img src="../images/ic-trending.png"   srcset="../images/ic-trending@2x.png 2x, ../images/ic-trending@3x.png 3x"
+					<div class="subtitle"><img id="pinmodified"  src="../images/ic-trending.png"   srcset="../images/ic-trending@2x.png 2x, ../images/ic-trending@3x.png 3x"
                             class="ic_trending"><strong>
                         TRENDING</strong>
 					</div>    
@@ -60,3 +60,6 @@ var sales_efficiency=`<div class="sales-efficiency">
 var daily_digest_extended = `<div class="daily_digest_extended">Your daily <span class="daily_digest_extended_second">digest</span></div>
                             <img src="../images/img-digest-chart.png" srcset="../images/img-digest-chart@2x.png 2x, ../images/img-digest-chart@3x.png 3x"
                             class="img_digest_chart fix_margin_card">`;
+
+
+                           

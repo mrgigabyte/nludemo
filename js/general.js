@@ -29,8 +29,12 @@ function unsecuredLoans() {
 }
 
 function unsecuredNBFC() {
-    $('.modifiedfirstText').text($('#searchHeader').val()+" for NBFC");
-	$('#searchHeader').val($('#searchHeader').val()+" for NBFC");
+	var list = $('#searchHeader').val().split(' ');
+	var x = list[list.length-1];
+	list[list.length-1]="NBFC";
+	list.push(x);
+    $('.modifiedfirstText').text(list.join(' '));
+	$('#searchHeader').val(list.join(' '));
 	singleBarChartNBFC();
 	removeHeaderButtons();
     
@@ -47,8 +51,8 @@ function doubleBarChartOk() {
 }
 
 function mapViewDedo() {
-    $('.modifiedfirstText').text($('#searchHeader').val()+", show opportunities graphically");
-	$('#searchHeader').val($('#searchHeader').val()+", show opportunities graphically");
+    $('.modifiedfirstText').text($('#searchHeader').val()+", by state");
+	$('#searchHeader').val($('#searchHeader').val()+", by state");
 	$('#thisismapview').remove();
 	generateMapView();
 }
@@ -69,6 +73,7 @@ function doNothing() {
 }
 
 function ModifiedSave(){
+	$('#pinmodified').addClass('isDisable');
     $('.save-cancel').addClass('isDisable');
     $('.trending_box_container').addClass('isActive');
     $('.sidenavModified').removeClass('isActive');
@@ -80,5 +85,6 @@ function ModifiedSave(){
     
 //  $("<div class='box selected' style='height:400px;'>HI THIS IS ME</div>").prependTo('#sidenav').hide().slideDown();
 }
+
 
 baseApiUrl = "http://52.66.179.123:4000/";

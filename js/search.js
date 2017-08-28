@@ -1,4 +1,4 @@
-var showSuggestions = function(e) {
+var showSuggestions = function (e) {
     // on pressing of enter we need to exit this as the suggestions are no longer needed
     if (e.which == 13) {
         return;
@@ -11,11 +11,11 @@ var showSuggestions = function(e) {
 
     // if the modified card is there... change its text
     // TODOALPHA
-    if($('.sidenavModified').hasClass('isActive')!=false){
+    if ($('.sidenavModified').hasClass('isActive') != false) {
         $('.modifiedfirstText:first').text($('.srch-container input').val());
         // $('.trending-text').text($('.srch-container input').val());
     }
-    
+
     var str = this.value;
     $('.box').addClass('search');
     $('.search-container-parent.buttons').hide();
@@ -25,8 +25,8 @@ var showSuggestions = function(e) {
     $('.fall-back').addClass('isActive');
     $('.searchicon').addClass('Active');
     $('.box.first ').addClass('isActive');
-    
-    if ($('.sidenavModified').hasClass('isActive')==false) {
+
+    if ($('.sidenavModified').hasClass('isActive') == false) {
         $('.trending_box_container').addClass('isSearchActive');
         $('.trending_box_container').removeClass('isActive');
     }
@@ -36,26 +36,25 @@ var showSuggestions = function(e) {
 function addSearchCard() {
     $('.box').removeClass('selected');
     // DO it when there is no active search card
-    if ($('.sidenavModified.isActive').length==0) {
+    if ($('.sidenavModified.isActive').length == 0) {
         var cardHTML = `<div class="sidenavModified isActive" id="sidenavModified">
             <div class="box" style="margin: 25px auto;
-                    padding: 15px 40px;
                     width: 320px;
-                    padding-top: 35px;
+                    padding: 0px;
                     box-shadow: 0 2px 51px 0 rgba(60, 98, 159, 0.15)">
-                <div class="modifiedfirstText">
-                    `+$('#searchHeader').val()+`
+                    <div style="position: relative; padding: 10px;"><img id="pinmodified" style="position: absolute; top: 24px; right: 22px;" src="../images/ic-pin-red.png"></div>
+                <div class="modifiedfirstText" style="padding: 9%;">
+                    `+ $('#searchHeader').val() + `
                 </div>
-                <hr id="modifiedHR">
-                <button class="modified-save" onclick=ModifiedSave() id="modifiedSave">
-                    Save
-                </button>
-            </div>`;
+            <hr id="modifiedHR" style="margin: 0;">
+                    <div class="save-cancel" style="display: flex; justify-content: space-around; margin-bottom: 0%;">
+                    <button class="modified-cancel" id="modifiedSave" style="outline: none; width: 40%; padding-right: 42px; border: 0px; background: #ffffff; color: orange; height: 48px; border-right: 1px solid #ccc;">Cancel</button>
+                    <button class="modified-save" onclick="ModifiedSave()" id="modifiedSave" style="height:46;">Save</button></div></div>`;
     }
     $(cardHTML).prependTo('#sidenav').hide().slideDown("fast");
 }
 
-$('#searchHeader').on('keyup', function(e) {
+$('#searchHeader').on('keyup', function (e) {
     if (e.which == 13) {
         var searchTxt = $('#searchHeader').val();
         addSearchCard();
@@ -63,17 +62,17 @@ $('#searchHeader').on('keyup', function(e) {
         $.ajax({
             type: "POST",
             url: baseApiUrl + 'search',
-            data: { "search" : searchTxt },
-            success: function(data) {
-                if ( data.chart_type == "streamo" )
+            data: { "search": searchTxt },
+            success: function (data) {
+                if (data.chart_type == "streamo")
                     drawSteamGraph(data);
-                else if ( data.chart_type == 'double') {
+                else if (data.chart_type == 'double') {
                     if (data.dual == false)
                         barChart("single", data)();
-                    else 
+                    else
                         barChart("double", data)();
                 }
-                else if ( data.chart_type == 'map')
+                else if (data.chart_type == 'map')
                     generateMapView(data);
             }
         });
@@ -84,11 +83,11 @@ $('#searchHeader').on('keyup', function(e) {
 });
 
 document.getElementById("searchHeader").addEventListener("keyup", showSuggestions);
-document.getElementById("searchHeader").addEventListener("click", function() {
-    if ($('.sidenavModified').hasClass('isActive')==false) // modified card is not open) // TODOALPHA
-    {var txt = $('.srch-container input').val("");}
-    else{var txt = $('.srch-container input').val();}
-    showSuggestions({"which": 0});
+document.getElementById("searchHeader").addEventListener("click", function () {
+    if ($('.sidenavModified').hasClass('isActive') == false) // modified card is not open) // TODOALPHA
+    { var txt = $('.srch-container input').val(""); }
+    else { var txt = $('.srch-container input').val(); }
+    showSuggestions({ "which": 0 });
 });
 
 function closeSearchBar() {
@@ -100,15 +99,15 @@ function closeSearchBar() {
     $('.box.first ').removeClass('isActive');
     $('.search-container-parent.searchSuggest').html("");
     $('.search-container-parent.buttons').show();
-    if($('.sidenavModified').hasClass('isActive')==false){
+    if ($('.sidenavModified').hasClass('isActive') == false) {
         $('.trending_box_container').removeClass('isSearchActive');
         $('.trending_box_container').addClass('isActive');
     }
     $('.box').removeClass('search');
 }
 
-document.getElementById("nav-cust").addEventListener("focusout", function() {
-    setTimeout(function() {
+document.getElementById("nav-cust").addEventListener("focusout", function () {
+    setTimeout(function () {
         closeSearchBar();
     }, 100);
 });
@@ -116,16 +115,16 @@ document.getElementById("nav-cust").addEventListener("focusout", function() {
 function updateSearchResult(func_name, query) {
     console.log('hello');
     var txt = $('.srch-container input').val(query);
-    eval(func_name+"()");
+    eval(func_name + "()");
 }
 
-function showRecent(){
+function showRecent() {
     var txt = $('.srch-container input').val();
     var localQueries = (txt == "") ? queries : product_queries;
 
     $('.search-container-parent.searchSuggest').html("");
-    for(index in localQueries) {
-        var ele = `<p class="search-suggestions" onclick='updateSearchResult("`+localQueries[index][1]+`","`+localQueries[index][0]+`")'>`+localQueries[index][0]+`</p>`;
+    for (index in localQueries) {
+        var ele = `<p class="search-suggestions" onclick='updateSearchResult("` + localQueries[index][1] + `","` + localQueries[index][0] + `")'>` + localQueries[index][0] + `</p>`;
         $('.search-container-parent.searchSuggest').append(ele);
     }
 }
