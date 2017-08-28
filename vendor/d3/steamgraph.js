@@ -34,9 +34,9 @@ function drawSteamGraph(sdata) {
     padding: 40px;
     color: #3d4351;'>
 					What have been the product trends for ABFL in the last 12 months?</div><hr id="modifiedHR" style='margin: 0;'>
-                    <div style='display: flex; justify-content: space-around; margin-bottom: -14px;'>
+                    <div class="save-cancel" style='display: flex; justify-content: space-around; margin-bottom: -14px;'>
                     <button class="modified-cancel" id="modifiedSave" style='outline: none; width: 40%; padding-right: 42px; border: 0px; background: #ffffff; color: orange; height: 48px; border-right: 1px solid #ccc;'>Cancel</button>
-                    <button class="modified-save" onclick=ModifiedSave() id="modifiedSave" style='height:46;'>Save</button></div></div>`);
+                    <button class="modified-save" onclick=ModifiedSave() id="modifiedSave" style='height:46;'  >Save</button></div></div>`);
 
     d3v3.select('.selected').html(daily_digest_extended);
     d3v3.select('.notselected1').html(treasury);

@@ -26,6 +26,11 @@
 */
 
 
+#modifiedSave{
+    background-color: aqua; 
+    display: none;
+}
+
 .fa.arrow:before {
     content: "\f104";
 }
@@ -36,6 +41,7 @@
 
 .plus-times {
     float: right;
+    
 }
 
 .fa.plus-times:before {

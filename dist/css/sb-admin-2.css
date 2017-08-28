@@ -466,6 +466,9 @@ button {
   font-size: 18px;
   height: 160px;
 }
+.save-cancel.isDisable {
+  display: none !important;
+}
 .float-right {
   margin-right: 20px;
   margin-top: 10px;

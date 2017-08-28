@@ -69,6 +69,7 @@ function doNothing() {
 }
 
 function ModifiedSave(){
+    $('.save-cancel').addClass('isDisable');
     $('.trending_box_container').addClass('isActive');
     $('.sidenavModified').removeClass('isActive');
     $('#modifiedHR').remove();
