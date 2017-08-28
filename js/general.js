@@ -86,5 +86,19 @@ function ModifiedSave(){
 //  $("<div class='box selected' style='height:400px;'>HI THIS IS ME</div>").prependTo('#sidenav').hide().slideDown();
 }
 
+function ModifiedSave2(){
+	$('#trending2').addClass('isActive');
+	$('#pinmodified').addClass('isDisable');
+    $('.save-cancel').addClass('isDisable');
+    $('.trending_box_container').addClass('isActive');
+    $('.sidenavModified').removeClass('isActive');
+    $('#modifiedHR').remove();
+    $('#modifiedSave').remove();
+
+    //empty the search bar
+    $('#searchHeader').val("");
+    
+//  $("<div class='box selected' style='height:400px;'>HI THIS IS ME</div>").prependTo('#sidenav').hide().slideDown();
+}
 
 baseApiUrl = "http://52.66.179.123:4000/";

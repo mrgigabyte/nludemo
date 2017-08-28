@@ -20,7 +20,7 @@ function drawSteamGraph(sdata, target) {
     target = 'fake';
     $('body #commentsIndex').html("");
     // addSearchCard();
-      $('#sidenavModified').html(`
+      $('#sidenavModified').html(trending2+`
                 
                 <div class="box" style="margin: 25px auto;
                     width: 320px;
@@ -36,7 +36,7 @@ function drawSteamGraph(sdata, target) {
 					What have been the product trends for ABFL in the last 12 months?</div><hr id="modifiedHR" style='margin: 0;'>
                     <div class="save-cancel" style='display: flex; justify-content: space-around; margin-bottom: -14px;'>
                     <button class="modified-cancel" id="modifiedSave" style='outline: none; width: 40%; padding-right: 42px; border: 0px; background: #ffffff; color: orange; height: 48px; border-right: 1px solid #ccc;'>Cancel</button>
-                    <button class="modified-save" onclick=ModifiedSave() id="modifiedSave" style='height:46;'  >Save</button></div></div>`);
+                    <button class="modified-save" onclick=ModifiedSave2() id="modifiedSave" style='height:46;'  >Save</button></div></div>`);
 
     d3v3.select('.selected').html(daily_digest_extended);
     d3v3.select('.notselected1').html(treasury);

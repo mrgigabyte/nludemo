@@ -6,8 +6,13 @@ var doubleBarChart = barChart("double", undefined, "fake");
 
 var singleBarChartNBFC = barChart("single");
 
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
 function barChart(type, sdata, target) {
-    return function() {
+    return function () {
+
         $('body #commentsIndex').html("");
         // $('#sidenavModified').html(trending);
         d3v3.select("#page-wrapper").html("");
@@ -48,44 +53,44 @@ function barChart(type, sdata, target) {
 
         var rCol = "return";
         var xTo = d3v3.scale.linear()
-        .range([20, width]);
+            .range([20, width]);
         var y = d3v3.scale.ordinal()
-        .rangeBands([20, height]);
+            .rangeBands([20, height]);
         var rCol2 = "return2";
         var xTo2 = d3v3.scale.linear()
-        .range([20, width]);
+            .range([20, width]);
 
         if (type === "double") {
             var lCol = "risk";
             var lCol2 = "risk2";
             var xFrom = d3v3.scale.linear()
-            .range([50, width]);
+                .range([50, width]);
             var xFrom2 = d3v3.scale.linear()
-            .range([50, width]);
+                .range([50, width]);
         }
 
         var tooltip = d3v3.select("body")
-        .append("div")
-        .style("position", "absolute")
-        .style("z-index", "10")
-        .style("visibility", "hidden")
-        .style("background", "#fff")
-        .text("a simple tooltip")
-        .attr("class", "hoverTooltip");
+            .append("div")
+            .style("position", "absolute")
+            .style("z-index", "10")
+            .style("visibility", "hidden")
+            .style("background", "#fff")
+            .text("a simple tooltip")
+            .attr("class", "hoverTooltip");
 
         function render(data) {
             console.log(data);
-            if(target!=='fake'){
+            if (target !== 'fake') {
                 data = data['rows'];
             }
             data.forEach(getTypes);
 
             var chart = d3v3.select("#page-wrapper")
-            .append('svg')
-            .attr('class', 'biChart '+type)
-            // .attr('class', type)
-            .attr('width', labelArea + width + startX + 200)
-            .attr('height', height)
+                .append('svg')
+                .attr('class', 'biChart ' + type)
+                // .attr('class', type)
+                .attr('width', labelArea + width + startX + 200)
+                .attr('height', height)
 
             var svg = d3v3.select(".biChart").append("svg");
             var svgDefs = svg.append('defs');
@@ -106,7 +111,7 @@ function barChart(type, sdata, target) {
 
             for (var i = 0; i < colorrange.length; i++) {
                 var mainGradient = svgDefs.append('linearGradient')
-                .attr('id', 'barGradient' + (i + 1))
+                    .attr('id', 'barGradient' + (i + 1))
                 mainGradient.append('stop')
                     .attr('stop-color', colorrange[i][0])
                     .attr('offset', '5%');
@@ -161,54 +166,54 @@ function barChart(type, sdata, target) {
                     .data(data)
                     .enter().append("rect")
                     .attr("x", function (d) {
-                    return width + 30 - xFrom(d[lCol]);
-                })
+                        return width + 30 - xFrom(d[lCol]);
+                    })
                     .attr("y", yPosByIndex)
                     .attr("rx", 5)
                     .attr("ry", 5)
                     .attr("class", "left")
-                    .attr("score", function(d){return d[lCol];})
+                    .attr("score", function (d) { return d[lCol]; })
                     .attr("width", function (d) {
-                    return Math.max(xFrom(d[lCol]) - 30, 0);
-                })
+                        return Math.max(xFrom(d[lCol]) - 30, 0);
+                    })
                     .attr("height", 10)
-                    .on("mouseover", function(d) {
-                    tooltip.text(d[lCol+"Readable"]);
-                    return tooltip
-                        .style("top", ((yPosByIndexText(d) + 408) + "px"))
-                        .style("left", (width - xFrom(d[lCol]) + 65 + 44) + "px" )
-                        .style("visibility", "visible");
-                })
-                    .on("mouseout", function(){
-                    return tooltip
-                        .style("visibility", "hidden");
-                });
+                    .on("mouseover", function (d) {
+                        tooltip.text(d[lCol + "Readable"]);
+                        return tooltip
+                            .style("top", ((yPosByIndexText(d) + 408) + "px"))
+                            .style("left", (width - xFrom(d[lCol]) + 65 + 44) + "px")
+                            .style("visibility", "visible");
+                    })
+                    .on("mouseout", function () {
+                        return tooltip
+                            .style("visibility", "hidden");
+                    });
 
                 chart.selectAll("rect.left2")
                     .data(data)
                     .enter().append("rect")
                     .attr("x", function (d) {
-                    return width + 30 - xFrom2(d[lCol2]);
-                })
+                        return width + 30 - xFrom2(d[lCol2]);
+                    })
                     .attr("y", yPosByIndex2)
                     .attr("rx", 5)
                     .attr("ry", 5)
                     .attr("class", "left2")
                     .attr("width", function (d) {
-                    return Math.max(xFrom2(d[lCol2]) - 30, 0);
-                })
+                        return Math.max(xFrom2(d[lCol2]) - 30, 0);
+                    })
                     .attr("height", 10)
-                    .on("mouseover", function(d) {
-                    tooltip.text(d[lCol2+"Readable"]);
-                    return tooltip
-                        .style("top", ((yPosByIndexText(d) + 428) + "px"))
-                        .style("left", (width - xFrom2(d[lCol2]) + 60 + 47) + "px" )
-                        .style("visibility", "visible");
-                })
-                    .on("mouseout", function(){
-                    return tooltip
-                        .style("visibility", "hidden");
-                });
+                    .on("mouseover", function (d) {
+                        tooltip.text(d[lCol2 + "Readable"]);
+                        return tooltip
+                            .style("top", ((yPosByIndexText(d) + 428) + "px"))
+                            .style("left", (width - xFrom2(d[lCol2]) + 60 + 47) + "px")
+                            .style("visibility", "visible");
+                    })
+                    .on("mouseout", function () {
+                        return tooltip
+                            .style("visibility", "hidden");
+                    });
             }
 
             chart.selectAll("text.name")
@@ -219,7 +224,7 @@ function barChart(type, sdata, target) {
                 .attr("dy", ".20em")
                 .attr("text-anchor", type === "double" ? "middle" : "left")
                 .attr('class', 'wrap')
-                .attr('randomInfo', function(d){return d.products;})
+                .attr('randomInfo', function (d) { return d.products; })
                 .call(wrap, 110);
             // .text(function(d){return d.products;});
 
@@ -232,20 +237,20 @@ function barChart(type, sdata, target) {
                 .attr("ry", 5)
                 .attr("class", "right")
                 .attr("width", function (d) {
-                return xTo(d[rCol]);
-            })
+                    return xTo(d[rCol]);
+                })
                 .attr("height", 10)
-                .on("mouseover", function(d) {
-                tooltip.text(d[rCol+"Readable"]);
-                return tooltip
-                    .style("top", ((yPosByIndexText(d) + 408) + "px"))
-                    .style("left", (xTo(d[rCol]) + rightOffset + 72 + (type === "double" ? 30 : 0)) + "px" )
-                    .style("visibility", "visible");
-            })
-                .on("mouseout", function(){
-                return tooltip
-                    .style("visibility", "hidden");
-            })
+                .on("mouseover", function (d) {
+                    tooltip.text(d[rCol + "Readable"]);
+                    return tooltip
+                        .style("top", ((yPosByIndexText(d) + 408) + "px"))
+                        .style("left", (xTo(d[rCol]) + rightOffset + 72 + (type === "double" ? 30 : 0)) + "px")
+                        .style("visibility", "visible");
+                })
+                .on("mouseout", function () {
+                    return tooltip
+                        .style("visibility", "hidden");
+                })
 
             chart.selectAll("rect.right2")
                 .data(data)
@@ -256,33 +261,33 @@ function barChart(type, sdata, target) {
                 .attr("ry", 5)
                 .attr("class", "right2")
                 .attr("width", function (d) {
-                return xTo2(d[rCol2]);
-            })
+                    return xTo2(d[rCol2]);
+                })
                 .attr("height", 10)
-                .on("mouseover", function(d) {
-                tooltip.text(d[rCol2+"Readable"]);
-                return tooltip
-                    .style("top", ((yPosByIndexText(d) + 428) + "px"))
-                    .style("left", (xTo2(d[rCol2]) + rightOffset + 72 + (type === "double" ? 30 : 0)) + "px" )
-                    .style("visibility", "visible");
-            })
-                .on("mouseout", function(){
-                return tooltip
-                    .style("visibility", "hidden");
-            });
+                .on("mouseover", function (d) {
+                    tooltip.text(d[rCol2 + "Readable"]);
+                    return tooltip
+                        .style("top", ((yPosByIndexText(d) + 428) + "px"))
+                        .style("left", (xTo2(d[rCol2]) + rightOffset + 72 + (type === "double" ? 30 : 0)) + "px")
+                        .style("visibility", "visible");
+                })
+                .on("mouseout", function () {
+                    return tooltip
+                        .style("visibility", "hidden");
+                });
 
             chart.selectAll("text.score2")
                 .data(data)
                 .enter().append("text")
                 .attr("x", function (d) {
-                return xTo2(d[rCol2]) + rightOffset+40;
-            })
+                    return xTo2(d[rCol2]) + rightOffset + 40;
+                })
                 .attr("y", yPosByIndex2Text)
                 .attr("dx", -5)
                 .attr("dy", "0.36em")
                 .attr("text-anchor", "end")
                 .attr('class', 'score')
-                .text(function(d){return d[rCol2];});
+                .text(function (d) { return d[rCol2]; });
 
         }
 
@@ -299,10 +304,10 @@ function barChart(type, sdata, target) {
                 var y = (sentence.length > 9) ? text.attr("y") - 10 : text.attr("y");
                 var dy = 0, //parseFloat(text.attr("dy")),
                     tspan = text.text(null)
-                .append("tspan")
-                .attr("x", x)
-                .attr("y", y)
-                .attr("dy", dy + "em");
+                        .append("tspan")
+                        .attr("x", x)
+                        .attr("y", y)
+                        .attr("dy", dy + "em");
                 while (word = words.pop()) {
                     line.push(word);
                     tspan.text(line.join(" "));
@@ -336,17 +341,17 @@ function barChart(type, sdata, target) {
             return d;
         }
 
-        if(!sdata) {
-            if(target==="fake"){
+        if (!sdata) {
+            if (target === "fake") {
                 console.log('ok')
-                d3v3.csv("../assets/un.csv", function(response){
+                d3v3.csv("../assets/un.csv", function (response) {
                     render(response);
                 });
             } else {
                 $.ajax({
                     type: "POST",
                     url: baseApiUrl + 'search',
-                    data: { "search" : "The returns of unsecured lending" },
+                    data: { "search": "The returns of unsecured lending" },
                     success: render
                 });
             }

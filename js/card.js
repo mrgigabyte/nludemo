@@ -46,7 +46,19 @@ var trending = `<div class="box first">
                     <div class="trending-text">
 					What have been the product trends for ABFL in the last 12 months?<br></div>
 					<br>
-					<div class="subtitle"><img id="pinmodified"  src="../images/ic-trending.png"   srcset="../images/ic-trending@2x.png 2x, ../images/ic-trending@3x.png 3x"
+					<div class="subtitle"><img   src="../images/ic-trending.png"   srcset="../images/ic-trending@2x.png 2x, ../images/ic-trending@3x.png 3x"
+                            class="ic_trending"><strong>
+                        TRENDING</strong>
+					</div>    
+				</div>
+                </div>`;
+
+var trending2 = `<div class="box first trending2" id="trending2">
+				<div>
+                    <div class="trending-text">
+					How many customers have more than 10 Cr and collateralized property?<br></div>
+					<br>
+					<div class="subtitle"><img   src="../images/ic-trending.png"   srcset="../images/ic-trending@2x.png 2x, ../images/ic-trending@3x.png 3x"
                             class="ic_trending"><strong>
                         TRENDING</strong>
 					</div>    
