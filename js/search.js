@@ -120,7 +120,7 @@ function updateSearchResult(func_name, query) {
 
 function showRecent() {
     var txt = $('.srch-container input').val();
-    var localQueries = (txt == "") ? queries : product_queries;
+    var localQueries = (txt.match("^what is the return of *")) ?product_queries  : queries;
 
     $('.search-container-parent.searchSuggest').html("");
     for (index in localQueries) {
