@@ -20,8 +20,10 @@ function drawSteamGraph(sdata, target) {
     target = 'fake';
     $('body #commentsIndex').html("");
     // addSearchCard();
-      $('#sidenavModified').html(trending2+`
-                
+    //   $('#sidenav').append(trending2)
+      $('#sidenavModified').html('');
+      $('#sidenav').prepend(`
+                <div class="sidenavModified" id="sidenavModified"></div>
                 <div class="box" style="margin: 25px auto;
                     width: 320px;
                     padding: 0px;
@@ -37,6 +39,7 @@ function drawSteamGraph(sdata, target) {
                     <div class="save-cancel" style='display: flex; justify-content: space-around; margin-bottom: -14px;'>
                     <button class="modified-cancel" id="modifiedSave" style='outline: none; width: 40%; padding-right: 42px; border: 0px; background: #ffffff; color: orange; height: 48px; border-right: 1px solid #ccc;'>Cancel</button>
                     <button class="modified-save" onclick=ModifiedSave2() id="modifiedSave" style='height:46;'  >Save</button></div></div>`);
+     $('#sidenavModified').html(trending2);
 
     d3v3.select('.selected').html(daily_digest_extended);
     d3v3.select('.notselected1').html(treasury);

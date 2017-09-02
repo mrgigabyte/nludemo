@@ -458,6 +458,10 @@ button {
   display: none;
 }
 .trending2.isActive {
+  transition: 0.5s;
+  margin-top: 10%;
+}
+.trending2.isCalled {
   display: block;
 }
 .whiteboxShadow {

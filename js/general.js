@@ -87,7 +87,8 @@ function ModifiedSave(){
 }
 
 function ModifiedSave2(){
-	$('#trending2').addClass('isActive');
+	// $('#trending2').addClass('isActive');
+	$('#trending2').addClass('isCalled')
 	$('#pinmodified').addClass('isDisable');
     $('.save-cancel').addClass('isDisable');
     $('.trending_box_container').addClass('isActive');

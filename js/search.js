@@ -112,10 +112,19 @@ document.getElementById("nav-cust").addEventListener("focusout", function () {
     }, 100);
 });
 
+function loadingStateOn(){
+
+};
+function loadingStateOff(){
+    
+};
+var loadTimeout = 2000;
+
 function updateSearchResult(func_name, query) {
-    console.log('hello');
+    // loadingStateOn();
     var txt = $('.srch-container input').val(query);
     eval(func_name + "()");
+    // setTimeout(loadingStateOff, loadTimeout);
 }
 
 function showRecent() {
@@ -124,7 +133,7 @@ function showRecent() {
 
     $('.search-container-parent.searchSuggest').html("");
     for (index in localQueries) {
-        var ele = `<p class="search-suggestions" onclick='updateSearchResult("` + localQueries[index][1] + `","` + localQueries[index][0] + `")'>` + localQueries[index][0] + `</p>`;
+        var ele = `<div onclick='updateSearchResult("` + localQueries[index][1] + `","` + localQueries[index][0] + `")' style="cursor:pointer;"><p class="search-suggestions">` + localQueries[index][0] + `</p></div>`;
         $('.search-container-parent.searchSuggest').append(ele);
     }
 }
